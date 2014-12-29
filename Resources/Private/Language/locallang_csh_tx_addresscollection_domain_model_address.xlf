@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-22T20:47:46Z" product-name="address_collection">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="first_name.description">
+				<source>First name</source>
+			</trans-unit>
+			<trans-unit id="middle_name.description">
+				<source>Middle name</source>
+			</trans-unit>
+			<trans-unit id="last_name.description">
+				<source>Last name</source>
+			</trans-unit>
+			<trans-unit id="gender.description">
+				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="birthday.description">
+				<source>Birthday</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>E-mail</source>
+			</trans-unit>
+			<trans-unit id="phone.description">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="mobile.description">
+				<source>Mobile</source>
+			</trans-unit>
+			<trans-unit id="fax.description">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="www.description">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="company.description">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="address.description">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="building.description">
+				<source>Building</source>
+			</trans-unit>
+			<trans-unit id="room.description">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="zip.description">
+				<source>ZIP</source>
+			</trans-unit>
+			<trans-unit id="city.description">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="region.description">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="country.description">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="image.description">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="user.description">
+				<source>frontendUser</source>
+			</trans-unit>
+			<trans-unit id="address_groups.description">
+				<source>Address group</source>
+			</trans-unit>
+			<trans-unit id="categories.description">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="address_group.description">
+				<source>Address group</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

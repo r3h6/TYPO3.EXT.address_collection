@@ -1,0 +1,23 @@
+
+plugin.tx_addresscollection {
+	view {
+		# cat=plugin.tx_addresscollection/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:address_collection/Resources/Private/Templates/
+		# cat=plugin.tx_addresscollection/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:address_collection/Resources/Private/Partials/
+		# cat=plugin.tx_addresscollection/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:address_collection/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_addresscollection//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+plugin.tx_addresscollection {
+	settings {
+		ajaxPageType = 1414358203
+	}
+}

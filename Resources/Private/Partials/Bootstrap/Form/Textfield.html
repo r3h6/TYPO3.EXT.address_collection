@@ -1,0 +1,12 @@
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+<div class="form-group">
+  <mgn:form.label for="{property}" class="control-label"><f:translate key="tx_addresscollection_domain_model_address.{property -> mgn:string.underscored()}">{property}</f:translate> <mgn:form.isRequired object="{address}" property="{property}"><f:translate key="form.required">*</f:translate></mgn:form.isRequired></mgn:form.label>
+  <mgn:form.isRequired object="{address}" property="{property}">
+    <f:then>
+      <f:form.textfield property="{property}" class="form-control {mgn:form.classNames(object: address, property: property)}" />
+    </f:then>
+    <f:else>
+      <f:form.textfield property="{property}" class="form-control {mgn:form.classNames(object: address, property: property)}" />
+    </f:else>
+  </mgn:form.isRequired>
+</div>

@@ -1,0 +1,283 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>locallang_be.xlf:flexform.tab.general</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>locallang_be.xlf:switchableControllerActions</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">locallang_be.xlf:switchableControllerActions.list</numIndex>
+										<numIndex index="1">Address->list;Address->show</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">locallang_be.xlf:switchableControllerActions.show</numIndex>
+										<numIndex index="1">Address->show</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">locallang_be.xlf:switchableControllerActions.manage</numIndex>
+										<numIndex index="1">Address->manage;Address->new;Address->create;Address->edit;Address->update;Address->delete</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+
+				</el>
+			</ROOT>
+		</sDEF>
+		<sLIST>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>locallang_be.xlf:flexform.tab.list</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.flexform.list.template>
+						<TCEforms>
+						<label>locallang_be.xlf:settings.flexform.list.template</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getListActionTemplates</itemsProcFunc>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.template>
+					<settings.flexform.list.detailPid>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.list.detailPid</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+									</suggest>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.detailPid>
+					<settings.flexform.list.demand.addressGroups>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.list.demand.addressGroups</label>
+							<config>
+								<type>select</type>
+								<renderMode>tree</renderMode>
+								<treeConfig>
+									<parentField>parent_group</parentField>
+									<appearance>
+										<maxLevels>99</maxLevels>
+										<expandAll>TRUE</expandAll>
+										<showHeader>TRUE</showHeader>
+									</appearance>
+								</treeConfig>
+								<foreign_table>tt_address_group</foreign_table>
+								<foreign_table_where> ORDER BY tt_address_group.sorting</foreign_table_where>
+								<size>10</size>
+								<autoSizeMax>20</autoSizeMax>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.demand.addressGroups>
+					<settings.flexform.list.demand.categoryConjunction>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.list.demand.categoryConjunction</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.categoryConjunction.all</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.categoryConjunction.or</numIndex>
+										<numIndex index="1">or</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.categoryConjunction.and</numIndex>
+										<numIndex index="1">and</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.categoryConjunction.notor</numIndex>
+										<numIndex index="1">notor</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.categoryConjunction.notand</numIndex>
+										<numIndex index="1">notand</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.demand.categoryConjunction>
+					<settings.flexform.list.demand.includeAddresses>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.list.demand.includeAddresses</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tt_address</allowed>
+								<size>10</size>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+									</suggest>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.demand.includeAddresses>
+					<settings.flexform.list.demand.recordTypes>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.list.demand.recordTypes</label>
+							<config>
+								<type>select</type>
+								<size>3</size>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+								<itemsProcFunc>MONOGON\AddressCollection\Hooks\ItemsProcFunc\RecordType->getByTca</itemsProcFunc>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.recordType.0</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.demand.recordTypes>
+					<settings.flexform.list.demand.orderBy>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.list.demand.orderBy</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.orderBy.name</numIndex>
+										<numIndex index="1">name</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.demand.orderBy>
+					<settings.flexform.list.demand.orderDirection>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.list.demand.orderDirection</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.orderDirection.asc</numIndex>
+										<numIndex index="1">asc</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.orderDirection.desc</numIndex>
+										<numIndex index="1">desc</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.demand.orderDirection>
+				</el>
+			</ROOT>
+		</sLIST>
+		<sSHOW>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>locallang_be.xlf:flexform.tab.show</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.flexform.show.template>
+						<TCEforms>
+						<label>locallang_be.xlf:settings.flexform.show.template</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getShowActionTemplates</itemsProcFunc>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.show.template>
+					<settings.flexform.show.demand.includeAddresses>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.show.demand.includeAddresses</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tt_address</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+									</suggest>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.flexform.show.demand.includeAddresses>
+				</el>
+			</ROOT>
+		</sSHOW>
+		<sMANAGE>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>locallang_be.xlf:flexform.tab.manage</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.flexform.manage.demand.recordTypes>
+						<TCEforms>
+							<label>locallang_be.xlf:settings.flexform.manage.demand.recordTypes</label>
+							<config>
+								<type>select</type>
+								<size>3</size>
+								<minitems>0</minitems>
+								<maxitems>99</maxitems>
+								<itemsProcFunc>MONOGON\AddressCollection\Hooks\ItemsProcFunc\RecordType->getByTca</itemsProcFunc>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">locallang_be.xlf:settings.flexform.manage.demand.recordTypes.0</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.manage.demand.recordTypes>
+				</el>
+			</ROOT>
+		</sMANAGE>
+	</sheets>
+</T3DataStructure>

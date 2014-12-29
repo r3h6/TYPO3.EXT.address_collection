@@ -1,0 +1,110 @@
+
+plugin.tx_addresscollection {
+	view {
+		templateRootPath = {$plugin.tx_addresscollection.view.templateRootPath}
+		partialRootPath = {$plugin.tx_addresscollection.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_addresscollection.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_addresscollection.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_addresscollection._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-address-collection table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-address-collection table th {
+		font-weight:bold;
+	}
+
+	.tx-address-collection table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+page.includeCSS {
+	bootstrap = EXT:address_collection/Resources/Public/StyleSheet/Vendors/bootstrap.min.css
+	visualsearch = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch.css
+	visualsearchDatauri = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch-datauri.css
+	tx_addresscollection = EXT:address_collection/Resources/Public/StyleSheet/ext.css
+}
+/*
+page.includeJSFooter {
+	jquery = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery-1.11.0.js
+	dependencies = EXT:address_collection/Resources/Public/JavaScript/Vendors/dependencies.js
+	visualsearch = EXT:address_collection/Resources/Public/JavaScript/Vendors/visualsearch.js
+	jqueryHistory = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery.history.js
+	tx_addresscollection_plugins = EXT:address_collection/Resources/Public/JavaScript/plugins.js
+	tx_addresscollection_ext = EXT:address_collection/Resources/Public/JavaScript/ext.js
+}
+*/
+plugin.tx_addresscollection {
+	_CSS_DEFAULT_STYLE >
+	view {
+		widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = {$plugin.tx_addresscollection.view.templateRootPath}
+
+	}
+	settings {
+		setup {
+			ajaxPageType = {$plugin.tx_addresscollection.settings.ajaxPageType}
+			list {
+				wizard {
+					paginate {
+						itemsPerPage = 10
+						insertAbove = 1
+						insertBelow = 0
+						maximumNumberOfLinks = 10
+					}
+				}
+			}
+		}
+	}
+}
+
+tx_addresscollection_ajax = PAGE
+tx_addresscollection_ajax {
+	typeNum = {$plugin.tx_addresscollection.settings.ajaxPageType}
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		disablePrefixComment = 1
+		debug = 0
+	}
+	10 = RECORDS
+	10 {
+		source.data = GP:recordUid
+		source.intval = 1
+		tables = tt_content
+		dontCheckPid = 1
+		conf.tt_content < tt_content.list.20.addresscollection_pi1
+	}
+}

@@ -1,0 +1,19 @@
+
+<div class="tx-address-collection">
+<f:security.ifAuthenticated>
+<f:then>
+  <f:if condition="{templateLayout}">
+    <f:then>
+      <f:render section="{templateLayout}" />
+    </f:then>
+    <f:else>
+      <f:render section="main" />
+    </f:else>
+  </f:if>
+</f:then>
+<f:else>
+This is being displayed in case you do not have access.
+</f:else>
+</f:security.ifAuthenticated>
+</div>
+

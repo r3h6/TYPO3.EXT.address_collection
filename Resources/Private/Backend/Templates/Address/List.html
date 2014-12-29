@@ -1,0 +1,79 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+<h1>Listing for Address</h1>
+
+<f:flashMessages />
+
+<table  class="tx_addresscollection" >
+	<tr>
+		<th><f:translate key="tx_addresscollection_domain_model_address.name" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.first_name" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.middle_name" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.last_name" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.gender" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.birthday" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.title" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.email" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.phone" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.mobile" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.fax" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.www" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.company" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.address" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.building" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.room" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.zip" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.city" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.region" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.country" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.image" /></th>
+		<th><f:translate key="tx_addresscollection_domain_model_address.description" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{addresses}" as="address">
+		<tr>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.name}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.firstName}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.middleName}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.lastName}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.gender}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.birthday -> f:format.date()}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.title}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.email}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.phone}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.mobile}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.fax}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.www}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.company}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.address}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.building}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.room}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.zip}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.city}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.region}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.country}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.image.originalResource.name}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{address : address}"> {address.description}</f:link.action></td>
+			<td><f:link.action action="edit" arguments="{address : address}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{address : address}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+<f:link.action action="new">New Address</f:link.action>
+</f:section>

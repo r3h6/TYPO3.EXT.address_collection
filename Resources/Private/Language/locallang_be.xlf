@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-31T10:22:19Z" product-name="address_collection">
+		<header/>
+		<body>
+			<trans-unit id="addresscollection_pi1.title">
+				<source>Address collection</source>
+			</trans-unit>
+			<trans-unit id="addresscollection_pi1.description">
+				<source>List, show or search for address records.</source>
+			</trans-unit>
+
+			<trans-unit id="template_layouts.list_table">
+				<source>Table</source>
+			</trans-unit>
+			<trans-unit id="template_layouts.list_vcard">
+				<source>Vcard</source>
+			</trans-unit>
+			<trans-unit id="template_layouts.search_table">
+				<source>Search</source>
+			</trans-unit>
+
+
+
+			<trans-unit id="ext_update">
+				<source>Update Address Collection</source>
+			</trans-unit>
+			<trans-unit id="pages.module.address">
+				<source>Address collection</source>
+			</trans-unit>
+			<trans-unit id="configuration.useVidi">
+				<source>Use vidi</source>
+			</trans-unit>
+			<trans-unit id="configuration.useVidi.description">
+				<source>Show vidi backend module (only if vidi extension is installed)</source>
+			</trans-unit>
+			<trans-unit id="configuration.useTtAddressRecords">
+				<source>Use tt_address</source>
+			</trans-unit>
+			<trans-unit id="configuration.useTtAddressRecords.description">
+				<source>Use tt_address table instad of own one.</source>
+			</trans-unit>
+			<trans-unit id="configuration.showImporter">
+				<source>Use import</source>
+			</trans-unit>
+			<trans-unit id="configuration.showImporter.description">
+				<source>Show backend module to import tt_address records.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

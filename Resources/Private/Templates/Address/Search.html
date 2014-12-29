@@ -1,0 +1,35 @@
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+  <f:if condition="{setup.isAjax} == 0">
+    <f:flashMessages renderMode="div" />
+    <f:form class="form-inline" method="get" name="demand" object="{demand}" enctype="multipart/form-data" additionalAttributes="{data-action: '{f:uri.action(action: \'search\', pageType: setup.ajaxPageType, format: \'html\', noCacheHash: 1, arguments: {recordUid: data.uid})}', data-target: 'div[data-target={data.uid}]', data-plugin: 'form2vs'}">
+      <div class="hidden">
+        <input type="hidden" name="id" value="{data.pid}">
+      </div>
+      <div class="form-group">
+        <mgn:form.label property="name" class=""><f:translate key="tx_addresscollection_domain_model_address.name" /></mgn:form.label>
+        <f:form.textfield property="name" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.name')}" />
+      </div>
+      <div class="form-group">
+        <mgn:form.label property="email" class=""><f:translate key="tx_addresscollection_domain_model_address.email" /></mgn:form.label>
+        <f:form.textfield property="email" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.email')}" />
+      </div>
+      <div class="form-group">
+        <mgn:form.label property="addressGroups." class=""><f:translate key="tx_addresscollection_domain_model_address.addressgroup" /></mgn:form.label>
+        <f:form.select property="addressGroups" options="{addressGroups}" optionValueField="uid" optionLabelField="title" multiple="multiple" size="1" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.addressgroup')}" />
+      </div>
+      <f:form.submit name="submit" value="{f:translate(key: 'button.search')}" class="btn" />
+    </f:form>
+    <div data-target="{data.uid}">
+    </div>
+  </f:if>
+  <f:if condition="{setup.isAjax} == 1">
+    <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{itemsPerPage: 5, insertAbove: 1, insertBelow: 0, maximumNumberOfLinks: 10}">
+      <f:for each="{paginatedAddresses}" as="address">
+        <f:render partial="Address/Vcard" arguments="{address: address}" />
+      </f:for>
+    </f:widget.paginate>
+  </f:if>
+</f:section>

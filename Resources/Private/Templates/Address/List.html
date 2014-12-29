@@ -1,0 +1,65 @@
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+  <f:render section="Vcard" arguments="{_all}" />
+</f:section>
+
+<f:section name="Vcard">
+
+  <f:render partial="Menu/CharacterMenu" />
+
+  <f:flashMessages renderMode="div" />
+  <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{setup.list.wizard.paginate}">
+    <f:for each="{paginatedAddresses}" as="address">
+      <f:render partial="Address/Vcard" arguments="{address: address}" />
+    </f:for>
+  </f:widget.paginate>
+</f:section>
+
+<f:section name="Table">
+  <f:flashMessages renderMode="div" />
+  <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{setup.list.wizard.paginate}">
+    <table>
+    <f:for each="{paginatedAddresses}" as="address">
+      <tr>
+        <td>{address.name}</td>
+        <td>{address.email}</td>
+      </tr>
+    </f:for>
+    </table>
+  </f:widget.paginate>
+</f:section>
+
+<f:section name="Search">
+  <f:if condition="{setup.isAjax} == 0">
+    <f:flashMessages renderMode="div" />
+    <f:form class="form-inline" method="post" name="demand" object="{demand}" action="list" pageType="{setup.ajaxPageType}" noCacheHash="TRUE" additionalParams="{recordUid: data.uid}" enctype="multipart/form-data" additionalAttributes="{data-target: '#Target{data.uid}', data-plugin: 'form2vs'}">
+      <div class="hidden">
+        <input type="hidden" name="id" value="{data.pid}">
+      </div>
+      <div class="form-group">
+        <mgn:form.label property="name" class=""><f:translate key="tx_addresscollection_domain_model_address.name" /></mgn:form.label>
+        <f:form.textfield property="name" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.name')}" />
+      </div>
+      <div class="form-group">
+        <mgn:form.label property="email" class=""><f:translate key="tx_addresscollection_domain_model_address.email" /></mgn:form.label>
+        <f:form.textfield property="email" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.email')}" />
+      </div>
+      <div class="form-group">
+        <mgn:form.label property="addressGroups." class=""><f:translate key="tx_addresscollection_domain_model_address.addressgroup" /></mgn:form.label>
+        <f:form.select property="addressGroups" options="{mgn:repository.addressGroup.findAll()}" optionValueField="uid" optionLabelField="title" multiple="multiple" size="1" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.addressgroup')}" />
+      </div>
+      <f:form.submit name="submit" value="{f:translate(key: 'button.search')}" class="btn" />
+    </f:form>
+    <div id="Target{data.uid}">
+    </div>
+  </f:if>
+  <f:if condition="{setup.isAjax} == 1">
+    <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{itemsPerPage: 5, insertAbove: 1, insertBelow: 0, maximumNumberOfLinks: 10}">
+      <f:for each="{paginatedAddresses}" as="address">
+        <f:render partial="Address/Vcard" arguments="{address: address}" />
+      </f:for>
+    </f:widget.paginate>
+  </f:if>
+</f:section>

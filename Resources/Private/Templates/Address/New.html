@@ -1,0 +1,25 @@
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+<f:layout name="Secure" />
+
+
+<f:section name="main">
+<h1>New Address</h1>
+
+<f:flashMessages renderMode="div" />
+<f:debug title="opt title">{newAddress}</f:debug>
+<f:render partial="FormErrors" arguments="{object:Address}" />
+
+
+<f:form action="create" name="newAddress" object="{newAddress}" additionalAttributes="{data-action: '{f:uri.action(action: \'create\', pageType: setup.ajaxPageType, format: \'json\', noCacheHash: 1, arguments: {recordUid: data.uid})}', data-target: 'div[data-target={data.uid}]'}">
+	<mgn:recordType.partial address="{newAddress}" arguments="{address:newAddress}" />
+	<f:form.submit value="Save" class="btn btn-primary" additionalAttributes="{data-loading-text: 'Loading...'}" />
+</f:form>
+
+<script type="text/template" id="FlashMessageTemplate">
+
+</script>
+<script type="text/template" id="FormErrorsTemplate">
+
+</script>
+
+</f:section>

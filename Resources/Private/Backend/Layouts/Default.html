@@ -1,0 +1,42 @@
+
+<f:be.container>
+	<div class="typo3-fullDoc">
+		<div id="typo3-docheader">
+			<div class="typo3-docheader-functions">
+				<div class="left">
+					<f:be.buttons.csh />
+					<f:be.menus.actionMenu>
+						<f:be.menus.actionMenuItem label="Overview" controller="" action="list" />
+						<f:be.menus.actionMenuItem label="Create new Address" action="new" controller="Address" />
+								<f:be.menus.actionMenuItem label="Create new AddressGroup" action="new" controller="AddressGroup" />
+								<f:be.menus.actionMenuItem label="Create new User" action="new" controller="User" />
+								<f:be.menus.actionMenuItem label="Create new DeliveryAddress" action="new" controller="DeliveryAddress" />
+								<f:be.menus.actionMenuItem label="Create new BillingAddress" action="new" controller="BillingAddress" />
+								<f:be.menus.actionMenuItem label="Create new PersonalAddress" action="new" controller="PersonalAddress" />
+								<f:be.menus.actionMenuItem label="Create new BusinessAddress" action="new" controller="BusinessAddress" />
+								<f:be.menus.actionMenuItem label="Create new CompanyAddress" action="new" controller="CompanyAddress" />
+					</f:be.menus.actionMenu>
+				</div>
+				<div class="right">
+					<f:be.pagePath />
+					<f:be.pageInfo />
+				</div>
+			</div>
+			<div class="typo3-docheader-buttons">
+				<div class="left">
+
+				</div>
+				<div class="right">
+					<f:be.buttons.shortcut />
+				</div>
+			</div>
+
+		</div>
+		<div id="typo3-docbody">
+			<div id="typo3-inner-docbody">
+				<f:flashMessages renderMode="div" />
+				<f:render section="content" />
+			</div>
+		</div>
+	</div>
+</f:be.container>

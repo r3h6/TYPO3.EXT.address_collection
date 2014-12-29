@@ -1,0 +1,84 @@
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+<div class="vcard">
+  <span class="fn">{address.name}</span>
+
+  <f:if condition="1">
+    <span class="n">
+      <f:if condition="{address.title}">
+        <span class="honorific-prefix">{address.title}</span>
+      </f:if>
+      <f:if condition="{address.firstName}">
+        <span class="given-name">{address.firstName}</span>
+      </f:if>
+      <f:if condition="{address.middleName}">
+        <span class="additional-name">{address.middleName}</span>
+      </f:if>
+      <f:if condition="{address.lastName}">
+        <span class="family-name">{address.lastName}</span>
+      </f:if>
+    </span>
+  </f:if>
+
+  <f:if condition="{address.company}">
+    <div class="org">{address.company}</div>
+  </f:if>
+
+  <f:if condition="{address.image}">
+    <f:image class="photo" src="uploads/tx_ttaddress/{address.image}" width="" height="" />
+  </f:if>
+
+  <f:if condition="{address.www}">
+    <f:link.external class="url" uri="{address.www}" target="_blank"></f:link.external>
+  </f:if>
+
+  <f:if condition="{address.email}">
+    <f:link.email class="url fn" email="{address.email}" />
+  </f:if>
+
+  <f:if condition="{address.address, address.city, address.zip, address.region, address.country} -> mgn:array.hasOneValue()">
+   <div class="adr">
+      <f:if condition="{address.address}">
+        <span class="street-address">{address.address}</span>
+      </f:if>
+      <f:if condition="{address.zip}">
+        <span class="postal-code">{address.zip}</span>
+      </f:if>
+      <f:if condition="{address.city}">
+        <span class="locality">{address.city}</span>
+      </f:if>
+      <f:if condition="{address.region}">
+        <span class="region">{address.region}</span>
+      </f:if>
+      <f:if condition="{address.country}">
+        <span class="country-name">{address.country}</span>
+      </f:if>
+    </div>
+  </f:if>
+
+  <f:if condition="{address.phone}">
+    <div class="tel phone">{address.phone}</div>
+  </f:if>
+  <f:if condition="{address.mobile}">
+    <div class="tel mobile">{address.mobile}</div>
+  </f:if>
+  <f:if condition="{address.fax}">
+    <div class="tel fax">{address.fax}</div>
+  </f:if>
+
+  <f:if condition="{address.birthday}">
+    <time class="bday"><f:format.date format="{f:translate(key: 'format.birthday')}">{address.birthday}</f:format.date></time>
+  </f:if>
+
+  <f:if condition="{address.addressgroup}">
+    <div class="category">
+    <f:for each="{address.addressgroup}" as="group" iteration="i">
+      {group.title}{f:if(condition: '{i.isLast} == 0', then: ', ')}
+    </f:for>
+    </div>
+  </f:if>
+  <div class="category">physicist</div>
+
+  <f:if condition="{address.description}">
+    <div class="note">{address.description}</div>
+  </f:if>
+</div>
