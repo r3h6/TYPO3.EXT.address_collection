@@ -29,110 +29,21 @@ namespace MONOGON\AddressCollection\Configuration;
 /**
  * Setup
  */
-class Setup implements \ArrayAccess {
+class Setup extends \MONOGON\PathArrayAccess {
 
-	/**
-	 * [$seperator description]
-	 * @var string
-	 */
-	private $seperator;
-
-	protected $array;
-
-	public function __construct($array = array(), $seperator = '.') {
-		$this->array = $array;
-		$this->seperator = $seperator;
-	}
-
-	/**
-	 * [set description]
-	 * @param string $key  example.layoutPath
-	 * @param mixed $value [description]
-	 * @return \MONOGON\CodeLibrary\Configuration\Setup $this
-	 */
-	public function set ($key, $value){
-		$keyParts = $this->getKeyParts($key);
-		$array = array();
-		$reference = &$array;
-		foreach ($keyParts as $keyPart){
-			if (isset($reference[$keyPart])){
-				$reference = &$reference[$keyPart];
-			} else {
-				$reference[$keyPart] = array();
-				$reference = &$reference[$keyPart];
-			}
+	public function mergeSettings ($settings = array()) {
+		$mergedSettings = array();
+		if (isset($settings['setup']) && is_array($settings['setup'])){
+			$mergedSettings = $settings['setup'];
 		}
-		$reference = $value;
-		return $this->mergeRecursiveOverrule($array);
-	}
-
-	/**
-	 * [get description]
-	 * @param  string $key example.layoutPath
-	 * @return mixed      [description]
-	 */
-	public function get ($key, $default = NULL) {
-		$keyParts = $this->getKeyParts($key);
-		$config = NULL;
-		$reference = &$this->array;
-		foreach ($keyParts as $keyPart){
-			if (isset($reference[$keyPart])){
-				$reference = &$reference[$keyPart];
-				$config = $reference;
-			} else {
-				return $default;
-			}
+		if (isset($settings['flexform']) && is_array($settings['flexform'])){
+			$mergedSettings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($mergedSettings, $settings['flexform'], FALSE, FALSE);
 		}
-		return $config;
+		//parent::__construct($mergedSettings);
+		$this->set('', $mergedSettings);
 	}
 
 
-
-	/**
-	 * [merge description]
-	 * @param  array   $firstArray          [description]
-	 * @param  boolean $dontAddNewK$eys      [description]
-	 * @param  boolean $emptyValuesOverride [description]
-	 * @return \MONOGON\CodeLibrary\Configuration\Setup $this
-	 */
-	public function mergeRecursiveOverrule (array $array, $dontAddNewKeys = FALSE, $emptyValuesOverride = TRUE){
-		$this->array = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($this->array, $array, $dontAddNewKeys, $emptyValuesOverride);
-		return $this;
-	}
-
-	/**
-	 * [getKeyParts description]
-	 * @param  string $key [description]
-	 * @return array      [description]
-	 */
-	private function getKeyParts($key){
-		return explode($this->seperator, $key);
-	}
-
-	public function setSeperator ($seperator){
-		$this->seperator = $seperator;
-	}
-
-
-	public function offsetSet($offset, $value) {
-		if (is_null($offset)) {
-			$this->array[] = $value;
-		} else {
-			$this->array[$offset] = $value;
-		}
-	}
-
-	public function offsetExists($offset) {
-		return isset($this->array[$offset]);
-	}
-
-	public function offsetUnset($offset) {
-		unset($this->array[$offset]);
-	}
-
-	public function offsetGet($offset) {
-		return isset($this->array[$offset]) ? $this->array[$offset] : null;
-	}
 }
 
 ?>

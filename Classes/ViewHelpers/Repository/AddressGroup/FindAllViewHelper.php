@@ -42,9 +42,24 @@ class FindAllViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
 	protected $addressGroupRepository = NULL;
 
 	/**
+	 * [$configurationManager description]
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
+	 * @inject
+	 */
+	protected $configurationManager;
+
+	/**
 	 * [render description]
 	 */
 	public function render (){
+		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+
+		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($settings);
+
+		$mergedSettings = new \MONOGON\AddressCollection\Configuration\MergedSettings($settings);
+
+		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($mergedSettings);
+
 		return $this->addressGroupRepository->findAll();
 	}
 }

@@ -7,7 +7,6 @@
 
 <f:section name="Vcard">
 
-  <f:render partial="Menu/CharacterMenu" />
 
   <f:flashMessages renderMode="div" />
   <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{setup.list.wizard.paginate}">
@@ -32,9 +31,12 @@
 </f:section>
 
 <f:section name="Search">
+
+  <mgn:menu.characterMenu class="list-inline" />
+
   <f:if condition="{setup.isAjax} == 0">
     <f:flashMessages renderMode="div" />
-    <f:form class="form-inline" method="post" name="demand" object="{demand}" action="list" pageType="{setup.ajaxPageType}" noCacheHash="TRUE" additionalParams="{recordUid: data.uid}" enctype="multipart/form-data" additionalAttributes="{data-target: '#Target{data.uid}', data-plugin: 'form2vs'}">
+    <f:form class="form-inline" method="get" name="demand" object="{demand}" enctype="multipart/form-data" additionalAttributes="{data-action: '{f:uri.action(action: \'search\', pageType: setup.ajaxPageType, noCacheHash: 1, additionalParams: {recordUid: data.uid})}', data-target: '#Target{data.uid}]', data-plugin: 'form2vs'}">
       <div class="hidden">
         <input type="hidden" name="id" value="{data.pid}">
       </div>
@@ -53,10 +55,15 @@
       <f:form.submit name="submit" value="{f:translate(key: 'button.search')}" class="btn" />
     </f:form>
     <div id="Target{data.uid}">
+      <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{setup.list.wizard.paginate}">
+        <f:for each="{paginatedAddresses}" as="address">
+          <f:render partial="Address/Vcard" arguments="{address: address}" />
+        </f:for>
+      </f:widget.paginate>
     </div>
   </f:if>
   <f:if condition="{setup.isAjax} == 1">
-    <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{itemsPerPage: 5, insertAbove: 1, insertBelow: 0, maximumNumberOfLinks: 10}">
+    <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{setup.list.wizard.paginate}">
       <f:for each="{paginatedAddresses}" as="address">
         <f:render partial="Address/Vcard" arguments="{address: address}" />
       </f:for>

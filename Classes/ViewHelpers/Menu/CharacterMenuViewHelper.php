@@ -44,8 +44,15 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 	protected $addressRepository = NULL;
 
 
-	public function render (){
-		$output = '';
+	/**
+	 * [render description]
+	 * @param  string $class           [description]
+	 * @param  string $tagName         [description]
+	 * @param  string $tagNameChildren [description]
+	 * @return [type]                  [description]
+	 */
+	public function render ($class = NULL, $tagName = 'ul', $tagNameChildren = 'li'){
+
 
 		$menuItems = array();
 		$characterList = $this->addressRepository->getCharacterList();
@@ -59,20 +66,43 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 
 		sort($completeList, SORT_LOCALE_STRING);
 
+		$uriBuilder = $this->controllerContext->getUriBuilder();
+
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($uriBuilder);
+
+		$tag = $this->objectManager->get('TYPO3\\CMS\\Fluid\\Core\\ViewHelper\\TagBuilder', $tagName);
+
+		if ($class){
+			$tag->addAttribute('class', $class);
+		}
+
 		$templateVariableContainer = $this->renderingContext->getTemplateVariableContainer();
 		foreach ($completeList as $character){
-			$link = NULL;
+			$childTag = $this->objectManager->get('TYPO3\\CMS\\Fluid\\Core\\ViewHelper\\TagBuilder', $tagNameChildren);
+
 			if (in_array($character, $characterList)){
-				$link = TRUE;
+				$link = $uriBuilder->reset()->uriFor(NULL, array(
+					'demand' => array(
+						'character' => $character,
+					),
+				));
+				$linkTag = $this->objectManager->get('TYPO3\\CMS\\Fluid\\Core\\ViewHelper\\TagBuilder', 'a');
+				$linkTag->addAttribute('href', $link);
+				$linkTag->setContent($character);
+				$childTag->setContent($linkTag->render());
+			} else {
+				$childTag->setContent($character);
 			}
-			$menuItem = array(
-				'character' => $character,
-				'link' => $link,
+
+			$tag->setContent(
+				$tag->getContent() . $childTag->render()
 			);
-			$templateVariableContainer->add('menuItem', $menuItem);
-			$output .= $this->renderChildren();
-			$templateVariableContainer->remove('menuItem');
+
+			//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($link);
+			// $templateVariableContainer->add('menuItem', $menuItem);
+			// $output .= $this->renderChildren();
+			// $templateVariableContainer->remove('menuItem');
 		}
-		return $output;
+		return $tag->render();
 	}
 }

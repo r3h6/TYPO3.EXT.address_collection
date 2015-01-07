@@ -50,14 +50,13 @@ class AddressController extends ActionController {
 	protected $addressGroupRepository = NULL;
 
 	/**
-	 * UserRepository
+	 * userRepository
 	 *
 	 * @var \MONOGON\AddressCollection\Domain\Repository\UserRepository
 	 * @inject
 	 */
-	protected $UserRepository = NULL;
+	protected $userRepository = NULL;
 
-	//protected $User = NULL;
 	/**
 	 * [$setup description]
 	 *
@@ -72,11 +71,7 @@ class AddressController extends ActionController {
 	 * @return void [description]
 	 */
 	public function initializeAction() {
-		$this->setup->mergeRecursiveOverrule(
-			$this->settings['setup']
-		)->mergeRecursiveOverrule(
-			$this->settings['flexform']
-		);
+		$this->setup->mergeSettings($this->settings);
 		$pageType = GeneralUtility::_GP('type');
 		$this->setup->set('isAjax', $this->setup->get('ajaxPageType') && $pageType == $this->setup->get('ajaxPageType'));
 	}

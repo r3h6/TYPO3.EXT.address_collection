@@ -56,7 +56,7 @@ page.includeCSS {
 	visualsearchDatauri = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch-datauri.css
 	tx_addresscollection = EXT:address_collection/Resources/Public/StyleSheet/ext.css
 }
-/*
+
 page.includeJSFooter {
 	jquery = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery-1.11.0.js
 	dependencies = EXT:address_collection/Resources/Public/JavaScript/Vendors/dependencies.js
@@ -65,7 +65,7 @@ page.includeJSFooter {
 	tx_addresscollection_plugins = EXT:address_collection/Resources/Public/JavaScript/plugins.js
 	tx_addresscollection_ext = EXT:address_collection/Resources/Public/JavaScript/ext.js
 }
-*/
+
 plugin.tx_addresscollection {
 	_CSS_DEFAULT_STYLE >
 	view {
