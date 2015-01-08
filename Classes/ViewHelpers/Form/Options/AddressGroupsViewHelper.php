@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Configuration;
+namespace MONOGON\AddressCollection\ViewHelpers\Form\Options;
 
 /***************************************************************
  *
@@ -26,28 +26,36 @@ namespace MONOGON\AddressCollection\Configuration;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
- * Setup
+ * FindAllViewHelper
  */
-class Setup extends \MONOGON\PathArrayAccess {
+class AddressGroupsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
-	public function __construct ($settings = array()){
-		parent::__construct();
-		$this->mergeSettings($settings);
-	}
-	public function mergeSettings ($settings) {
-		$mergedSettings = array();
-		if (isset($settings['setup']) && is_array($settings['setup'])){
-			$mergedSettings = $settings['setup'];
+	/**
+	 * addressGroupRepository
+	 *
+	 * @var \MONOGON\AddressCollection\Domain\Repository\AddressGroupRepository
+	 * @inject
+	 */
+	protected $addressGroupRepository = NULL;
+
+	/**
+	 * [$configurationManager description]
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
+	 * @inject
+	 */
+	protected $configurationManager;
+
+	/**
+	 * [render description]
+	 * @param array $uids
+	 */
+	public function render ($uids = array()){
+		if (empty($uids)){
+			return $this->addressGroupRepository->findAll();
 		}
-		if (isset($settings['flexform']) && is_array($settings['flexform'])){
-			$mergedSettings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($mergedSettings, $settings['flexform'], FALSE, FALSE);
-		}
-		//parent::__construct($mergedSettings);
-		$this->set('', $mergedSettings);
+		return $this->addressGroupRepository->findByUids($uids);
 	}
-
-
 }
-
-?>

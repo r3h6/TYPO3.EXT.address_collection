@@ -40,8 +40,5 @@ class RecordType {
 		foreach ($items as $item){
 			$config['items'][] = array(LocalizationUtility::translate($item[0], ExtConfManager::EXT_KEY), $item[1]);
 		}
-
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($config);
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($items);
 	}
 }

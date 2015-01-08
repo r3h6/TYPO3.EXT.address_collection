@@ -49,13 +49,13 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 	 * @param  string $class           [description]
 	 * @param  string $tagName         [description]
 	 * @param  string $tagNameChildren [description]
+	 * @param  \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand
 	 * @return [type]                  [description]
 	 */
-	public function render ($class = NULL, $tagName = 'ul', $tagNameChildren = 'li'){
-
+	public function render ($class = NULL, $tagName = 'ul', $tagNameChildren = 'li', $demand = NULL){
 
 		$menuItems = array();
-		$characterList = $this->addressRepository->getCharacterList();
+		$characterList = $this->addressRepository->getCharacterList($demand);
 		$completeList = $characterList;
 
 		foreach (str_split(self::$alphabet, 1) as $character){
@@ -68,7 +68,6 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 
 		$uriBuilder = $this->controllerContext->getUriBuilder();
 
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($uriBuilder);
 
 		$tag = $this->objectManager->get('TYPO3\\CMS\\Fluid\\Core\\ViewHelper\\TagBuilder', $tagName);
 

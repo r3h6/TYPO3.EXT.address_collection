@@ -31,5 +31,12 @@ namespace MONOGON\AddressCollection\Domain\Repository;
  */
 class AddressGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-
+	public function findByUids (array $uids){
+		$uids[] = 0;
+		$query = $this->createQuery();
+		$query->matching(
+			$query->in('uid', $uids)
+		);
+		return $query->execute();
+	}
 }

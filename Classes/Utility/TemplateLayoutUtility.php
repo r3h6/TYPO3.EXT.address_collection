@@ -64,12 +64,9 @@ class TemplateLayoutUtility implements \TYPO3\CMS\Core\SingletonInterface {
 	protected static function getTemplateLayoutsFromTsConfig($pageUid, $key) {
 		$templateLayouts = array();
 		$pagesTsConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig($pageUid);
-		$setup = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('MONOGON\\AddressCollection\\Configuration\\Setup', $pagesTsConfig, '/');
+		$setup = new \MONOGON\PathArrayAccess($pagesTsConfig, '/');
 		$templateLayouts = $setup->get("tx_addresscollection./templateLayouts./$key.", array());
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($setup);
-		// if (isset($pagesTsConfig['tx_addresscollection.']['templateLayouts.']) && is_array($pagesTsConfig['tx_addresscollection.']['templateLayouts.'])) {
-			// $templateLayouts = $pagesTsConfig['tx_addresscollection.']['templateLayouts.'];
-		// }
+
 		return $templateLayouts;
 	}
 }

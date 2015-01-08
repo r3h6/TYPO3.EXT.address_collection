@@ -89,6 +89,10 @@ class AddressController extends ActionController {
 		$demandPropertyMappingConfiguration->allowProperties('character');
 		$demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
 
+		if ($this->request->hasArgument('demand')){
+
+		}
+
 		//$GLOBALS['TSFE']->reqCHash();
 	}
 
@@ -99,14 +103,16 @@ class AddressController extends ActionController {
 	 * @return void
 	 */
 	public function listAction(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand = NULL) {
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($demand);
-		// Create demand
-		if ($demand === NULL){
-			$propertyMapper = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-			$demand = $propertyMapper->convert(AddressDemand::accessibleProperties($this->setup->get('list.demand')), 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
-		}
+
+
+		$propertyMapper = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+		$setupDemand = $propertyMapper->convert(AddressDemand::accessibleProperties($this->setup->get('list.demand')), 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
+
+		$demand = $setupDemand->intersect($demand);
 
 		$this->view->assign('demand', $demand);
+		$this->view->assign('setupDemand', $setupDemand);
+
 		// Find addresses
 		$addresses = $this->addressRepository->findDemanded($demand);
 		$this->view->assign('addresses', $addresses);
@@ -263,12 +269,12 @@ class AddressController extends ActionController {
 				$this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK)
 			);
 			$className = $extbaseFrameworkConfiguration->get('persistence.classes.MONOGON\\AddressCollection\\Domain\\Model\\Address.subclasses.' . $recordType);
-			//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($className);
+
 			if ($className) {
 				$newAddressArgument = $this->arguments->getArgument('newAddress');
 				$newAddressArgument->setDataType($className);
 				$propertyMappingConfiguration = $newAddressArgument->getPropertyMappingConfiguration();
-				// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($propertyMappingConfiguration);
+
 				$propertyMappingConfiguration->allowProperties('recordType');
 				$propertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
 				$this->initializeActionMethodValidators();

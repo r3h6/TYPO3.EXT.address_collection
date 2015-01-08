@@ -41,11 +41,6 @@ class NewJson extends \TYPO3\CMS\Extbase\Mvc\View\JsonView {
 
 	public function ___render (){
 		$output = array();
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this);
-
-		//$a = $this->controllerContext->getConfigurationManager()->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
-		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($a);
-
 
 		$flashMessagesView = GeneralUtility::makeInstance('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
 		$flashMessagesView->setTemplateSource('<f:flashMessages renderMode="div" />');

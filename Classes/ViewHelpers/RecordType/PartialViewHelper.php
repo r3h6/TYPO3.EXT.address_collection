@@ -50,13 +50,5 @@ class PartialViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\RenderViewHelper {
 		} catch (\Exception $exception){
 			return parent::render(NULL, 'Address/FormFields', $arguments, $optional);
 		}
-		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($className);
-		// $partialRootPath = $this->viewHelperVariableContainer->getView()->getPartialRootPaths();
-
-
-
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($partialRootPath);
-		// $recordType = str_replace('\\', '_', $recordType);
-		// return $className = array_pop(GeneralUtility::trimExplode('_', $recordType, TRUE));
 	}
 }

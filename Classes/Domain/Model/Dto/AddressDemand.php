@@ -112,6 +112,30 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		return $properties;
 	}
 
+	public function intersect (AddressDemand $source = NULL){
+		$target = clone $this;
+		if ($source !== NULL){
+			if (empty($target->addressGroups)){
+				$target->setAddressGroups($source->addressGroups);
+			} else if (!empty($source->addressGroups)){
+				$addressGroups = array_intersect($target->addressGroups, $source->addressGroups);
+				if (!empty($addressGroups)){
+					$target->setAddressGroups($addressGroups);
+				}
+			}
+			if (!empty($source->character)){
+				$target->setCharacter($source->character);
+			}
+			if (!empty($source->name)){
+				$target->setName($source->name);
+			}
+			if (!empty($source->email)){
+				$target->setEmail($source->email);
+			}
+		}
+		return $target;
+	}
+
 	/**
 	 * Returns the  addressGroups
 	 *

@@ -32,14 +32,29 @@ use TYPO3\CMS\Extbase\Utility\ArrayUtility;
  */
 class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	public function getCharacterList (){
+	public function getCharacterList ($demand = NULL){
 		$characterList = array();
 		$query = $this->createQuery();
+
+		$join = '';
+		if ($demand !== NULL){
+			$addressGroups = $demand->getAddressGroups();
+			if (!empty($addressGroups)){
+				$databaseConntection = $GLOBALS['TYPO3_DB'];
+				$join = '
+					INNER JOIN  `tt_address_group_mm`  `mm`
+					ON  `tt_address`.`uid` =  `mm`.`uid_local`
+					WHERE  `mm`.`uid_foreign` IN (' . join(', ', $databaseConntection->cleanIntArray($addressGroups)) . ')';
+			}
+		}
+
 		$query->statement('
 			SELECT LCASE(LEFT(`last_name` , 1)) AS `character`
 			FROM `tt_address`
+			' . $join . '
 			GROUP BY `character`
-			ORDER BY `character`');
+			ORDER BY `character`'
+			. $where);
 		$results = $query->execute(TRUE);
 		foreach ($results as $row){
 			if (!empty($row['character'])){
@@ -54,7 +69,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand
 	 */
 	public function findDemanded(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($demand);
+
 		$query = $this->createQuery();
 		$constraints = array();
 		$names = ArrayUtility::trimExplode(',', $demand->getName(), TRUE);

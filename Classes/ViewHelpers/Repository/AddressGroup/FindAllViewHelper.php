@@ -54,11 +54,9 @@ class FindAllViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
 	public function render (){
 		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
 
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($settings);
 
-		$mergedSettings = new \MONOGON\AddressCollection\Configuration\MergedSettings($settings);
+		$mergedSettings = new \MONOGON\AddressCollection\Configuration\Setup($settings);
 
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($mergedSettings);
 
 		return $this->addressGroupRepository->findAll();
 	}

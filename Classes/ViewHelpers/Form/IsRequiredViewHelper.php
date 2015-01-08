@@ -57,7 +57,7 @@ class IsRequiredViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractCond
 	protected function isRequired ($object, $property){
 		$className = get_class($object);
 		$propertyTagsValues = $this->reflectionService->getPropertyTagsValues($className, $property);
-		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($propertyTagsValues);
+
 		if (isset($propertyTagsValues['validate'])){
 			foreach ($propertyTagsValues['validate'] as $validatorConfig){
 				if (strpos($validatorConfig, 'NotEmpty') !== FALSE){

@@ -78,7 +78,6 @@ class TcaUtility {
 			}
 
 		}
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($fields);
 		return $fields;
 	}
 
