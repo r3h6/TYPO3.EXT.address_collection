@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-01-20T21:35:01Z">
+		<header>
+			<generator>LFEditor</generator>
+		</header>
+		<body>
+		<trans-unit id="tx_addresscollection_domain_model_address" approved="yes" xml:space="preserve">
+			<source>Address</source>
+			<target>Adresse</target>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.address" approved="yes" xml:space="preserve">
+			<source>Address</source>
+			<target>Adresse</target>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.address_groups" approved="yes" xml:space="preserve">
+			<source>Address Groups</source>
+			<target>Adressgruppe</target>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.birthday" approved="yes" xml:space="preserve">
+			<source>Birthday</source>
+			<target>Geburtstag</target>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.gender.f" approved="yes" xml:space="preserve">
+			<source>Female</source>
+			<target>Frau</target>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.gender.m" approved="yes" xml:space="preserve">
+			<source>Male</source>
+			<target>Mann</target>
+		</trans-unit>
+		</body>
+	</file>
+</xliff>

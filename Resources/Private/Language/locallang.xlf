@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-24T16:19:25Z">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-01-20T21:35:01Z">
 		<header>
 			<generator>LFEditor</generator>
 		</header>
 		<body>
-		<trans-unit id="tx_addresscollection_domain_model_address.gender.m" xml:space="preserve">
-			<source>Male</source>
-		</trans-unit>
-		<trans-unit id="tx_addresscollection_domain_model_address.gender.f" xml:space="preserve">
-			<source>Female</source>
-		</trans-unit>
 		<trans-unit id="tx_addresscollection_domain_model_address" xml:space="preserve">
 			<source>Address</source>
 		</trans-unit>
@@ -53,11 +47,14 @@
 		<trans-unit id="tx_addresscollection_domain_model_address.first_name" xml:space="preserve">
 			<source>First Name</source>
 		</trans-unit>
-		<trans-unit id="tx_addresscollection_domain_model_address.user" xml:space="preserve">
-			<source>User</source>
-		</trans-unit>
 		<trans-unit id="tx_addresscollection_domain_model_address.gender" xml:space="preserve">
 			<source>Gender</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.gender.f" xml:space="preserve">
+			<source>Female</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.gender.m" xml:space="preserve">
+			<source>Male</source>
 		</trans-unit>
 		<trans-unit id="tx_addresscollection_domain_model_address.image" xml:space="preserve">
 			<source>Image</source>
