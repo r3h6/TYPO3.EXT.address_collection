@@ -21,10 +21,6 @@
 										<numIndex index="0">locallang_be.xlf:switchableControllerActions.show</numIndex>
 										<numIndex index="1">Address->show</numIndex>
 									</numIndex>
-									<numIndex index="3">
-										<numIndex index="0">locallang_be.xlf:switchableControllerActions.manage</numIndex>
-										<numIndex index="1">Address->manage;Address->new;Address->create;Address->edit;Address->update;Address->delete</numIndex>
-									</numIndex>
 								</items>
 							</config>
 						</TCEforms>
@@ -251,33 +247,5 @@
 				</el>
 			</ROOT>
 		</sSHOW>
-		<sMANAGE>
-			<ROOT>
-				<TCEforms>
-					<sheetTitle>locallang_be.xlf:flexform.tab.manage</sheetTitle>
-				</TCEforms>
-				<type>array</type>
-				<el>
-					<settings.flexform.manage.demand.recordTypes>
-						<TCEforms>
-							<label>locallang_be.xlf:settings.flexform.manage.demand.recordTypes</label>
-							<config>
-								<type>select</type>
-								<size>3</size>
-								<minitems>0</minitems>
-								<maxitems>99</maxitems>
-								<itemsProcFunc>MONOGON\AddressCollection\Hooks\ItemsProcFunc\RecordType->getByTca</itemsProcFunc>
-								<items>
-									<numIndex index="0" type="array">
-										<numIndex index="0">locallang_be.xlf:settings.flexform.manage.demand.recordTypes.0</numIndex>
-										<numIndex index="1"></numIndex>
-									</numIndex>
-								</items>
-							</config>
-						</TCEforms>
-					</settings.flexform.manage.demand.recordTypes>
-				</el>
-			</ROOT>
-		</sMANAGE>
 	</sheets>
 </T3DataStructure>

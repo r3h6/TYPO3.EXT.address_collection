@@ -8,12 +8,12 @@ if (!defined('TYPO3_MODE')) {
 	'Pi1',
 	array(
 		'Address' => 'list, show, new, create, edit, update, delete, search, manage',
-
+		
 	),
 	// non-cacheable actions
 	array(
 		'Address' => 'create, update, delete',
-
+		
 	)
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

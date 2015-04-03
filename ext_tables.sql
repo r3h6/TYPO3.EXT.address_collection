@@ -3,7 +3,7 @@
 
 
 #
-# Table structure for table 'tt_address'
+# Original table structure for table 'tt_address'
 #
 CREATE TABLE tt_address (
   uid int(11) unsigned NOT NULL auto_increment,
@@ -34,9 +34,25 @@ CREATE TABLE tt_address (
   deleted tinyint(3) DEFAULT '0',
   description text NOT NULL,
   addressgroup int(11) DEFAULT '0' NOT NULL,
+
   PRIMARY KEY (uid),
   KEY parent (pid),
   KEY pid (pid,email)
+);
+
+#
+# Extended table structure for table 'tt_address'
+#
+CREATE TABLE tt_address (
+	position varchar(255) DEFAULT '' NOT NULL,
+	department varchar(255) DEFAULT '' NOT NULL,
+	qualifications varchar(255) DEFAULT '' NOT NULL,
+	nick_name varchar(255) DEFAULT '' NOT NULL,
+	post_office_box varchar(255) DEFAULT '' NOT NULL,
+	longitude varchar(255) DEFAULT '' NOT NULL,
+	latitude varchar(255) DEFAULT '' NOT NULL,
+	user int(11) unsigned DEFAULT '0',
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 );
 
 
@@ -59,6 +75,7 @@ CREATE TABLE tt_address_group (
 	sys_language_uid int(11) DEFAULT '0' NOT NULL,
 	l18n_parent int(11) DEFAULT '0' NOT NULL,
 	l18n_diffsource mediumblob NOT NULL,
+
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );
@@ -72,45 +89,7 @@ CREATE TABLE tt_address_group_mm (
   uid_foreign int(11) DEFAULT '0' NOT NULL,
   tablenames varchar(30) DEFAULT '' NOT NULL,
   sorting int(11) DEFAULT '0' NOT NULL,
+
   KEY uid_local (uid_local),
   KEY uid_foreign (uid_foreign)
-);
-
-
-#
-# Table structure for table 'tt_address'
-#
-CREATE TABLE tt_address (
-
-	parent_address int(11) unsigned DEFAULT '0' NOT NULL,
-	categories int(11) unsigned DEFAULT '0' NOT NULL,
-
-	position varchar(255) DEFAULT '' NOT NULL,
-	department varchar(255) DEFAULT '' NOT NULL,
-	qualifications varchar(255) DEFAULT '' NOT NULL,
-	fal_image int(11) unsigned NOT NULL default '0',
-	nick_name varchar(255) DEFAULT '' NOT NULL,
-	post_office_box varchar(255) DEFAULT '' NOT NULL,
-	longitude varchar(255) DEFAULT '' NOT NULL,
-	latitude varchar(255) DEFAULT '' NOT NULL,
-	user int(11) unsigned DEFAULT '0',
-	related_addresses int(11) unsigned DEFAULT '0' NOT NULL,
-	other_addresses int(11) unsigned DEFAULT '0' NOT NULL,
-
-
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
-
-);
-
-#
-# Table structure for table 'tx_addresscollection_address_relatedaddresses_address_mm'
-#
-CREATE TABLE tx_addresscollection_address_relatedaddresses_address_mm (
-	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
-	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-	sorting int(11) unsigned DEFAULT '0' NOT NULL,
-	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-
-	KEY uid_local (uid_local),
-	KEY uid_foreign (uid_foreign)
 );

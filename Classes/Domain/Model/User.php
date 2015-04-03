@@ -31,5 +31,5 @@ namespace MONOGON\AddressCollection\Domain\Model;
  */
 class User extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 
-
+	
 }

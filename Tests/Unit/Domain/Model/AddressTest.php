@@ -5,7 +5,7 @@ namespace MONOGON\AddressCollection\Tests\Unit\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 R3 H6 <r3h6@outlook.com>
+ *  (c) 2015 Remo Häusler <r3h6@outlook.com>
  *
  *  All rights reserved
  *
@@ -32,7 +32,7 @@ namespace MONOGON\AddressCollection\Tests\Unit\Domain\Model;
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
- * @author R3 H6 <r3h6@outlook.com>
+ * @author Remo Häusler <r3h6@outlook.com>
  */
 class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
@@ -628,30 +628,6 @@ class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function getFalImageReturnsInitialValueForFileReference() {
-		$this->assertEquals(
-			NULL,
-			$this->subject->getFalImage()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function setFalImageForFileReferenceSetsFalImage() {
-		$fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-		$this->subject->setFalImage($fileReferenceFixture);
-
-		$this->assertAttributeEquals(
-			$fileReferenceFixture,
-			'falImage',
-			$this->subject
-		);
-	}
-
-	/**
-	 * @test
-	 */
 	public function getNickNameReturnsInitialValueForString() {
 		$this->assertSame(
 			'',
@@ -814,110 +790,6 @@ class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$this->inject($this->subject, 'addressGroups', $addressGroupsObjectStorageMock);
 
 		$this->subject->removeAddressGroup($addressGroup);
-
-	}
-
-	/**
-	 * @test
-	 */
-	public function getOtherAddressesReturnsInitialValueForAddress() {
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->assertEquals(
-			$newObjectStorage,
-			$this->subject->getOtherAddresses()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function setOtherAddressesForObjectStorageContainingAddressSetsOtherAddresses() {
-		$otherAddress = new \MONOGON\AddressCollection\Domain\Model\Address();
-		$objectStorageHoldingExactlyOneOtherAddresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$objectStorageHoldingExactlyOneOtherAddresses->attach($otherAddress);
-		$this->subject->setOtherAddresses($objectStorageHoldingExactlyOneOtherAddresses);
-
-		$this->assertAttributeEquals(
-			$objectStorageHoldingExactlyOneOtherAddresses,
-			'otherAddresses',
-			$this->subject
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function addOtherAddressToObjectStorageHoldingOtherAddresses() {
-		$otherAddress = new \MONOGON\AddressCollection\Domain\Model\Address();
-		$otherAddressesObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$otherAddressesObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($otherAddress));
-		$this->inject($this->subject, 'otherAddresses', $otherAddressesObjectStorageMock);
-
-		$this->subject->addOtherAddress($otherAddress);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removeOtherAddressFromObjectStorageHoldingOtherAddresses() {
-		$otherAddress = new \MONOGON\AddressCollection\Domain\Model\Address();
-		$otherAddressesObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
-		$otherAddressesObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($otherAddress));
-		$this->inject($this->subject, 'otherAddresses', $otherAddressesObjectStorageMock);
-
-		$this->subject->removeOtherAddress($otherAddress);
-
-	}
-
-	/**
-	 * @test
-	 */
-	public function getRelatedAddressesReturnsInitialValueForAddress() {
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->assertEquals(
-			$newObjectStorage,
-			$this->subject->getRelatedAddresses()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function setRelatedAddressesForObjectStorageContainingAddressSetsRelatedAddresses() {
-		$relatedAddress = new \MONOGON\AddressCollection\Domain\Model\Address();
-		$objectStorageHoldingExactlyOneRelatedAddresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$objectStorageHoldingExactlyOneRelatedAddresses->attach($relatedAddress);
-		$this->subject->setRelatedAddresses($objectStorageHoldingExactlyOneRelatedAddresses);
-
-		$this->assertAttributeEquals(
-			$objectStorageHoldingExactlyOneRelatedAddresses,
-			'relatedAddresses',
-			$this->subject
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function addRelatedAddressToObjectStorageHoldingRelatedAddresses() {
-		$relatedAddress = new \MONOGON\AddressCollection\Domain\Model\Address();
-		$relatedAddressesObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
-		$relatedAddressesObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($relatedAddress));
-		$this->inject($this->subject, 'relatedAddresses', $relatedAddressesObjectStorageMock);
-
-		$this->subject->addRelatedAddress($relatedAddress);
-	}
-
-	/**
-	 * @test
-	 */
-	public function removeRelatedAddressFromObjectStorageHoldingRelatedAddresses() {
-		$relatedAddress = new \MONOGON\AddressCollection\Domain\Model\Address();
-		$relatedAddressesObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
-		$relatedAddressesObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($relatedAddress));
-		$this->inject($this->subject, 'relatedAddresses', $relatedAddressesObjectStorageMock);
-
-		$this->subject->removeRelatedAddress($relatedAddress);
 
 	}
 }

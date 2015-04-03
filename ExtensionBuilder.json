@@ -26,7 +26,7 @@
                     "addHiddenField": true,
                     "addStarttimeEndtimeFields": false,
                     "aggregateRoot": true,
-                    "categorizable": true,
+                    "categorizable": false,
                     "description": "Address",
                     "mapToTable": "tt_address",
                     "parentClass": "",
@@ -289,16 +289,6 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "Image",
-                            "propertyIsExcludeField": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "falImage",
-                            "propertyType": "Image",
-                            "uid": "867779961952"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
                             "propertyDescription": "Nickname",
                             "propertyIsExcludeField": false,
                             "propertyIsRequired": false,
@@ -359,26 +349,6 @@
                             "relationType": "manyToMany",
                             "relationWire": "[wired]",
                             "uid": "324102844926"
-                        },
-                        {
-                            "foreignRelationClass": "",
-                            "lazyLoading": true,
-                            "propertyIsExcludeField": false,
-                            "relationDescription": "Other addresses",
-                            "relationName": "otherAddresses",
-                            "relationType": "zeroToMany",
-                            "relationWire": "[wired]",
-                            "uid": "606047436854"
-                        },
-                        {
-                            "foreignRelationClass": "",
-                            "lazyLoading": true,
-                            "propertyIsExcludeField": false,
-                            "relationDescription": "Related addresses",
-                            "relationName": "relatedAddresses",
-                            "relationType": "manyToMany",
-                            "relationWire": "[wired]",
-                            "uid": "265609982106"
                         }
                     ]
                 }
@@ -485,7 +455,7 @@
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "",
-                    "parentClass": "\\TYPO3\\CMS\\Extbase\\Domain\\Model\\User",
+                    "parentClass": "\\TYPO3\\CMS\\Extbase\\Domain\\Model\\FrontendUser",
                     "sorting": false,
                     "type": "Entity",
                     "uid": "797214703939"
@@ -736,7 +706,7 @@
         "emConf": {
             "category": "plugin",
             "custom_category": "",
-            "dependsOn": "typo3 => 6.2\ntt_address => 2.3.5\n",
+            "dependsOn": "typo3 => 6.2\n",
             "disableLocalization": true,
             "disableVersioning": false,
             "sourceLanguage": "en",
@@ -804,34 +774,10 @@
                 "terminal": "SOURCES",
                 "uid": "677362885223"
             }
-        },
-        {
-            "src": {
-                "moduleId": 0,
-                "terminal": "relationWire_2",
-                "uid": "606047436854"
-            },
-            "tgt": {
-                "moduleId": 0,
-                "terminal": "SOURCES",
-                "uid": "334708329386"
-            }
-        },
-        {
-            "src": {
-                "moduleId": 0,
-                "terminal": "relationWire_3",
-                "uid": "265609982106"
-            },
-            "tgt": {
-                "moduleId": 0,
-                "terminal": "SOURCES",
-                "uid": "334708329386"
-            }
         }
     ],
     "log": {
-        "last_modified": "2014-12-23 10:50",
+        "last_modified": "2015-04-03 01:55",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

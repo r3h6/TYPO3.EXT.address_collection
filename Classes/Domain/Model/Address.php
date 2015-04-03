@@ -218,13 +218,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $qualifications = '';
 
 	/**
-	 * Image
-	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-	 */
-	protected $falImage = NULL;
-
-	/**
 	 * Nickname
 	 *
 	 * @var string
@@ -269,23 +262,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $addressGroups = NULL;
 
 	/**
-	 * Other addresses
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\Address>
-	 * @cascade remove
-	 * @lazy
-	 */
-	protected $otherAddresses = NULL;
-
-	/**
-	 * Related addresses
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\Address>
-	 * @lazy
-	 */
-	protected $relatedAddresses = NULL;
-
-	/**
 	 * Returns the  recordType
 	 *
 	 * @return string $recordType
@@ -323,8 +299,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected function initStorageObjects() {
 		$this->addressGroups = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->otherAddresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->relatedAddresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -842,25 +816,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Returns the falImage
-	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $falImage
-	 */
-	public function getFalImage() {
-		return $this->falImage;
-	}
-
-	/**
-	 * Sets the falImage
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $falImage
-	 * @return void
-	 */
-	public function setFalImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $falImage) {
-		$this->falImage = $falImage;
-	}
-
-	/**
 	 * Returns the nickName
 	 *
 	 * @return string $nickName
@@ -953,84 +908,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setUser(\MONOGON\AddressCollection\Domain\Model\User $user) {
 		$this->user = $user;
-	}
-
-	/**
-	 * Adds a Address
-	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\Address $otherAddress
-	 * @return void
-	 */
-	public function addOtherAddress(\MONOGON\AddressCollection\Domain\Model\Address $otherAddress) {
-		$this->otherAddresses->attach($otherAddress);
-	}
-
-	/**
-	 * Removes a Address
-	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\Address $otherAddressToRemove The Address to be removed
-	 * @return void
-	 */
-	public function removeOtherAddress(\MONOGON\AddressCollection\Domain\Model\Address $otherAddressToRemove) {
-		$this->otherAddresses->detach($otherAddressToRemove);
-	}
-
-	/**
-	 * Returns the otherAddresses
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\Address> $otherAddresses
-	 */
-	public function getOtherAddresses() {
-		return $this->otherAddresses;
-	}
-
-	/**
-	 * Sets the otherAddresses
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\Address> $otherAddresses
-	 * @return void
-	 */
-	public function setOtherAddresses(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $otherAddresses) {
-		$this->otherAddresses = $otherAddresses;
-	}
-
-	/**
-	 * Adds a Address
-	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\Address $relatedAddress
-	 * @return void
-	 */
-	public function addRelatedAddress(\MONOGON\AddressCollection\Domain\Model\Address $relatedAddress) {
-		$this->relatedAddresses->attach($relatedAddress);
-	}
-
-	/**
-	 * Removes a Address
-	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\Address $relatedAddressToRemove The Address to be removed
-	 * @return void
-	 */
-	public function removeRelatedAddress(\MONOGON\AddressCollection\Domain\Model\Address $relatedAddressToRemove) {
-		$this->relatedAddresses->detach($relatedAddressToRemove);
-	}
-
-	/**
-	 * Returns the relatedAddresses
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\Address> $relatedAddresses
-	 */
-	public function getRelatedAddresses() {
-		return $this->relatedAddresses;
-	}
-
-	/**
-	 * Sets the relatedAddresses
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\Address> $relatedAddresses
-	 * @return void
-	 */
-	public function setRelatedAddresses(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedAddresses) {
-		$this->relatedAddresses = $relatedAddresses;
 	}
 
 }

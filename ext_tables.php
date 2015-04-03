@@ -71,15 +71,6 @@ $tmp_address_collection_columns = array(
 			'eval' => 'trim'
 		),
 	),
-	'fal_image' => array(
-		'exclude' => 0,
-		'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.fal_image',
-		'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-			'falImage',
-			array('maxitems' => 1),
-			$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-		),
-	),
 	'nick_name' => array(
 		'exclude' => 0,
 		'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.nick_name',
@@ -133,68 +124,7 @@ $tmp_address_collection_columns = array(
 				),
 			),
 		),
-
 	),
-	'other_addresses' => array(
-		'exclude' => 0,
-		'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.related_addresses',
-		'config' => array(
-			'type' => 'inline',
-			'foreign_table' => 'tt_address',
-			'foreign_field' => 'parent_address',
-			'maxitems'      => 9999,
-			'appearance' => array(
-				'collapseAll' => 0,
-				'levelLinksPosition' => 'top',
-				'showSynchronizationLink' => 1,
-				'showPossibleLocalizationRecords' => 1,
-				'showAllLocalizationLink' => 1
-			),
-		),
-
-	),
-	'related_addresses' => array(
-		'exclude' => 0,
-		'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.related_addresses',
-		'config' => array(
-			'type' => 'select',
-			'foreign_table' => 'tt_address',
-			'MM' => 'tx_addresscollection_address_relatedaddresses_address_mm',
-			'size' => 10,
-			'autoSizeMax' => 30,
-			'maxitems' => 9999,
-			'multiple' => 0,
-			'wizards' => array(
-				'_PADDING' => 1,
-				'_VERTICAL' => 1,
-				'edit' => array(
-					'type' => 'popup',
-					'title' => 'Edit',
-					'script' => 'wizard_edit.php',
-					'icon' => 'edit2.gif',
-					'popup_onlyOpenIfSelected' => 1,
-					'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-					),
-				'add' => Array(
-					'type' => 'script',
-					'title' => 'Create new',
-					'icon' => 'add.gif',
-					'params' => array(
-						'table' => 'tt_address',
-						'pid' => '###CURRENT_PID###',
-						'setValue' => 'prepend'
-						),
-					'script' => 'wizard_add.php',
-				),
-			),
-		),
-	),
-);
-
-$tmp_address_collection_columns['parent_address'] = array(
-	'config' => array(
-		'type' => 'passthrough',
-	)
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_address',$tmp_address_collection_columns);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-23T22:50:10Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-03T13:55:09Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="tx_addresscollection_domain_model_address">
@@ -81,9 +81,6 @@
 			<trans-unit id="tx_addresscollection_domain_model_address.qualifications">
 				<source>Qualifications</source>
 			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.fal_image">
-				<source>Fal Image</source>
-			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_address.nick_name">
 				<source>Nick Name</source>
 			</trans-unit>
@@ -101,12 +98,6 @@
 			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_address.address_groups">
 				<source>Address Groups</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.other_addresses">
-				<source>Other Addresses</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.related_addresses">
-				<source>Related Addresses</source>
 			</trans-unit>
 			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_Address">
 				<source>Address Collection (Extbase) Address</source>
@@ -170,15 +161,6 @@
 			</trans-unit>
 			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_CompanyAddress">
 				<source>Address Collection (Extbase) CompanyAddress</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="fe_users.tx_extbase_type.Tx_AddressCollection_FrontendUser">
-				<source>Address Collection (Extbase) FrontendUser</source>
 			</trans-unit>
 		</body>
 	</file>

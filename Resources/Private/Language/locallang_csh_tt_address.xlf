@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2014-12-23T22:50:10Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-03T13:55:09Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="name.description">
@@ -78,9 +78,6 @@
 			<trans-unit id="qualifications.description">
 				<source>Qualifications</source>
 			</trans-unit>
-			<trans-unit id="fal_image.description">
-				<source>Image</source>
-			</trans-unit>
 			<trans-unit id="nick_name.description">
 				<source>Nickname</source>
 			</trans-unit>
@@ -97,19 +94,7 @@
 				<source>User</source>
 			</trans-unit>
 			<trans-unit id="address_groups.description">
-				<source>Address group</source>
-			</trans-unit>
-			<trans-unit id="other_addresses.description">
-				<source>Other addresses</source>
-			</trans-unit>
-			<trans-unit id="related_addresses.description">
-				<source>Related addresses</source>
-			</trans-unit>
-			<trans-unit id="user.description">
-				<source>frontendUser</source>
-			</trans-unit>
-			<trans-unit id="addressgroup.description">
-				<source>Address group</source>
+				<source>Address groups</source>
 			</trans-unit>
 		</body>
 	</file>

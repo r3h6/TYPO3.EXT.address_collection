@@ -32,14 +32,16 @@ use TYPO3\CMS\Extbase\Utility\ArrayUtility;
  */
 class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	public function getCharacterList ($demand = NULL){
+	/**
+	 * @param $demand
+	 */
+	public function getCharacterList($demand = NULL) {
 		$characterList = array();
 		$query = $this->createQuery();
-
 		$join = '';
-		if ($demand !== NULL){
+		if ($demand !== NULL) {
 			$addressGroups = $demand->getAddressGroups();
-			if (!empty($addressGroups)){
+			if (!empty($addressGroups)) {
 				$databaseConntection = $GLOBALS['TYPO3_DB'];
 				$join = '
 					INNER JOIN  `tt_address_group_mm`  `mm`
@@ -47,21 +49,18 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 					WHERE  `mm`.`uid_foreign` IN (' . join(', ', $databaseConntection->cleanIntArray($addressGroups)) . ')';
 			}
 		}
-
 		$query->statement('
 			SELECT LCASE(LEFT(`last_name` , 1)) AS `character`
 			FROM `tt_address`
 			' . $join . '
 			GROUP BY `character`
-			ORDER BY `character`'
-			. $where);
+			ORDER BY `character`' . $where);
 		$results = $query->execute(TRUE);
-		foreach ($results as $row){
-			if (!empty($row['character'])){
+		foreach ($results as $row) {
+			if (!empty($row['character'])) {
 				$characterList[] = $row['character'];
 			}
 		}
-
 		return $characterList;
 	}
 
@@ -69,7 +68,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand
 	 */
 	public function findDemanded(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
-
 		$query = $this->createQuery();
 		$constraints = array();
 		$names = ArrayUtility::trimExplode(',', $demand->getName(), TRUE);
@@ -80,12 +78,10 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		if (!empty($emails)) {
 			$constraints[] = $this->buildLikeConstraint('email', $emails, $query);
 		}
-
 		$character = $demand->getCharacter();
-		if ($character){
+		if ($character) {
 			$constraints[] = $query->like('lastName', $character . '%');
 		}
-
 		$addressGroups = $demand->getAddressGroups();
 		if (!empty($addressGroups)) {
 			$constraints[] = $this->buildContainsConstraint('addressgroup', $addressGroups, $query);

@@ -31,5 +31,5 @@ namespace MONOGON\AddressCollection\Domain\Model;
  */
 class DeliveryAddress extends \MONOGON\AddressCollection\Domain\Model\Address {
 
-
+	
 }
