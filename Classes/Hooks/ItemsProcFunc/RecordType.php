@@ -27,7 +27,7 @@ namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use MONOGON\AddressCollection\Configuration\ExtConfManager;
+use MONOGON\AddressCollection\Configuration\ExtConf;
 
 /**
  * RecordType
@@ -38,7 +38,7 @@ class RecordType {
 		$items = $GLOBALS['TCA']['tt_address']['columns'][$GLOBALS['TCA']['tt_address']['ctrl']['type']]['config']['items'];
 
 		foreach ($items as $item){
-			$config['items'][] = array(LocalizationUtility::translate($item[0], ExtConfManager::EXT_KEY), $item[1]);
+			$config['items'][] = array(LocalizationUtility::translate($item[0], ExtConf::EXT_KEY), $item[1]);
 		}
 	}
 }

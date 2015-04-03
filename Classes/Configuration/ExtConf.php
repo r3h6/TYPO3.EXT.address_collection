@@ -5,7 +5,7 @@ namespace MONOGON\AddressCollection\Configuration;
  *
  *  Copyright notice
  *
- *  (c) 2014 R3 H6 <r3h6@outlook.com>
+ *  (c) 2015 R3 H6 <r3h6@outlook.com>
  *
  *  All rights reserved
  *
@@ -26,29 +26,44 @@ namespace MONOGON\AddressCollection\Configuration;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
- *
- * @package MONOGON
- * @subpackage code_library
+ * ExtConf
  */
-class ExtConfManager implements \TYPO3\CMS\Core\SingletonInterface {
+class ExtConf {
 
 	/**
 	 * @var string
 	 */
 	const EXT_KEY = 'address_collection';
 
+	private static $instance;
+
 	/**
 	 * @var array
 	 */
 	protected $configuration = array();
 
-	/**
-	 * @param string|NULL $extensionKey
-	 */
-	public function __construct() {
+	public static function get ($key){
+		$extConf = self::makeInstance();
+		return $extConf->_get($key);
+	}
+
+	public static function set ($key, $value){
+		self::makeInstance()->_set($key, $value);
+	}
+
+	private static function makeInstance (){
+		if (!self::$instance){
+			self::$instance = new ExtConf();
+		}
+		return self::$instance;
+	}
+
+	private function __construct() {
 		if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::EXT_KEY])) {
-			$this->configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::EXT_KEY]);
+			$this->configuration = (array) unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::EXT_KEY]);
 		}
 	}
 
@@ -56,12 +71,16 @@ class ExtConfManager implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @param string $key
 	 * @return mixed
 	 */
-	public function getValue ($key) {
+	private function _get ($key) {
 		if (is_array($this->configuration) && array_key_exists($key, $this->configuration)) {
 			return $this->configuration[$key];
 		} else {
 			return NULL;
 		}
+	}
+
+	private function _set ($key, $value){
+		$this->configuration[$key] = $value;
 	}
 }
 

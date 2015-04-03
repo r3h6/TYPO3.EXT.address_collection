@@ -28,6 +28,8 @@
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use MONOGON\AddressCollection\Configuration\ExtConf;
+
 /**
  * ext_update
  */
@@ -46,17 +48,10 @@ class ext_update {
 	protected $databaseConnection;
 
 	/**
-	 * [$extConf description]
-	 * @var \MONOGON\AddressCollection\Configuration\ExtConf
-	 */
-	protected $extConf;
-
-	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		$this->databaseConnection = $GLOBALS['TYPO3_DB'];
-		$this->extConf = GeneralUtility::makeInstance('MONOGON\\AddressCollection\\Configuration\\ExtConf');
 	}
 
 	/**

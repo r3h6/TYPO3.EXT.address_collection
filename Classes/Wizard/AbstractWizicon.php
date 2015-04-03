@@ -28,7 +28,7 @@ namespace MONOGON\AddressCollection\Wizard;
 
 use \MONOGON\AddressCollection\Utility\ExtensionUtility;
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use \MONOGON\AddressCollection\Configuration\ExtConfManager;
+use \MONOGON\AddressCollection\Configuration\ExtConf;
 
 /**
  * AbstractWizicon
@@ -52,9 +52,9 @@ abstract class AbstractWizicon {
 		$pluginSignature = ExtensionUtility::pluginSignature($this->pluginName);
 
 		$wizardItems['plugins_tx_' . $pluginSignature] = array(
-			'icon' => ExtensionManagementUtility::extRelPath(ExtConfManager::EXT_KEY) . 'Resources/Public/Icons/' . $pluginSignature . '_wizicon.png',
-			'title' => $GLOBALS['LANG']->sL('LLL:EXT:' . ExtConfManager::EXT_KEY . '/Resources/Private/Language/locallang_be.xlf:' . $pluginSignature . '.title'),
-			'description' => $GLOBALS['LANG']->sL('LLL:EXT:' . ExtConfManager::EXT_KEY . '/Resources/Private/Language/locallang_be.xlf:' . $pluginSignature . '.description'),
+			'icon' => ExtensionManagementUtility::extRelPath(ExtConf::EXT_KEY) . 'Resources/Public/Icons/' . $pluginSignature . '_wizicon.png',
+			'title' => $GLOBALS['LANG']->sL('LLL:EXT:' . ExtConf::EXT_KEY . '/Resources/Private/Language/locallang_be.xlf:' . $pluginSignature . '.title'),
+			'description' => $GLOBALS['LANG']->sL('LLL:EXT:' . ExtConf::EXT_KEY . '/Resources/Private/Language/locallang_be.xlf:' . $pluginSignature . '.description'),
 			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=' . $pluginSignature,
 		);
 

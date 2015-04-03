@@ -27,7 +27,7 @@ namespace MONOGON\AddressCollection\Utility;
  ***************************************************************/
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \MONOGON\AddressCollection\Configuration\ExtConfManager;
+use \MONOGON\AddressCollection\Configuration\ExtConf;
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
@@ -41,10 +41,7 @@ class ExtensionUtility implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @param  string $extKey     [description]
 	 * @return string             [description]
 	 */
-	public static function pluginSignature ($pluginName, $extKey = NULL){
-		if ($extKey === NULL){
-			$extKey = ExtConfManager::EXT_KEY;
-		}
+	public static function pluginSignature ($pluginName, $extKey = ExtConf::EXT_KEY){
 		$extensionName = GeneralUtility::underscoredToUpperCamelCase($extKey);
 		return strtolower($extensionName . '_' . $pluginName);
 	}
@@ -54,10 +51,7 @@ class ExtensionUtility implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @param string $pluginName [description]
 	 * @param  string $extKey     [description]
 	 */
-	public static function addWizicon ($pluginName, $extKey = NULL){
-		if ($extKey === NULL){
-			$extKey = ExtConfManager::EXT_KEY;
-		}
+	public static function addWizicon ($pluginName, $extKey = ExtConf::EXT_KEY){
 		$namespace = substr(__NAMESPACE__, 0, strrpos(__NAMESPACE__, '\\')) . '\\Wizard\\';
 
 		$className = $namespace . $pluginName . 'Wizicon';

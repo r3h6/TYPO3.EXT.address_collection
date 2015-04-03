@@ -24,7 +24,7 @@ namespace MONOGON\AddressCollection\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use MONOGON\AddressCollection\Configuration\ExtConfManager;
+use MONOGON\AddressCollection\Configuration\ExtConf;
 
 /**
  * TemplateLayout utility class
@@ -42,9 +42,9 @@ class TemplateLayoutUtility implements \TYPO3\CMS\Core\SingletonInterface {
 		$templateLayouts = array();
 
 		// Check if the layouts are extended by ext_tables
-		if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConfManager::EXT_KEY]['templateLayouts'])
-			&& is_array($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConfManager::EXT_KEY]['templateLayouts'])) {
-			$templateLayouts = $GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConfManager::EXT_KEY]['templateLayouts'];
+		if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'])
+			&& is_array($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'])) {
+			$templateLayouts = $GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'];
 		}
 
 		// Add TsConfig values

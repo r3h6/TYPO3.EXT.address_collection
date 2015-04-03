@@ -26,6 +26,8 @@ namespace MONOGON\AddressCollection\Hooks;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use MONOGON\AddressCollection\Configuration\ExtConf;
+
 /**
  * MergeName
  */
@@ -34,20 +36,6 @@ class MergeName {
 	const STATUS_UPDATE = 'update';
 	const STATUS_NEW = 'new';
 	const TABLE = 'tt_address';
-
-
-	/**
-	 * [$extConfManager description]
-	 * @var MONOGON\AddressCollection\Configuration\ExtConfManager
-	 */
-	protected $extConfManager = NULL;
-
-	/**
-	 * [__construct description]
-	 */
-	public function __construct (){
-		$this->extConfManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('MONOGON\\AddressCollection\\Configuration\\ExtConfManager');;
-	}
 
 	/**
 	 * looks for tt_address records with changes to the first, middle, and
@@ -69,7 +57,7 @@ class MergeName {
 				$address = $fieldArray;
 			}
 
-			$format = $this->extConfManager->getValue('backwardsCompatFormat');
+			$format = ExtConf::get('backwardsCompatFormat');
 
 			$newRecord = array_merge($address, $fieldArray);
 
