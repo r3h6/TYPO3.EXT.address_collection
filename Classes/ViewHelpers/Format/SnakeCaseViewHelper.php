@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\ViewHelpers\Repository\AddressGroup;
+namespace MONOGON\AddressCollection\ViewHelpers\String;
 
 /***************************************************************
  *
@@ -29,35 +29,19 @@ namespace MONOGON\AddressCollection\ViewHelpers\Repository\AddressGroup;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * FindAllViewHelper
+ * SnakeCaseViewHelper
  */
-class FindAllViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
-
-	/**
-	 * addressGroupRepository
-	 *
-	 * @var \MONOGON\AddressCollection\Domain\Repository\AddressGroupRepository
-	 * @inject
-	 */
-	protected $addressGroupRepository = NULL;
-
-	/**
-	 * [$configurationManager description]
-	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
-	 * @inject
-	 */
-	protected $configurationManager;
+class SnakeCaseViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * [render description]
+	 * @param  string $string ExAmpLe
+	 * @return string ex_amp_le
 	 */
-	public function render (){
-		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
-
-
-		$mergedSettings = new \MONOGON\AddressCollection\Configuration\Setup($settings);
-
-
-		return $this->addressGroupRepository->findAll();
+	public function render ($string = NULL){
+		if ($string === NULL){
+			$string = $this->renderChildren();
+		}
+		return GeneralUtility::camelCaseToLowerCaseUnderscored($string);
 	}
 }

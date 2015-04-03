@@ -1,9 +1,0 @@
-{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
-<div class="form-group">
-  <div><label><f:translate key="tx_addresscollection_domain_model_address.{property}" /> <mgn:form.isRequired object="{address}" property="{property}"><f:translate key="form.required">*</f:translate></mgn:form.isRequired></label></div>
-  <f:for each="{values}" as="value">
-    <label class="radio-inline">
-      <f:form.radio property="{property}" value="{value}" /><f:translate key="tx_addresscollection_domain_model_address.{property -> mgn:string.underscored()}.{value}">{value}</f:translate>
-    </label>
-  </f:for>
-</div>
