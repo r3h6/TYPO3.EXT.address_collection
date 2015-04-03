@@ -62,6 +62,7 @@ class ext_update {
 	public function main() {
 
 		$this->updateTtAddressExtbaseType();
+		$this->migrateImagesToFAL();
 
 
 		return $this->generateOutput();
@@ -69,18 +70,48 @@ class ext_update {
 
 	protected function updateTtAddressExtbaseType (){
 		$title = 'Set extbase type';
-		if (!ExtensionManagementUtility::isLoaded('tt_address')){
-			$this->messageArray[] = array(FlashMessage::INFO, $title, 'Nothing todo because here.');
-			return FALSE;
+		try {
+			$this->checkDatabase();
+
+			$result = $this->databaseConnection->exec_UPDATEquery('tt_address', "tx_extbase_type=''", array('tx_extbase_type' => 'Tx_AddressCollection_Address'));
+			if ($result === FALSE){
+				throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
+			}
+
+			$rowsCount = $this->databaseConnection->sql_affected_rows();
+			$this->messageArray[] = array(FlashMessage::OK, $title, sprintf('%d address records have been updated!', $rowsCount));
+		} catch (Exception $exception){
+			$this->messageArray[] = array(FlashMessage::ERROR, $title, $exception->getMessage());
 		}
+	}
 
-		$result = $this->databaseConnection->exec_UPDATEquery('tt_address', "tx_extbase_type=''", array('tx_extbase_type' => 'Tx_AddressCollection_Address'));
-		$rowsCount = $this->databaseConnection->sql_affected_rows();
-		$this->messageArray[] = array(FlashMessage::OK, $title, sprintf('%d address records have been updated!', $rowsCount));
+	protected function migrateImagesToFAL (){
+		$title = 'Migrate images to FAL';
+		try {
+			$this->checkDatabase();
 
+			$result = $this->databaseConnection->exec_SELECTquery('uid, image', 'tt_address', 'image!=""');
+			if ($result === FALSE){
+				throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
+			}
 
-		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($result);
+			$rowsCount = $this->databaseConnection->sql_affected_rows();
+			$this->messageArray[] = array(FlashMessage::NOTICE, $title, sprintf('Found %d image(s).', $rowsCount));
 
+			while ($row = $this->databaseConnection->sql_fetch_assoc($result)){
+				\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($row);
+			}
+
+		} catch (Exception $exception){
+			$this->messageArray[] = array(FlashMessage::ERROR, $title, $exception->getMessage());
+		}
+	}
+
+	protected function checkDatabase (){
+		$tables = $this->databaseConnection->admin_get_tables();
+		if (!isset($tables['tt_content'])){
+			throw new Exception('Table tt_address not present.', 1428086748);
+		}
 	}
 
 	/**

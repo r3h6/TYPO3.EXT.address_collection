@@ -1,167 +1,178 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-03T13:55:09Z" product-name="address_collection">
-		<header/>
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-03T13:15:51Z">
+		<header>
+			<generator>LFEditor</generator>
+		</header>
 		<body>
-			<trans-unit id="tx_addresscollection_domain_model_address">
-				<source>Address</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.first_name">
-				<source>First Name</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.middle_name">
-				<source>Middle Name</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.last_name">
-				<source>Last Name</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.gender">
-				<source>Gender</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.birthday">
-				<source>Birthday</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.email">
-				<source>Email</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.phone">
-				<source>Phone</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.mobile">
-				<source>Mobile</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.fax">
-				<source>Fax</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.www">
-				<source>Www</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.company">
-				<source>Company</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.address">
-				<source>Address</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.building">
-				<source>Building</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.room">
-				<source>Room</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.zip">
-				<source>Zip</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.city">
-				<source>City</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.region">
-				<source>Region</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.country">
-				<source>Country</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.image">
-				<source>Image</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.position">
-				<source>Position</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.department">
-				<source>Department</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.qualifications">
-				<source>Qualifications</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.nick_name">
-				<source>Nick Name</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.post_office_box">
-				<source>Post Office Box</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.longitude">
-				<source>Longitude</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.latitude">
-				<source>Latitude</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.address_groups">
-				<source>Address Groups</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_Address">
-				<source>Address Collection (Extbase) Address</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection.tx_extbase_type">
-				<source>Record Type</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection.tx_extbase_type.0">
-				<source>Default</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.tx_extbase_type.Tx_AddressCollection_Address">
-				<source>Address Collection (Extbase) Address</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_addressgroup">
-				<source>Address Group</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_addressgroup.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_addressgroup.description">
-				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_addressgroup.parent_group">
-				<source>Parent Group</source>
-			</trans-unit>
-			<trans-unit id="tt_address_group.tx_extbase_type.Tx_AddressCollection_AddressGroup">
-				<source>Address Collection (Extbase) AddressGroup</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_user">
-				<source>User</source>
-			</trans-unit>
-			<trans-unit id="fe_users.tx_extbase_type.Tx_AddressCollection_User">
-				<source>Address Collection (Extbase) User</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_deliveryaddress">
-				<source>Delivery Address</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_DeliveryAddress">
-				<source>Address Collection (Extbase) DeliveryAddress</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_billingaddress">
-				<source>Billing Address</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_BillingAddress">
-				<source>Address Collection (Extbase) BillingAddress</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_personaladdress">
-				<source>Personal Address</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_PersonalAddress">
-				<source>Address Collection (Extbase) PersonalAddress</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_businessaddress">
-				<source>Business Address</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_BusinessAddress">
-				<source>Address Collection (Extbase) BusinessAddress</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_companyaddress">
-				<source>Company Address</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_CompanyAddress">
-				<source>Address Collection (Extbase) CompanyAddress</source>
-			</trans-unit>
+		<trans-unit id="fe_users.tx_extbase_type.Tx_AddressCollection_User" xml:space="preserve">
+			<source>Address Collection (Extbase) User</source>
+		</trans-unit>
+		<trans-unit id="template_layouts.list.search" xml:space="preserve">
+			<source>Search</source>
+		</trans-unit>
+		<trans-unit id="template_layouts.list.table" xml:space="preserve">
+			<source>Table</source>
+		</trans-unit>
+		<trans-unit id="template_layouts.list.vcard" xml:space="preserve">
+			<source>Vcard</source>
+		</trans-unit>
+		<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_Address" xml:space="preserve">
+			<source>Address Collection (Extbase) Address</source>
+		</trans-unit>
+		<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_BillingAddress" xml:space="preserve">
+			<source>Address Collection (Extbase) BillingAddress</source>
+		</trans-unit>
+		<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_BusinessAddress" xml:space="preserve">
+			<source>Address Collection (Extbase) BusinessAddress</source>
+		</trans-unit>
+		<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_CompanyAddress" xml:space="preserve">
+			<source>Address Collection (Extbase) CompanyAddress</source>
+		</trans-unit>
+		<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_DeliveryAddress" xml:space="preserve">
+			<source>Address Collection (Extbase) DeliveryAddress</source>
+		</trans-unit>
+		<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_PersonalAddress" xml:space="preserve">
+			<source>Address Collection (Extbase) PersonalAddress</source>
+		</trans-unit>
+		<trans-unit id="tt_address_group.tx_extbase_type.Tx_AddressCollection_AddressGroup" xml:space="preserve">
+			<source>Address Collection (Extbase) AddressGroup</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection.tx_extbase_type" xml:space="preserve">
+			<source>Record Type</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection.tx_extbase_type.0" xml:space="preserve">
+			<source>Default</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address" xml:space="preserve">
+			<source>Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.address" xml:space="preserve">
+			<source>Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.address_groups" xml:space="preserve">
+			<source>Address Groups</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.birthday" xml:space="preserve">
+			<source>Birthday</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.building" xml:space="preserve">
+			<source>Building</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.city" xml:space="preserve">
+			<source>City</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.company" xml:space="preserve">
+			<source>Company</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.country" xml:space="preserve">
+			<source>Country</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.department" xml:space="preserve">
+			<source>Department</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.description" xml:space="preserve">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.email" xml:space="preserve">
+			<source>Email</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.fax" xml:space="preserve">
+			<source>Fax</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.first_name" xml:space="preserve">
+			<source>First Name</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.gender" xml:space="preserve">
+			<source>Gender</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.image" xml:space="preserve">
+			<source>Image</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.last_name" xml:space="preserve">
+			<source>Last Name</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.latitude" xml:space="preserve">
+			<source>Latitude</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.longitude" xml:space="preserve">
+			<source>Longitude</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.middle_name" xml:space="preserve">
+			<source>Middle Name</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.mobile" xml:space="preserve">
+			<source>Mobile</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.name" xml:space="preserve">
+			<source>Name</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.nick_name" xml:space="preserve">
+			<source>Nick Name</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.phone" xml:space="preserve">
+			<source>Phone</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.position" xml:space="preserve">
+			<source>Position</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.post_office_box" xml:space="preserve">
+			<source>Post Office Box</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.qualifications" xml:space="preserve">
+			<source>Qualifications</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.region" xml:space="preserve">
+			<source>Region</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.room" xml:space="preserve">
+			<source>Room</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.title" xml:space="preserve">
+			<source>Title</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.tx_extbase_type.Tx_AddressCollection_Address" xml:space="preserve">
+			<source>Address Collection (Extbase) Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.user" xml:space="preserve">
+			<source>User</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.www" xml:space="preserve">
+			<source>Www</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_address.zip" xml:space="preserve">
+			<source>Zip</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_addressgroup" xml:space="preserve">
+			<source>Address Group</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_addressgroup.description" xml:space="preserve">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_addressgroup.parent_group" xml:space="preserve">
+			<source>Parent Group</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_addressgroup.title" xml:space="preserve">
+			<source>Title</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_billingaddress" xml:space="preserve">
+			<source>Billing Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_businessaddress" xml:space="preserve">
+			<source>Business Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_companyaddress" xml:space="preserve">
+			<source>Company Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_deliveryaddress" xml:space="preserve">
+			<source>Delivery Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_personaladdress" xml:space="preserve">
+			<source>Personal Address</source>
+		</trans-unit>
+		<trans-unit id="tx_addresscollection_domain_model_user" xml:space="preserve">
+			<source>User</source>
+		</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -20,6 +20,9 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
 
 
 if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('tt_address')){
+	if (!defined('TT_ADDRESS_MAX_IMAGES')){
+		define('TT_ADDRESS_MAX_IMAGES', 6);
+	}
 	require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/ttaddress_tables.php';
 }
 
