@@ -28,6 +28,12 @@
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use MONOGON\AddressCollection\Configuration\ExtConf;
+
+class AlreadyMigratedFALException extends Exception {
+
+}
+
 /**
  * ext_update
  */
@@ -46,17 +52,28 @@ class ext_update {
 	protected $databaseConnection;
 
 	/**
-	 * [$extConf description]
-	 * @var \MONOGON\AddressCollection\Configuration\ExtConf
+	 * @var \TYPO3\CMS\Core\Resource\ResourceFactory
 	 */
-	protected $extConf;
+	protected $resourceFactory;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager;
+	 */
+	protected $objectManager;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+	 */
+	protected $persistenceManager;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		$this->databaseConnection = $GLOBALS['TYPO3_DB'];
-		$this->extConf = GeneralUtility::makeInstance('MONOGON\\AddressCollection\\Configuration\\ExtConf');
+		$this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->resourceFactory = $this->objectManager->get('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
+		$this->persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
 	}
 
 	/**
@@ -67,6 +84,7 @@ class ext_update {
 	public function main() {
 
 		$this->updateTtAddressExtbaseType();
+		$this->migrateImagesToFAL();
 
 
 		return $this->generateOutput();
@@ -74,18 +92,174 @@ class ext_update {
 
 	protected function updateTtAddressExtbaseType (){
 		$title = 'Set extbase type';
-		if (!ExtensionManagementUtility::isLoaded('tt_address')){
-			$this->messageArray[] = array(FlashMessage::INFO, $title, 'Nothing todo because here.');
-			return FALSE;
+		try {
+			$this->checkDatabase();
+
+			$result = $this->databaseConnection->exec_UPDATEquery('tt_address', "tx_extbase_type=''", array('tx_extbase_type' => 'Tx_AddressCollection_Address'));
+			if ($result === FALSE){
+				throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
+			}
+
+			$rowsCount = $this->databaseConnection->sql_affected_rows();
+			$this->messageArray[] = array(FlashMessage::OK, $title, sprintf('%d address records have been updated!', $rowsCount));
+		} catch (Exception $exception){
+			$this->messageArray[] = array(FlashMessage::ERROR, $title, $exception->getMessage());
 		}
+	}
 
-		$result = $this->databaseConnection->exec_UPDATEquery('tt_address', "tx_extbase_type=''", array('tx_extbase_type' => 'Tx_AddressCollection_Address'));
-		$rowsCount = $this->databaseConnection->sql_affected_rows();
-		$this->messageArray[] = array(FlashMessage::OK, $title, sprintf('%d address records have been updated!', $rowsCount));
+	protected function migrateImagesToFAL ($folderId = '1:/user_upload/'){
+		$title = 'Migrate images to FAL';
+		try {
+			$this->checkDatabase();
 
 
-		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($result);
+			$fields = $this->databaseConnection->admin_get_fields('tt_address');
+			// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($fields); exit;
 
+			// if ($fields['image']['Type'] !== 'tinyblob'){
+			// 	throw new AlreadyMigratedFALException("Images already migrated to FAL.", 1428137835);
+			// }
+
+
+			$result = $this->databaseConnection->exec_SELECTquery('uid, pid, image', 'tt_address', 'image!=""');
+			if ($result === FALSE){
+				throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
+			}
+
+			$rowsCount = $this->databaseConnection->sql_affected_rows();
+			$this->messageArray[] = array(FlashMessage::NOTICE, $title, sprintf('Found %d record(s).', $rowsCount));
+
+
+			$folder = $this->resourceFactory->retrieveFileOrFolderObject($folderId);
+
+
+			$data = array();
+
+			while ($row = $this->databaseConnection->sql_fetch_assoc($result)){
+				// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($row);
+				$images = GeneralUtility::trimExplode(',', $row['image']);
+				$references = array();
+				foreach ($images as $i => $image) {
+					try {
+						$filePath = GeneralUtility::getFileAbsFileName('uploads/pics/' . $image);
+						// $file = GeneralUtility::getFileAbsFileName($image);
+						// $uploadedFileData = array(
+						// 	'tmp_name' => $file,
+						// 	'name' => basename($file),
+						// 	'size' => filesize($file),
+						// 	'error' => UPLOAD_ERR_OK,
+						// );
+						// $conflictMode = 'changeName';
+
+						// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($uploadedFileData); exit;
+
+						$file = $this->resourceFactory->retrieveFileOrFolderObject($filePath);
+
+
+						$migratedFile = $this->databaseConnection->exec_SELECTgetSingleRow('uid', 'sys_file', sprintf("sha1='%s'", $file->getSha1()));
+						// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($migratedFile); exit;
+
+						if (is_array($migratedFile)){
+							$uidLocal = $migratedFile['uid'];
+						} else {
+							$migratedFile = $file->copyTo($folder);
+							$uidLocal = $migratedFile->getProperty('uid');
+						}
+
+						if (!$uidLocal){
+							throw new Exception('Invalid local uid!', 1428149072);
+						}
+
+						if (!isset($data['sys_file_reference'])){
+							$data['sys_file_reference'] = array();
+						}
+
+						$id = uniqid('NEW');
+						$references[] = $id;
+						$data['sys_file_reference'][$id] = array(
+							'uid_local' => $uidLocal,
+							'uid_foreign' => $row['uid'],
+							'pid' => $row['pid'],
+							'tablenames' => 'tt_address',
+							'fieldname' => 'image',
+							'tstamp' => time(),
+							'crdate' => time(),
+							'sorting_foreign' => ($i + 1),
+						);
+
+						// $folder->addUploadedFile($uploadedFileData, $conflictMode);
+						// $folder->addFile($file, NULL, $conflictMode);
+
+
+
+						// $inserted = $this->databaseConnection->exec_INSERTquery(
+						// 	'sys_file_reference',
+						// 	array(
+						// 		'uid_local' => $migratedFile->getUid(),
+						// 		'uid_foreign' => $row['uid'],
+						// 		'pid' => $row['pid'],
+						// 		'tablenames' => 'tt_address',
+						// 		'fieldname' => 'image',
+						// 		'tstamp' => time(),
+						// 		'crdate' => time(),
+						// 		'sorting_foreign' => $i,
+						// 	)
+						// );
+
+						// if (!$inserted){
+						// 	throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
+						// }
+
+
+						// $fileReference = $this->resourceFactory->createFileReferenceObject(
+						// 	array(
+						// 		'uid_local' => $migratedFile->getUid(),
+						// 		'uid_foreign' => $row['uid'],
+						// 		'uid' => uniqid('NEW_'),
+						// 		'pid' => $row['pid'],
+						// 		'tablenames' => 'tt_address',
+						// 		'fieldname' => 'image',
+						// 	)
+						// );
+
+						// $this->persistenceManager->add($fileReference);
+						// $this->persistenceManager->persistAll();
+						// exit;
+						// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($fileReference); exit;
+
+
+					} catch (Exception $exception){
+						$this->messageArray[] = array(FlashMessage::ERROR, sprintf("$title (tt_address #%d)", $row['uid']), $exception->getMessage());
+					}
+				}
+				if (isset($data['sys_file_reference'])){
+					$data['tt_address'][$row['uid']]['images'] = join(',', $references);
+				}
+			}
+
+			\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($data);
+
+			// if (isset($data['sys_file_reference'])){
+
+			// 	$data['tt_address']
+
+			// 	$tce = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\DataHandling\\DataHandler');
+			// 	$tce->stripslashes_values = 0;
+			// 	$tce->start($data, array());
+			// 	$tce->process_datamap();
+			// }
+		} catch (AlreadyMigratedFALException $exception){
+			$this->messageArray[] = array(FlashMessage::OK, $title, $exception->getMessage());
+		} catch (Exception $exception){
+			$this->messageArray[] = array(FlashMessage::ERROR, $title, $exception->getMessage());
+		}
+	}
+
+	protected function checkDatabase (){
+		$tables = $this->databaseConnection->admin_get_tables();
+		if (!isset($tables['tt_content'])){
+			throw new Exception('Table tt_address not present.', 1428086748);
+		}
 	}
 
 	/**
