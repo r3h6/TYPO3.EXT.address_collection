@@ -158,6 +158,8 @@ $GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', $GLOBALS['TCA']['tt_address']['ctrl']['type'],'','after:' . $TCA['tt_address']['ctrl']['label']);
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', join(', ', array_keys($tmp_address_collection_columns)));
+
 
 
 

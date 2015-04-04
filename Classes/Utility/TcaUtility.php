@@ -40,10 +40,14 @@ class TcaUtility {
 	public static function showItem ($type, $removeItem = NULL){
 
 		$showItem = $GLOBALS['TCA']['tt_address']['types']['1']['showitem'];
-		$showItem .= ',--div--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address,';
-		$showItem .= 'position, department, qualifications, fal_image, nick_name, post_office_box, longitude, latitude, user, address_groups, other_addresses, related_addresses';
-		$GLOBALS['TCA']['tt_address']['types'][$type]['showitem'] = $showItem;
+		// $showItem .= ',--div--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address,';
 
+		// $showItem .= 'position, department, qualifications, fal_image, nick_name, post_office_box, longitude, latitude, user, address_groups, other_addresses, related_addresses';
+
+		// $showItem = 'tx_extbase_type, name, first_name, middle_name, last_name, gender, birthday, title, email, phone, mobile, fax, www, company, address, building, room, zip, city, region, country, image, images, description, position, department, qualifications, nick_name, post_office_box, longitude, latitude, user, address_groups';
+
+
+		$GLOBALS['TCA']['tt_address']['types'][$type]['showitem'] = $showItem;
 	}
 
 	public static function getTypeFields ($object){
