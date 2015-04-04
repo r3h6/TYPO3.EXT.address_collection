@@ -77,11 +77,18 @@ class AddressController extends ActionController {
 	}
 
 	/**
-	 * @param $view
+	 * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view
 	 */
-	public function initializeView($view) {
+	public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view) {
 		$view->assign('data', $this->configurationManager->getContentObject()->data);
 		$view->assign('setup', $this->setup);
+
+
+		$view->setTemplateRootPaths(array(
+			'yoo' => 'foo/bar',
+		));
+
+		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($view);
 	}
 
 	protected function initializeListAction() {
@@ -89,7 +96,7 @@ class AddressController extends ActionController {
 		$demandPropertyMappingConfiguration->allowProperties('character');
 		$demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
 		if ($this->request->hasArgument('demand')) {
-			
+
 		}
 	}
 
