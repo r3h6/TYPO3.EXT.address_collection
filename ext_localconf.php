@@ -7,12 +7,12 @@ if (!defined('TYPO3_MODE')) {
 	'MONOGON.' . $_EXTKEY,
 	'Pi1',
 	array(
-		'Address' => 'list, show, new, create, edit, update, delete, search, manage',
+		'Address' => 'list, show',
 		
 	),
 	// non-cacheable actions
 	array(
-		'Address' => 'create, update, delete',
+		'Address' => '',
 		
 	)
 );

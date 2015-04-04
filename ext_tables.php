@@ -47,6 +47,17 @@ if (!isset($GLOBALS['TCA']['tt_address']['ctrl']['type'])) {
 }
 
 $tmp_address_collection_columns = array(
+	'images' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.images',
+		'config' =>
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+			'images',
+			array('maxitems' => 6),
+			$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+		),
+
+	),
 	'position' => array(
 		'exclude' => 0,
 		'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.position',
@@ -159,7 +170,7 @@ $GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
 \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BillingAddress');
 
 
-
+// $GLOBALS['TCA']['tt_address']['types']['Tx_AddressCollection_Address']['showitem'] .= 'name, first_name, middle_name, last_name, gender, birthday, title, email, phone, mobile, fax, www, company, address, building, room, zip, city, region, country, image, images, description, position, department, qualifications, nick_name, post_office_box, longitude, latitude, user, address_groups';
 
 
 if (TYPO3_MODE == 'BE') {

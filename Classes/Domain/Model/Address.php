@@ -185,9 +185,17 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Image
 	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 * @var string
 	 */
 	protected $image = NULL;
+
+	/**
+	 * Images
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 * @cascade remove
+	 */
+	protected $images = NULL;
 
 	/**
 	 * Description
@@ -298,6 +306,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
+		$this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->addressGroups = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
@@ -682,25 +691,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Returns the image
-	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
-	 */
-	public function getImage() {
-		return $this->image;
-	}
-
-	/**
-	 * Sets the image
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
-	 * @return void
-	 */
-	public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
-		$this->image = $image;
-	}
-
-	/**
 	 * Returns the description
 	 *
 	 * @return string $description
@@ -908,6 +898,64 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setUser(\MONOGON\AddressCollection\Domain\Model\User $user) {
 		$this->user = $user;
+	}
+
+	/**
+	 * Returns the image
+	 *
+	 * @return string image
+	 */
+	public function getImage() {
+		return $this->image;
+	}
+
+	/**
+	 * Sets the image
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+	 * @return string image
+	 */
+	public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
+		$this->image = $image;
+	}
+
+	/**
+	 * Adds a FileReference
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+	 * @return void
+	 */
+	public function addImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
+		$this->images->attach($image);
+	}
+
+	/**
+	 * Removes a FileReference
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
+	 * @return void
+	 */
+	public function removeImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove) {
+		$this->images->detach($imageToRemove);
+	}
+
+	/**
+	 * Returns the images
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
+	 */
+	public function getImages() {
+		return $this->images;
+	}
+
+	/**
+	 * Sets the images
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
+	 * @return void
+	 */
+	public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images) {
+		$this->images = $images;
 	}
 
 }

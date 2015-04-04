@@ -89,7 +89,7 @@ class AddressController extends ActionController {
 		$demandPropertyMappingConfiguration->allowProperties('character');
 		$demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
 		if ($this->request->hasArgument('demand')) {
-
+			
 		}
 	}
 
@@ -127,7 +127,5 @@ class AddressController extends ActionController {
 	public function showAction(\MONOGON\AddressCollection\Domain\Model\Address $address) {
 		$this->view->assign('address', $address);
 	}
-
-
 
 }

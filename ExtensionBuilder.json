@@ -12,12 +12,11 @@
                 "actionGroup": {
                     "_default0_list": true,
                     "_default1_show": true,
-                    "_default2_new_create": true,
-                    "_default3_edit_update": true,
-                    "_default4_delete": true,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
                     "customActions": [
-                        "search",
-                        "manage"
+
                     ]
                 },
                 "name": "Address",
@@ -243,8 +242,18 @@
                             "propertyIsExcludeField": false,
                             "propertyIsRequired": false,
                             "propertyName": "image",
-                            "propertyType": "Image",
+                            "propertyType": "Text",
                             "uid": "1246729687656"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "6",
+                            "propertyDescription": "Images",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "images",
+                            "propertyType": "Image",
+                            "uid": "845831722017"
                         },
                         {
                             "allowedFileTypes": "",
@@ -729,7 +738,7 @@
             {
                 "actions": {
                     "controllerActionCombinations": "",
-                    "noncacheableActions": "Address=>create, update, delete",
+                    "noncacheableActions": "",
                     "switchableActions": "Auto\nAddress->list;Address->show"
                 },
                 "key": "pi1",
@@ -777,7 +786,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-04-03 01:55",
+        "last_modified": "2015-04-04 02:15",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

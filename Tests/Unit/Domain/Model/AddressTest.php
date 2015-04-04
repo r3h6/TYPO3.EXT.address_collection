@@ -512,9 +512,9 @@ class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function getImageReturnsInitialValueForFileReference() {
-		$this->assertEquals(
-			NULL,
+	public function getImageReturnsInitialValueForString() {
+		$this->assertSame(
+			'',
 			$this->subject->getImage()
 		);
 	}
@@ -522,15 +522,66 @@ class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function setImageForFileReferenceSetsImage() {
-		$fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-		$this->subject->setImage($fileReferenceFixture);
+	public function setImageForStringSetsImage() {
+		$this->subject->setImage('Conceived at T3CON10');
 
 		$this->assertAttributeEquals(
-			$fileReferenceFixture,
+			'Conceived at T3CON10',
 			'image',
 			$this->subject
 		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getImagesReturnsInitialValueForFileReference() {
+		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->assertEquals(
+			$newObjectStorage,
+			$this->subject->getImages()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setImagesForFileReferenceSetsImages() {
+		$image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+		$objectStorageHoldingExactlyOneImages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$objectStorageHoldingExactlyOneImages->attach($image);
+		$this->subject->setImages($objectStorageHoldingExactlyOneImages);
+
+		$this->assertAttributeEquals(
+			$objectStorageHoldingExactlyOneImages,
+			'images',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function addImageToObjectStorageHoldingImages() {
+		$image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+		$imagesObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
+		$imagesObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($image));
+		$this->inject($this->subject, 'images', $imagesObjectStorageMock);
+
+		$this->subject->addImage($image);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeImageFromObjectStorageHoldingImages() {
+		$image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+		$imagesObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
+		$imagesObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($image));
+		$this->inject($this->subject, 'images', $imagesObjectStorageMock);
+
+		$this->subject->removeImage($image);
+
 	}
 
 	/**

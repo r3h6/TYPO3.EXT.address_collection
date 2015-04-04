@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-03T13:55:09Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:15:50Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="name.description">
@@ -65,6 +65,9 @@
 			</trans-unit>
 			<trans-unit id="image.description">
 				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="images.description">
+				<source>Images</source>
 			</trans-unit>
 			<trans-unit id="description.description">
 				<source>Description</source>
