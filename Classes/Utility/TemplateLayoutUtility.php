@@ -31,6 +31,62 @@ use MONOGON\AddressCollection\Configuration\ExtConf;
  */
 class TemplateLayoutUtility implements \TYPO3\CMS\Core\SingletonInterface {
 
+	public static function getAvailableTemplateLayouts ($pageUid){
+
+		$setup = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_addresscollection.'];
+		if (isset($setup['view.']['templateRootPaths.'])){
+			foreach ($setup['view.']['templateRootPaths.'] as $key => $value){
+				$additionalLayout = array($value, $value);
+				array_push($config['items'], $additionalLayout);
+			}
+		}
+	}
+
+	protected static function createFakeFrontEnd($pageUid = 0) {
+		if ($pageUid < 0) {
+			throw new \InvalidArgumentException('$pageUid must be >= 0.', 1334439467);
+		}
+
+		// $this->suppressFrontEndCookies();
+		// $this->discardFakeFrontEnd();
+
+		$GLOBALS['TT'] = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TimeTracker\\NullTimeTracker');
+
+		/** @var $frontEnd TypoScriptFrontendController */
+		$frontEnd = GeneralUtility::makeInstance(
+			'TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $GLOBALS['TYPO3_CONF_VARS'], $pageUid, 0
+		);
+		$GLOBALS['TSFE'] = $frontEnd;
+
+		// simulates a normal FE without any logged-in FE or BE user
+		$frontEnd->beUserLogin = FALSE;
+		$frontEnd->renderCharset = 'utf-8';
+		$frontEnd->workspacePreview = '';
+		$frontEnd->initFEuser();
+		$frontEnd->determineId();
+		$frontEnd->initTemplate();
+		$frontEnd->config = array();
+
+		$frontEnd->tmpl->getFileName_backPath = PATH_site;
+
+		//if (($pageUid > 0) && in_array('sys_template', $this->dirtySystemTables, TRUE)) {
+			$frontEnd->tmpl->runThroughTemplates($frontEnd->sys_page->getRootLine($pageUid), 0);
+			$frontEnd->tmpl->generateConfig();
+			$frontEnd->tmpl->loaded = 1;
+			$frontEnd->settingLanguage();
+			$frontEnd->settingLocale();
+		//}
+
+		$frontEnd->newCObj();
+
+
+		// $this->hasFakeFrontEnd = TRUE;
+		// $this->logoutFrontEndUser();
+
+		return $frontEnd->id;
+	}
+
+
 	/**
 	 * Get available template layouts for a certain page
 	 *
@@ -38,7 +94,7 @@ class TemplateLayoutUtility implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @param string $key
 	 * @return array
 	 */
-	public static function getAvailableTemplateLayouts($pageUid, $key) {
+	public static function _getAvailableTemplateLayouts($pageUid, $key) {
 		$templateLayouts = array();
 
 		// Check if the layouts are extended by ext_tables

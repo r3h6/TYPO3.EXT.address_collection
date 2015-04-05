@@ -61,6 +61,7 @@ class ext_update {
 	 */
 	protected $objectManager;
 
+	protected $flexFormService;
 
 	/**
 	 * Constructor
@@ -69,6 +70,7 @@ class ext_update {
 		$this->databaseConnection = $GLOBALS['TYPO3_DB'];
 		$this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 		$this->resourceFactory = $this->objectManager->get('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
+		$this->flexFormService = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Service\\FlexFormService');
 	}
 
 	/**
@@ -80,11 +82,16 @@ class ext_update {
 
 		$this->updateTtAddressExtbaseType();
 		$this->migrateImagesToFAL();
+		$this->migratePluginFlexForm();
 
 
 		return $this->generateOutput();
 	}
 
+	/**
+	 * [updateTtAddressExtbaseType description]
+	 * @return void [description]
+	 */
 	protected function updateTtAddressExtbaseType (){
 		$title = 'Set extbase type';
 		try {
@@ -92,7 +99,7 @@ class ext_update {
 			$this->checkDatabase();
 
 			// Update any record with no type set.
-			$result = $this->databaseConnection->exec_UPDATEquery('tt_address', "tx_extbase_type=''", array('tx_extbase_type' => 'Tx_AddressCollection_Address'));
+			$result = $this->databaseConnection->exec_UPDATEquery('tt_address', "tx_extbase_type='' AND deleted=0", array('tx_extbase_type' => 'Tx_AddressCollection_Address'));
 			if ($result === FALSE){
 				throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
 			}
@@ -105,6 +112,11 @@ class ext_update {
 		}
 	}
 
+	/**
+	 * [migrateImagesToFAL description]
+	 * @param  string $folderId [description]
+	 * @return void           [description]
+	 */
 	protected function migrateImagesToFAL ($folderId = '1:/user_upload/'){
 		$title = 'Migrate images to FAL';
 		try {
@@ -112,7 +124,7 @@ class ext_update {
 			$this->checkDatabase();
 
 			// Get records who are not migrated yet.
-			$result = $this->databaseConnection->exec_SELECTquery('uid, pid, image', 'tt_address', 'image!="" AND images=0');
+			$result = $this->databaseConnection->exec_SELECTquery('uid, pid, image', 'tt_address', 'image!="" AND images=0 AND deleted=0');
 			if ($result === FALSE){
 				throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
 			}
@@ -190,6 +202,84 @@ class ext_update {
 
 		} catch (AlreadyMigratedFALException $exception){
 			$this->messageArray[] = array(FlashMessage::OK, $title, $exception->getMessage());
+		} catch (Exception $exception){
+			$this->messageArray[] = array(FlashMessage::ERROR, $title, $exception->getMessage());
+		}
+	}
+
+	/**
+	 * [migratePluginFlexForm description]
+	 * @return void [description]
+	 */
+	protected function migratePluginFlexForm (){
+		$title = 'Migrate plugin flexform';
+		try {
+			// Get records who are not migrated yet.
+			$result = $this->databaseConnection->exec_SELECTquery('uid, pi_flexform', 'tt_content', "CType='list' AND list_type='tt_address_pi1' AND deleted=0");
+			if ($result === FALSE){
+				throw new Exception($this->databaseConnection->sql_error(), $this->databaseConnection->sql_errno());
+			}
+
+			// Data map.
+			$data = array();
+
+			// Loop through plugins
+			while ($plugin = $this->databaseConnection->sql_fetch_assoc($result)){
+
+				$pluginData = $this->flexFormService->convertFlexFormContentToArray($plugin['pi_flexform']);
+
+				// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($pluginData); exit;
+
+				$categoryConjunction = $pluginData['combination'] ? 'or': 'and';
+				$orderDirection = ($pluginData['sortOrder'] == 'ASC') ? 'asc': 'desc';
+
+				$orderBy = $pluginData['sortBy'];
+				if ($orderBy == 'singleSelection' || $orderBy == 'default'){
+					$orderBy = '';
+				}
+				//templateFile -
+				$flexFormData = array(
+					'data' => array(
+						'sLIST' => array(
+							'lDEF' => array(
+								'settings.flexform.list.demand.includeAddresses' => array(
+									'vDEF' => $pluginData['singleRecords'],
+								),
+								'settings.flexform.list.demand.orderDirection' => array(
+									'vDEF' => $orderDirection,
+								),
+								'settings.flexform.list.demand.orderBy' => array(
+									'vDEF' => $orderBy,
+								),
+								'settings.flexform.list.demand.categoryConjunction' => array(
+									'vDEF' => $categoryConjunction,
+								),
+								'settings.flexform.list.demand.addressGroups' => array(
+									'vDEF' => $pluginData['groupSelection'],
+								),
+							),
+						),
+					),
+				);
+
+				$data['tt_content'][$plugin['uid']] = array(
+					'list_type' => 'addresscollection_pi1',
+					'pi_flexform' => $flexFormData,
+					'recursive' => $pluginData['recursive'],
+					'pages' => $pluginData['pages'],
+				);
+			}
+
+			// Process data map.
+			$tce = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\DataHandling\\DataHandler');
+			$tce->stripslashes_values = 0;
+			$tce->start($data, array());
+			$tce->process_datamap();
+
+			// Message.
+			$this->messageArray[] = array(FlashMessage::OK, $title, sprintf('Migrated %d record(s)!', count($data['tt_content'])));
+
+			// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($data); exit;
 		} catch (Exception $exception){
 			$this->messageArray[] = array(FlashMessage::ERROR, $title, $exception->getMessage());
 		}

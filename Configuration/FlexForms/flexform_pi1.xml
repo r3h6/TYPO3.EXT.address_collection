@@ -168,14 +168,11 @@
 							<label>locallang_be.xlf:settings.flexform.list.demand.orderBy</label>
 							<config>
 								<type>select</type>
+								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\SortFields->getSortFields</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
 										<numIndex index="0"></numIndex>
 										<numIndex index="1"></numIndex>
-									</numIndex>
-									<numIndex index="1">
-										<numIndex index="0">locallang_be.xlf:settings.flexform.list.demand.orderBy.name</numIndex>
-										<numIndex index="1">name</numIndex>
 									</numIndex>
 								</items>
 							</config>
