@@ -1,6 +1,11 @@
 {namespace mgn=MONOGON\AddressCollection\ViewHelpers}
-<f:debug title="opt title">{address}</f:debug>
+
 <div class="vcard">
+
+  <f:if condition="{address.image}">
+    <f:image class="photo" src="uploads/pics/{address.image}" maxWidth="100" maxHeight="100" />
+  </f:if>
+
   <span class="fn">{address.name}</span>
 
   <f:if condition="1">
@@ -24,9 +29,7 @@
     <div class="org">{address.company}</div>
   </f:if>
 
-  <f:if condition="{address.image}">
-    <f:image class="photo" src="uploads/pics/{address.image}" maxWidth="100" maxHeight="100" />
-  </f:if>
+
 
   <f:if condition="{address.www}">
     <f:link.external class="url" uri="{address.www}" target="_blank"></f:link.external>

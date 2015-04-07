@@ -31,7 +31,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * SortFields
  */
-class SortFields {
+class SortFields implements \TYPO3\CMS\Core\SingletonInterface {
 
 	public function getSortFields (array &$config){
 

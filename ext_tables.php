@@ -139,6 +139,50 @@ $tmp_address_collection_columns = array(
 			),
 		),
 	),
+	'skype' => array (
+		'exclude' => 1,
+		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.skype',
+		'config'  => array (
+			'type' => 'input',
+			'size' => '20',
+			'eval' => 'trim',
+			'max'  => '50',
+			'placeholder' => 'example'
+		)
+	),
+	'twitter' => array (
+		'exclude' => 1,
+		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.twitter',
+		'config'  => array (
+			'type' => 'input',
+			'size' => '20',
+			'eval' => 'trim',
+			'max'  => '50',
+			'placeholder' => '@example'
+		)
+	),
+	'facebook' => array (
+		'exclude' => 1,
+		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.facebook',
+		'config'  => array (
+			'type' => 'input',
+			'size' => '20',
+			'eval' => 'trim',
+			'max'  => '50',
+			'placeholder' => '/example'
+		)
+	),
+	'linkedin' => array (
+		'exclude' => 1,
+		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.linkedin',
+		'config'  => array (
+			'type' => 'input',
+			'size' => '20',
+			'eval' => 'trim',
+			'max'  => '50',
+			'placeholder' => 'example'
+		)
+	),
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_address',$tmp_address_collection_columns);
@@ -146,6 +190,13 @@ $tmp_address_collection_columns = array(
 
 $GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
 
+$GLOBALS['TCA']['tt_address']['palettes']['social'] = array(
+			'showitem' => 'skype, --linebreak--,
+							twitter, --linebreak--,
+							facebook, --linebreak--,
+							linkedin',
+			'canNotCollapse' => 1
+		);
 
 //$TCA['tt_address']['types']['1']['showitem'] =  'hidden;;;;1-1-1, tx_extbase_type, gender;;;;3-3-3, name, first_name, middle_name, last_name;;2;;, birthday, address;;6, zip, city;;3, email;;5, phone;;4, image;;;;4-4-4, description, addressgroup;;;;1-1-1, --div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, categories';
 

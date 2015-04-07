@@ -165,14 +165,11 @@
 			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_CompanyAddress">
 				<source>Address Collection (Extbase) CompanyAddress</source>
 			</trans-unit>
-			<trans-unit id="template_layouts.list.search">
-				<source>Search</source>
+			<trans-unit id="template_layouts.list.search_list">
+				<source>Search list</source>
 			</trans-unit>
-			<trans-unit id="template_layouts.list.table">
-				<source>Table</source>
-			</trans-unit>
-			<trans-unit id="template_layouts.list.vcard">
-				<source>Vcard</source>
+			<trans-unit id="template_layouts.list.character_list">
+				<source>Character list</source>
 			</trans-unit>
 		</body>
 	</file>

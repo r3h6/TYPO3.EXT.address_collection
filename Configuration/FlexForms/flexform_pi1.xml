@@ -39,6 +39,21 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
+					<settings.flexform.list.theme>
+						<TCEforms>
+						<label>locallang_be.xlf:settings.flexform.list.theme</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\Theme->getThemes</itemsProcFunc>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.flexform.list.theme>
 					<settings.flexform.list.template>
 						<TCEforms>
 						<label>locallang_be.xlf:settings.flexform.list.template</label>
@@ -47,8 +62,8 @@
 								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getListActionTemplates</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
-										<numIndex index="0"></numIndex>
-										<numIndex index="1"></numIndex>
+										<numIndex index="0">locallang_be.xlf:settings.flexform.template.default</numIndex>
+										<numIndex index="1">Default</numIndex>
 									</numIndex>
 								</items>
 							</config>
@@ -218,8 +233,8 @@
 								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getShowActionTemplates</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
-										<numIndex index="0"></numIndex>
-										<numIndex index="1"></numIndex>
+										<numIndex index="0">locallang_be.xlf:settings.flexform.template.default</numIndex>
+										<numIndex index="1">Default</numIndex>
 									</numIndex>
 								</items>
 							</config>

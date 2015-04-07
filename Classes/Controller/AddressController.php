@@ -3,6 +3,8 @@ namespace MONOGON\AddressCollection\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand;
+use MONOGON\AddressCollection\Utility\ThemeUtility;
+
 /***************************************************************
  *
  *  Copyright notice
@@ -82,15 +84,12 @@ class AddressController extends ActionController {
 	public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view) {
 		$view->assign('data', $this->configurationManager->getContentObject()->data);
 		$view->assign('setup', $this->setup);
-
-
-		$view->setTemplateRootPaths(array(
-			'yoo' => 'foo/bar',
-		));
-
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($view);
 	}
 
+	/**
+	 * [initializeListAction description]
+	 * @return void [description]
+	 */
 	protected function initializeListAction() {
 		$demandPropertyMappingConfiguration = $this->arguments->getArgument('demand')->getPropertyMappingConfiguration();
 		$demandPropertyMappingConfiguration->allowProperties('character');
@@ -117,8 +116,14 @@ class AddressController extends ActionController {
 		$this->view->assign('addresses', $addresses);
 		// Template layout
 		$this->view->assign('templateLayout', $this->setup->get('list.template'));
+
+		ThemeUtility::setTheme($this->view, $this->setup->get('list.theme'));
 	}
 
+	/**
+	 * [initializeShowAction description]
+	 * @return void [description]
+	 */
 	public function initializeShowAction() {
 		if (!$this->request->hasArgument('address')) {
 			$this->request->setArgument('address', $this->setup->get('show.demand.includeAddresses'));
@@ -133,6 +138,8 @@ class AddressController extends ActionController {
 	 */
 	public function showAction(\MONOGON\AddressCollection\Domain\Model\Address $address) {
 		$this->view->assign('address', $address);
+
+		ThemeUtility::setTheme($this->view, $this->setup->get('show.theme'));
 	}
 
 }

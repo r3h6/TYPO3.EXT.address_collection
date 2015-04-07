@@ -25,29 +25,19 @@ namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \MONOGON\AddressCollection\Utility\TemplateLayoutUtility;
-use \MONOGON\AddressCollection\Configuration\ExtConf;
+
+use \MONOGON\AddressCollection\Utility\ThemeUtility;
 
 /**
- * TemplateLayout
+ * Theme
  */
-class TemplateLayout implements \TYPO3\CMS\Core\SingletonInterface {
+class Theme implements \TYPO3\CMS\Core\SingletonInterface {
 
-	public function getListActionTemplates (array &$config){
-		$this->getTemplates($config, 'list');
-	}
-
-	public function getShowActionTemplates (array &$config){
-		$this->getTemplates($config, 'show');
-	}
-
-	protected function getTemplates (array &$config, $key){
-		$templateLayouts = TemplateLayoutUtility::getAvailableTemplateLayouts($config['row']['pid'], $key);
-		foreach ($templateLayouts as $layout) {
-			$additionalLayout = array($GLOBALS['LANG']->sL($layout[0], TRUE), $layout[1]);
-			array_push($config['items'], $additionalLayout);
+	public function getThemes (array &$config){
+		$themes = ThemeUtility::getAvailableThemes($config['row']['pid']);
+		foreach ($themes as $theme) {
+			$additionalTheme = array($GLOBALS['LANG']->sL($theme[0], TRUE), $theme[1]);
+			array_push($config['items'], $additionalTheme);
 		}
 	}
-
 }

@@ -32,13 +32,14 @@ use MONOGON\AddressCollection\Configuration\ExtConf;
 /**
  * RecordType
  */
-class RecordType {
+class RecordType implements \TYPO3\CMS\Core\SingletonInterface {
 
 	public function getByTca (array &$config){
 		$items = $GLOBALS['TCA']['tt_address']['columns'][$GLOBALS['TCA']['tt_address']['ctrl']['type']]['config']['items'];
-
-		foreach ($items as $item){
-			$config['items'][] = array(LocalizationUtility::translate($item[0], ExtConf::EXT_KEY), $item[1]);
+		if (is_array($items)){
+			foreach ($items as $item){
+				$config['items'][] = array(LocalizationUtility::translate($item[0], ExtConf::EXT_KEY), $item[1]);
+			}
 		}
 	}
 }
