@@ -334,6 +334,46 @@
                             "propertyName": "latitude",
                             "propertyType": "String",
                             "uid": "1030580831860"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Skype",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "skype",
+                            "propertyType": "String",
+                            "uid": "117741077480"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Twitter",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "twitter",
+                            "propertyType": "String",
+                            "uid": "68071815659"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Facebook",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "facebook",
+                            "propertyType": "String",
+                            "uid": "299743537527"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "LinkedIn",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "linkedIn",
+                            "propertyType": "String",
+                            "uid": "582650435214"
                         }
                     ]
                 },
@@ -786,7 +826,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-04-04 02:15",
+        "last_modified": "2015-04-07 11:40",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

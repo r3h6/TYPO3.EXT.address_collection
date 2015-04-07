@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-04T14:15:50Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-07T23:40:14Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="name.description">
@@ -92,6 +92,18 @@
 			</trans-unit>
 			<trans-unit id="latitude.description">
 				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="skype.description">
+				<source>Skype</source>
+			</trans-unit>
+			<trans-unit id="twitter.description">
+				<source>Twitter</source>
+			</trans-unit>
+			<trans-unit id="facebook.description">
+				<source>Facebook</source>
+			</trans-unit>
+			<trans-unit id="linked_in.description">
+				<source>LinkedIn</source>
 			</trans-unit>
 			<trans-unit id="user.description">
 				<source>User</source>

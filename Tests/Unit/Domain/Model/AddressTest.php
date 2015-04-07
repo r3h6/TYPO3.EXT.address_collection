@@ -771,6 +771,98 @@ class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
+	public function getSkypeReturnsInitialValueForString() {
+		$this->assertSame(
+			'',
+			$this->subject->getSkype()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setSkypeForStringSetsSkype() {
+		$this->subject->setSkype('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'skype',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getTwitterReturnsInitialValueForString() {
+		$this->assertSame(
+			'',
+			$this->subject->getTwitter()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setTwitterForStringSetsTwitter() {
+		$this->subject->setTwitter('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'twitter',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getFacebookReturnsInitialValueForString() {
+		$this->assertSame(
+			'',
+			$this->subject->getFacebook()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setFacebookForStringSetsFacebook() {
+		$this->subject->setFacebook('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'facebook',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getLinkedInReturnsInitialValueForString() {
+		$this->assertSame(
+			'',
+			$this->subject->getLinkedIn()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setLinkedInForStringSetsLinkedIn() {
+		$this->subject->setLinkedIn('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'linkedIn',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
 	public function getUserReturnsInitialValueForUser() {
 		$this->assertEquals(
 			NULL,

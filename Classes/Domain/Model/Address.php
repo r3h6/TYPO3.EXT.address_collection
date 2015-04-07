@@ -43,6 +43,34 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $recordType = '';
 
 	/**
+	 * Skype
+	 *
+	 * @var string
+	 */
+	protected $skype = '';
+
+	/**
+	 * Twitter
+	 *
+	 * @var string
+	 */
+	protected $twitter = '';
+
+	/**
+	 * Facebook
+	 *
+	 * @var string
+	 */
+	protected $facebook = '';
+
+	/**
+	 * LinkedIn
+	 *
+	 * @var string
+	 */
+	protected $linkedIn = '';
+
+	/**
 	 * Name
 	 *
 	 * @var string
@@ -268,34 +296,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @lazy
 	 */
 	protected $addressGroups = NULL;
-
-	/**
-	 * Skype
-	 *
-	 * @var string
-	 */
-	protected $skype;
-
-	/**
-	 * Twitter
-	 *
-	 * @var string
-	 */
-	protected $twitter;
-
-	/**
-	 * Facebook
-	 *
-	 * @var string
-	 */
-	protected $facebook;
-
-	/**
-	 * LinkedIn
-	 *
-	 * @var string
-	 */
-	protected $linkedIn;
 
 	/**
 	 * Returns the  recordType
@@ -986,11 +986,11 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->images = $images;
 	}
 
-		/**
+	/**
 	 * sets the Skype attribute
 	 *
-	 * @param	string	 $skype
-	 * @return	void
+	 * @param 	string	 $skype
+	 * @return 	void
 	 */
 	public function setSkype($skype) {
 		$this->skype = $skype;
@@ -999,7 +999,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * returns the Skype attribute
 	 *
-	 * @return	string
+	 * @return 	string
 	 */
 	public function getSkype() {
 		return $this->skype;
@@ -1008,21 +1008,20 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * sets the twitter attribute
 	 *
-	 * @param	string	 $twitter
-	 * @return	void
+	 * @param 	string	 $twitter
+	 * @return 	void
 	 */
 	public function setTwitter($twitter) {
 		if (substr($twitter, 0, 1) !== '@') {
 			throw new \InvalidArgumentException('twitter name must start with @', 1357530444);
 		}
-
 		$this->twitter = $twitter;
 	}
 
 	/**
 	 * returns the twitter attribute
 	 *
-	 * @return	string
+	 * @return 	string
 	 */
 	public function getTwitter() {
 		return $this->twitter;
@@ -1031,21 +1030,20 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * sets the Facebook attribute
 	 *
-	 * @param	string	 $facebook
-	 * @return	void
+	 * @param 	string	 $facebook
+	 * @return 	void
 	 */
 	public function setFacebook($facebook) {
 		if (substr($facebook, 0, 1) !== '/') {
 			throw new \InvalidArgumentException('Facebook name must start with /', 1357530471);
 		}
-
 		$this->facebook = $facebook;
 	}
 
 	/**
 	 * returns the Facebook attribute
 	 *
-	 * @return	string
+	 * @return 	string
 	 */
 	public function getFacebook() {
 		return $this->facebook;
@@ -1054,8 +1052,8 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * sets the LinkedIn attribute
 	 *
-	 * @param	string	 $linkedIn
-	 * @return	void
+	 * @param 	string	 $linkedIn
+	 * @return 	void
 	 */
 	public function setLinkedIn($linkedIn) {
 		$this->linkedIn = $linkedIn;
@@ -1064,7 +1062,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * returns the LinkedIn attribute
 	 *
-	 * @return	string
+	 * @return 	string
 	 */
 	public function getLinkedIn() {
 		return $this->linkedIn;

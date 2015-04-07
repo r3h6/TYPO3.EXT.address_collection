@@ -141,7 +141,7 @@ $tmp_address_collection_columns = array(
 	),
 	'skype' => array (
 		'exclude' => 1,
-		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.skype',
+		'label'   => 'LLL:EXT:address_collection/locallang_tca.xml:tx_addresscollection_domain_model_address.skype',
 		'config'  => array (
 			'type' => 'input',
 			'size' => '20',
@@ -152,7 +152,7 @@ $tmp_address_collection_columns = array(
 	),
 	'twitter' => array (
 		'exclude' => 1,
-		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.twitter',
+		'label'   => 'LLL:EXT:address_collection/locallang_tca.xml:tx_addresscollection_domain_model_address.twitter',
 		'config'  => array (
 			'type' => 'input',
 			'size' => '20',
@@ -163,7 +163,7 @@ $tmp_address_collection_columns = array(
 	),
 	'facebook' => array (
 		'exclude' => 1,
-		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.facebook',
+		'label'   => 'LLL:EXT:address_collection/locallang_tca.xml:tx_addresscollection_domain_model_address.facebook',
 		'config'  => array (
 			'type' => 'input',
 			'size' => '20',
@@ -172,9 +172,9 @@ $tmp_address_collection_columns = array(
 			'placeholder' => '/example'
 		)
 	),
-	'linkedin' => array (
+	'linked_in' => array (
 		'exclude' => 1,
-		'label'   => 'LLL:EXT:tt_address/locallang_tca.xml:tt_address.linkedin',
+		'label'   => 'LLL:EXT:address_collection/locallang_tca.xml:tx_addresscollection_domain_model_address.linked_in',
 		'config'  => array (
 			'type' => 'input',
 			'size' => '20',

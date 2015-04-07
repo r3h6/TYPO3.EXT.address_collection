@@ -4,7 +4,6 @@ namespace MONOGON\AddressCollection\Controller;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand;
 use MONOGON\AddressCollection\Utility\ThemeUtility;
-
 /***************************************************************
  *
  *  Copyright notice
@@ -88,6 +87,7 @@ class AddressController extends ActionController {
 
 	/**
 	 * [initializeListAction description]
+	 *
 	 * @return void [description]
 	 */
 	protected function initializeListAction() {
@@ -95,7 +95,7 @@ class AddressController extends ActionController {
 		$demandPropertyMappingConfiguration->allowProperties('character');
 		$demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
 		if ($this->request->hasArgument('demand')) {
-
+			
 		}
 	}
 
@@ -116,12 +116,12 @@ class AddressController extends ActionController {
 		$this->view->assign('addresses', $addresses);
 		// Template layout
 		$this->view->assign('templateLayout', $this->setup->get('list.template'));
-
 		ThemeUtility::setTheme($this->view, $this->setup->get('list.theme'));
 	}
 
 	/**
 	 * [initializeShowAction description]
+	 *
 	 * @return void [description]
 	 */
 	public function initializeShowAction() {
@@ -138,7 +138,6 @@ class AddressController extends ActionController {
 	 */
 	public function showAction(\MONOGON\AddressCollection\Domain\Model\Address $address) {
 		$this->view->assign('address', $address);
-
 		ThemeUtility::setTheme($this->view, $this->setup->get('show.theme'));
 	}
 

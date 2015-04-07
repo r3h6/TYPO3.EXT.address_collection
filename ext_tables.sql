@@ -1,4 +1,3 @@
-
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 
 
@@ -56,7 +55,7 @@ CREATE TABLE tt_address (
 	skype varchar(50) DEFAULT '' NOT NULL,
 	twitter varchar(50) DEFAULT '' NOT NULL,
 	facebook varchar(50) DEFAULT '' NOT NULL,
-	linkedin varchar(50) DEFAULT '' NOT NULL,
+	linked_in varchar(50) DEFAULT '' NOT NULL,
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 );
 

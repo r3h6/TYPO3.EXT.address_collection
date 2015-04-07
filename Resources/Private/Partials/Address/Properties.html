@@ -1,0 +1,277 @@
+
+<table class="tx-address-collection" >
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.name" />
+		</td>
+		<td>
+		{address.name}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.first_name" />
+		</td>
+		<td>
+		{address.firstName}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.middle_name" />
+		</td>
+		<td>
+		{address.middleName}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.last_name" />
+		</td>
+		<td>
+		{address.lastName}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.gender" />
+		</td>
+		<td>
+		{address.gender}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.birthday" />
+		</td>
+		<td>
+		{address.birthday -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.title" />
+		</td>
+		<td>
+		{address.title}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.email" />
+		</td>
+		<td>
+		{address.email}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.phone" />
+		</td>
+		<td>
+		{address.phone}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.mobile" />
+		</td>
+		<td>
+		{address.mobile}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.fax" />
+		</td>
+		<td>
+		{address.fax}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.www" />
+		</td>
+		<td>
+		{address.www}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.company" />
+		</td>
+		<td>
+		{address.company}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.address" />
+		</td>
+		<td>
+		{address.address}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.building" />
+		</td>
+		<td>
+		{address.building}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.room" />
+		</td>
+		<td>
+		{address.room}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.zip" />
+		</td>
+		<td>
+		{address.zip}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.city" />
+		</td>
+		<td>
+		{address.city}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.region" />
+		</td>
+		<td>
+		{address.region}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.country" />
+		</td>
+		<td>
+		{address.country}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.image" />
+		</td>
+		<td>
+		{address.image}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.images" />
+		</td>
+		<td>
+				<f:for each="{address.images}" as="image" >
+					<f:image src="{image.originalResource.publicUrl}" width="200"/>
+				</f:for>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.description" />
+		</td>
+		<td>
+		{address.description}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.position" />
+		</td>
+		<td>
+		{address.position}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.department" />
+		</td>
+		<td>
+		{address.department}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.qualifications" />
+		</td>
+		<td>
+		{address.qualifications}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.nick_name" />
+		</td>
+		<td>
+		{address.nickName}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.post_office_box" />
+		</td>
+		<td>
+		{address.postOfficeBox}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.longitude" />
+		</td>
+		<td>
+		{address.longitude}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.latitude" />
+		</td>
+		<td>
+		{address.latitude}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.skype" />
+		</td>
+		<td>
+		{address.skype}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.twitter" />
+		</td>
+		<td>
+		{address.twitter}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.facebook" />
+		</td>
+		<td>
+		{address.facebook}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_addresscollection_domain_model_address.linked_in" />
+		</td>
+		<td>
+		{address.linkedIn}
+		</td>
+	</tr>
+</table>
