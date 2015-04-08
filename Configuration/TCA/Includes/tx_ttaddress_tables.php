@@ -1,5 +1,4 @@
 <?php
-//if (!isset($_EXTKEY)) $_EXTKEY = 'address_collection';
 
 $TCA['tt_address'] = array (
 	'ctrl' => array (

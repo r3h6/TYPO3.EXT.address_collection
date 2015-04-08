@@ -282,18 +282,226 @@ $GLOBALS['TCA']['tt_address'] = array (
 				// 'maxitems'      => 50,
 				// 'MM'            => 'tt_address_group_mm',
 			)
-		)
+		),
+
+		// {{{ Extended fields
+
+		'images' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.images',
+			'config' =>
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+				'images',
+				array('maxitems' => 6),
+				$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+			),
+
+		),
+		'position' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.position',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'department' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.department',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'qualifications' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.qualifications',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'nick_name' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.nick_name',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'post_office_box' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.post_office_box',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'longitude' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.longitude',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'latitude' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.latitude',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'user' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.user',
+			'config' => array(
+				'type' => 'group',
+				'internal_type' => 'db',
+				'allowed' => 'fe_users',
+				'size' => '1',
+				'maxitems' => '1',
+				'minitems' => '0',
+				'show_thumbs' => '1',
+				'wizards' => array(
+					'suggest' => array(
+						 'type' => 'suggest',
+					),
+				),
+			),
+		),
+		'skype' => array (
+			'exclude' => 1,
+			'label'   => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.skype',
+			'config'  => array (
+				'type' => 'input',
+				'size' => '20',
+				'eval' => 'trim',
+				'max'  => '50',
+				'placeholder' => 'example'
+			)
+		),
+		'twitter' => array (
+			'exclude' => 1,
+			'label'   => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.twitter',
+			'config'  => array (
+				'type' => 'input',
+				'size' => '20',
+				'eval' => 'trim',
+				'max'  => '50',
+				'placeholder' => '@example'
+			)
+		),
+		'facebook' => array (
+			'exclude' => 1,
+			'label'   => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.facebook',
+			'config'  => array (
+				'type' => 'input',
+				'size' => '20',
+				'eval' => 'trim',
+				'max'  => '50',
+				'placeholder' => '/example'
+			)
+		),
+		'linked_in' => array (
+			'exclude' => 1,
+			'label'   => 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tx_addresscollection_domain_model_address.linked_in',
+			'config'  => array (
+				'type' => 'input',
+				'size' => '20',
+				'eval' => 'trim',
+				'max'  => '50',
+				'placeholder' => 'example'
+			)
+		),
+
+		// }}}
 	),
+	// 'types' => array (
+	// 	'1' => array('showitem' => 'hidden;;;;1-1-1, gender;;;;3-3-3, name;;2, birthday, address;;6, zip, city;;3, email;;5, phone;;4, image;;;;4-4-4, description, addressgroup;;;;1-1-1')
+	// ),
+	// 'palettes' => array (
+	// 	'2' => array('showitem' => 'title, company'),
+	// 	'3' => array('showitem' => 'country, region'),
+	// 	'4' => array('showitem' => 'mobile, fax'),
+	// 	'5' => array('showitem' => 'www'),
+	// 	'6' => array('showitem' => 'building, room')
+	// )
 	'types' => array (
-		'1' => array('showitem' => 'hidden;;;;1-1-1, gender;;;;3-3-3, name;;2, birthday, address;;6, zip, city;;3, email;;5, phone;;4, image;;;;4-4-4, description, addressgroup;;;;1-1-1')
+		'1' => array('showitem' => '
+			--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.name;name, description,
+			--div--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_tab.contact,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.address;address_usa,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.building;building,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.organization;organization,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.contact;contact,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.social;social,
+			--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.images,
+				images,
+			--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,
+				hidden,
+			--div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category,
+				addressgroup, user
+			'
+		),
 	),
 	'palettes' => array (
-		'2' => array('showitem' => 'title, company'),
-		'3' => array('showitem' => 'country, region'),
-		'4' => array('showitem' => 'mobile, fax'),
-		'5' => array('showitem' => 'www'),
-		'6' => array('showitem' => 'building, room')
-	)
+		'name' => array(
+			'showitem' => 'name, --linebreak--,
+							gender, title, --linebreak--,
+							first_name, middle_name, --linebreak--,
+							last_name',
+			'canNotCollapse' => 1
+		),
+
+		'organization' => array(
+			'showitem' => 'company, position',
+			'canNotCollapse' => 1
+		),
+
+		'address_usa' => array(
+			'showitem' => 'address, --linebreak--,
+							city, zip, region, --linebreak--,
+							country',
+			'canNotCollapse' => 1
+		),
+
+		'address_germany' => array(
+			'showitem' => 'address, --linebreak--,
+							zip, city, --linebreak--,
+							country, region',
+			'canNotCollapse' => 1
+		),
+
+		'building' => array(
+			'showitem' => 'building, room',
+			'canNotCollapse' => 1
+		),
+
+		'contact' => array(
+			'showitem' => 'email, --linebreak--,
+							phone, fax, --linebreak--,
+							mobile, --linebreak--,
+							www',
+			'canNotCollapse' => 1
+		),
+
+		'social' => array(
+			'showitem' => 'skype, --linebreak--,
+							twitter, --linebreak--,
+							facebook, --linebreak--,
+							linked_in',
+			'canNotCollapse' => 1
+		),
+	),
 );
 
 

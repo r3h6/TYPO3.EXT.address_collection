@@ -183,6 +183,27 @@
 			<trans-unit id="template_layouts.list.character_list">
 				<source>Character list</source>
 			</trans-unit>
+			<trans-unit id="tt_address_palette.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tt_address_tab.contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tt_address_palette.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tt_address_palette.building">
+				<source>Building</source>
+			</trans-unit>
+			<trans-unit id="tt_address_palette.organization">
+				<source>Organization</source>
+			</trans-unit>
+			<trans-unit id="tt_address_palette.contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tt_address_palette.social">
+				<source>Social</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
