@@ -1,4 +1,5 @@
 <?php
+//if (!isset($_EXTKEY)) $_EXTKEY = 'address_collection';
 
 $TCA['tt_address'] = array (
 	'ctrl' => array (
@@ -13,7 +14,7 @@ $TCA['tt_address'] = array (
 		'enablecolumns'     => array (
 			'disabled' => 'hidden'
 		),
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Configuration/TCA/TtAddress.php',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Configuration/TCA/tt_address.php',
 		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY).'Resources/Public/Icons/tt_address.gif',
         'searchFields'		=> 'name, first_name, middle_name, last_name, email'
 	),
@@ -39,7 +40,7 @@ $TCA['tt_address_group'] = array(
 			'disabled' => 'hidden',
 			'fe_group' => 'fe_group',
 		),
-		'dynamicConfigFile'        => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Configuration/TCA/TtAddress.php',
+		'dynamicConfigFile'        => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY).'Configuration/TCA/tt_address_group.php',
 		'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY).'Resources/Public/Icons/tt_address_group.gif',
 	),
 	'feInterface' => array(
