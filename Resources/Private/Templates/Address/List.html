@@ -5,7 +5,60 @@
   <f:flashMessages renderMode="div" />
   <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{setup.list.wizard.paginate}">
     <f:for each="{paginatedAddresses}" as="address">
-      <f:render partial="Address/Vcard" arguments="{address: address}" />
+      <f:switch expression="{address.recordType}">
+        <f:case value="Tx_AddressCollection_CompanyAddress"><f:render partial="CompanyAddress/Vcard" arguments="{address: address}" /></f:case>
+        <f:case default="TRUE"><f:render partial="Address/Vcard" arguments="{address: address}" /></f:case>
+      </f:switch>
     </f:for>
   </f:widget.paginate>
 </f:section>
+
+<div class="vcard">
+  <img src="uploads/pics/image_02.jpg" width="123" height="123" class="photo" style="float:left; margin-right:4px" alt="Photo of Allegra Maria Blanchard" title="Allegra Maria Blanchard" border="0">
+  <a href="http://www.google.ch" target="_top" class="url">
+    <span class="fn n">
+      <span class="given-name">
+        Allegra
+      </span>
+
+      <span class="additional-name">
+        Maria
+      </span>
+
+      <span class="family-name">
+        Blanchard
+      </span>
+    </span>
+  </a>
+  <div class="org">
+    Organization
+  </div>
+  <a href="mailto:pulvinar@sollicitudincommodoipsum.edu" class="email">
+    pulvinar@sollicitudincommodoipsum.edu
+  </a>
+
+  <div class="adr">
+    <div class="street-address">
+      Ap #124-9247 Enim Avenue
+    </div>
+    <span class="locality">
+      Spokane Valley
+    </span>
+    ,
+    <span class="region">
+      California
+    </span>
+    ,
+    <span class="postal-code">
+      45814
+    </span>
+
+    <span class="country-name">
+      Somalia
+    </span>
+  </div>
+
+  <div class="tel phone">
+    1 37 571 7996-5703
+  </div>
+</div>

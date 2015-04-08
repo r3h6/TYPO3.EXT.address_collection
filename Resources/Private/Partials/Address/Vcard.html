@@ -2,9 +2,7 @@
 
 <div class="vcard">
 
-  <f:if condition="{address.image}">
-    <f:image class="photo" src="uploads/pics/{address.image}" maxWidth="100" maxHeight="100" />
-  </f:if>
+  <f:render partial="Address/Vcard/Photo" arguments="{address: address}" />
 
   <span class="fn">{address.name}</span>
 
@@ -36,7 +34,7 @@
   </f:if>
 
   <f:if condition="{address.email}">
-    <f:link.email class="url fn" email="{address.email}" />
+    <f:link.email class="email" email="{address.email}" />
   </f:if>
 
   <f:if condition="{address.address, address.city, address.zip, address.region, address.country} -> mgn:array.hasOneValue()">
