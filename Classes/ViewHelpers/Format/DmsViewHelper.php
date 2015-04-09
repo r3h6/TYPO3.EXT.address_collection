@@ -26,22 +26,33 @@ namespace MONOGON\AddressCollection\ViewHelpers\Format;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * SnakeCaseViewHelper
+ * DmsViewHelper
  */
-class SnakeCaseViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class DmsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
-	 * [render description]
-	 * @param  string $string ExAmpLe
-	 * @return string ex_amp_le
+	 * http://stackoverflow.com/a/27516822
+	 *
+	 * @param  float  $value     [description]
+	 * @param  string  $a         [description]
+	 * @param  string  $b         [description]
+	 * @param  string  $format    [description]
+	 * @param  integer $precision [description]
+	 * @return string             [description]
 	 */
-	public function render ($string = NULL){
-		if ($string === NULL){
-			$string = $this->renderChildren();
+	public function render ($value, $a = '-', $b = '', $format = '%s%s° %s %s', $precision = 3){
+		if ($value === NULL){
+			$value = (float) $this->renderChildren();
 		}
-		return GeneralUtility::camelCaseToLowerCaseUnderscored($string);
+
+		$dms = new stdObject();
+		$dms->notation = ($value < 0) ? $a: $b;
+		$dms->degrees = floor(abs($value));
+		$dms->decimal = abs($value) - $dms->degrees;
+		$dms->minutes = round($dms->decimal * 60, $precision);
+
+		return sprintf($format, $dms->notation, $dms->degrees, $dms->decimal, $dms->minutes);
 	}
 }

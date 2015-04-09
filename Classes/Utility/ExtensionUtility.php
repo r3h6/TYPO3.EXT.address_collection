@@ -33,7 +33,7 @@ use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 /**
  * ExtensionUtility
  */
-class ExtensionUtility implements \TYPO3\CMS\Core\SingletonInterface {
+class ExtensionUtility {
 
 	/**
 	 * [pluginSignature description]

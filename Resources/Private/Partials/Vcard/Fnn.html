@@ -1,0 +1,17 @@
+<span class="fn n">
+  <f:if condition="{address.gender}">
+    <span class="honorific-prefix"><f:translate key="tx_addresscollection_domain_model_address.gender.{address.gender}" /></span>
+  </f:if>
+  <f:if condition="{address.firstName}">
+    <span class="given-name">{address.firstName}</span>
+  </f:if>
+  <f:if condition="{address.middleName}">
+    <span class="additional-name">{address.middleName}</span>
+  </f:if>
+  <f:if condition="{address.lastName}">
+    <span class="family-name">{address.lastName}</span>
+  </f:if>
+  <f:if condition="{address.title}">
+    <span class="honorific-suffix">{address.title}</span>
+  </f:if>
+</span>

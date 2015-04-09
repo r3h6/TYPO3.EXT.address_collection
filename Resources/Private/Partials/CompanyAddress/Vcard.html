@@ -1,1 +1,20 @@
-comp addr.
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+
+<div class="vcard">
+
+  <f:if condition="{address.www}">
+    <f:then>
+      <f:link.external class="url" uri="{address.www}" target="_blank">
+        <f:render partial="Vcard/Org" arguments="{address: address}" />
+      </f:link.external>
+    </f:then>
+    <f:else>
+      <f:render partial="Vcard/Org" arguments="{address: address}" />
+    </f:else>
+  </f:if>
+
+  <f:render partial="Vcard/Adr" arguments="{address: address}" />
+
+  <f:render partial="Vcard/Tel" arguments="{address: address}" />
+
+</div>

@@ -1,0 +1,7 @@
+<f:if condition="{address.addressgroup}">
+  <div class="category">
+  <f:for each="{address.addressgroup}" as="group" iteration="i">
+    {group.title}{f:if(condition: '{i.isLast} == 0', then: ', ')}
+  </f:for>
+  </div>
+</f:if>

@@ -1,0 +1,9 @@
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+<f:if condition="{address.latitude}">
+  <f:if condition="{address.longitude}">
+    <span class="geo">
+       <abbr class="latitude" title="{address.latitude}"><mgn:format.dms>{address.latitude}</mgn:format.dms></abbr>
+       <abbr class="longitude" title="{address.longitude}"><mgn:format.dms>{address.longitude}</mgn:format.dms></abbr>
+    </span>
+  </f:if>
+</f:if>

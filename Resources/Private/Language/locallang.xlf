@@ -145,10 +145,10 @@
 				<source>Company Address</source>
 			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_address.gender.m">
-				<source>Male</source>
+				<source>Mr</source>
 			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_address.gender.f">
-				<source>Female</source>
+				<source>Ms</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -1,3 +1,5 @@
+{namespace mgn=MONOGON\AddressCollection\ViewHelpers}
+
 <div class="tx-address-collection">
 
   <f:form class="form-inline" method="get" name="demand" object="{demand}" enctype="multipart/form-data" additionalAttributes="{data-action: '{f:uri.action(action: \'search\', pageType: setup.ajaxPageType, noCacheHash: 1, additionalParams: {recordUid: data.uid})}', data-target: '#Target{data.uid}]', data-plugin: 'form2vs'}">
