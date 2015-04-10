@@ -95,7 +95,7 @@ class AddressController extends ActionController {
 		$demandPropertyMappingConfiguration->allowProperties('character');
 		$demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
 		if ($this->request->hasArgument('demand')) {
-			
+
 		}
 	}
 
@@ -116,7 +116,10 @@ class AddressController extends ActionController {
 		$this->view->assign('addresses', $addresses);
 		// Template layout
 		$this->view->assign('templateLayout', $this->setup->get('list.template'));
-		ThemeUtility::setTheme($this->view, $this->setup->get('list.theme'));
+		// ThemeUtility::setTheme($this->view, $this->setup->get('list.theme'));
+
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);
+		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->view);
 	}
 
 	/**

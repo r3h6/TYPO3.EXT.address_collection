@@ -35,8 +35,8 @@ class Theme implements \TYPO3\CMS\Core\SingletonInterface {
 
 	public function getThemes (array &$config){
 		$themes = ThemeUtility::getAvailableThemes($config['row']['pid']);
-		foreach ($themes as $theme) {
-			$additionalTheme = array($GLOBALS['LANG']->sL($theme[0], TRUE), $theme[1]);
+		foreach ($themes as $key => $value) {
+			$additionalTheme = array($GLOBALS['LANG']->sL($value, TRUE), $key);
 			array_push($config['items'], $additionalTheme);
 		}
 	}

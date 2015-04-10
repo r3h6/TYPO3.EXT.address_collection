@@ -27,33 +27,32 @@ namespace MONOGON\AddressCollection\Utility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Theme utility class
+ * TypoScript utility class
  */
-class ThemeUtility {
+class TypoScriptUtility {
 
-	public static function setTheme (\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view, $theme){
+	private static $setup = array();
 
-		$paths = $view->getTemplateRootPaths();
-		if (isset($paths[$theme])){
-			$path = $paths[$theme];
-			unset($paths[$theme]);
-			array_unshift($paths, $path);
-			$view->setTemplateRootPaths($paths);
-		} else {
-			array_unshift($paths, array_pop($paths));
-			$view->setTemplateRootPaths($paths);
+	/**
+	 * http://www.sk-typo3.de/Typoscript-einer-Seite-aus-BE-Modul.212.0.html
+	 *
+	 * @param  int $pageUid [description]
+	 * @return array          [description]
+	 */
+	public static function getPageSetup ($pageUid){
+		if (!isset(static::$setup[$pageUid])){
+
+			$sysPageObj = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+			$rootLine = $sysPageObj->getRootLine($pageUid);
+
+			$TSObj = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\ExtendedTemplateService');
+			$TSObj->tt_track = 0;
+			$TSObj->init();
+			$TSObj->runThroughTemplates($rootLine);
+			$TSObj->generateConfig();
+
+			static::$setup[$pageUid] = $TSObj->setup;
 		}
-
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($view);
+		return static::$setup[$pageUid];
 	}
-
-	public static function getAvailableThemes ($pageUid){
-		$setup = new \MONOGON\PathArrayAccess(\MONOGON\AddressCollection\Utility\TypoScriptUtility::getPageSetup($pageUid), '/');
-		$templateRootPaths = $setup->get('plugin./tx_addresscollection./view./templateRootPaths.');
-		if (is_array($templateRootPaths)){
-			return $templateRootPaths;
-		}
-		return array();
-	}
-
 }
