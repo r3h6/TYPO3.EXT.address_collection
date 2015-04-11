@@ -84,7 +84,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		}
 		$addressGroups = $demand->getAddressGroups();
 		if (!empty($addressGroups)) {
-			$constraints[] = $this->buildContainsConstraint('addressgroup', $addressGroups, $query);
+			$constraints[] = $this->buildContainsConstraint('addressGroups', $addressGroups, $query);
 		}
 		$recordTypes = $demand->getRecordTypes();
 		if (!empty($recordTypes)) {

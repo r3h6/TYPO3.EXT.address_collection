@@ -94,9 +94,6 @@ class AddressController extends ActionController {
 		$demandPropertyMappingConfiguration = $this->arguments->getArgument('demand')->getPropertyMappingConfiguration();
 		$demandPropertyMappingConfiguration->allowProperties('character');
 		$demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
-		if ($this->request->hasArgument('demand')) {
-
-		}
 	}
 
 	/**
@@ -119,7 +116,7 @@ class AddressController extends ActionController {
 		// ThemeUtility::setTheme($this->view, $this->setup->get('list.theme'));
 
 		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->view);
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->view);
 	}
 
 	/**
@@ -141,7 +138,7 @@ class AddressController extends ActionController {
 	 */
 	public function showAction(\MONOGON\AddressCollection\Domain\Model\Address $address) {
 		$this->view->assign('address', $address);
-		ThemeUtility::setTheme($this->view, $this->setup->get('show.theme'));
+		// ThemeUtility::setTheme($this->view, $this->setup->get('show.theme'));
 	}
 
 }

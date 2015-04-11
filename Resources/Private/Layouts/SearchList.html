@@ -15,12 +15,11 @@
       <f:form.textfield property="email" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.email')}" />
     </div>
     <div class="form-group">
-      <mgn:form.label property="addressGroups." class=""><f:translate key="tx_addresscollection_domain_model_address.addressgroup" /></mgn:form.label>
-      <f:form.select property="addressGroups" options="{mgn:form.options.addressGroups(uids:setupDemand.addressGroups)}" optionValueField="uid" optionLabelField="title" multiple="multiple" size="1" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.addressgroup')}" />
+      <mgn:form.label property="addressGroups." class=""><f:translate key="tx_addresscollection_domain_model_address.address_groups" /></mgn:form.label>
+      <f:form.select property="addressGroups" options="{mgn:form.options.addressGroups(uids:setupDemand.addressGroups)}" optionValueField="uid" optionLabelField="title" multiple="multiple" size="3" class="form-control" title="{f:translate(key: 'tx_addresscollection_domain_model_address.address_groups')}" />
     </div>
-    <f:form.submit name="submit" value="{f:translate(key: 'button.search')}" class="btn" />
+    <button type="submit" class="btn btn-default">{f:translate(key: 'button.search')}</button>
   </f:form>
-
   <div class="addresses">
     <f:render section="main" />
   </div>
