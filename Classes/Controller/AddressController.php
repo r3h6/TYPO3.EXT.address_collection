@@ -74,7 +74,13 @@ class AddressController extends ActionController {
 	public function initializeAction() {
 		$this->setup->mergeSettings($this->settings);
 		$pageType = GeneralUtility::_GP('type');
-		$this->setup->set('isAjax', $this->setup->get('ajaxPageType') && $pageType == $this->setup->get('ajaxPageType'));
+
+		$isAjax = $this->setup->get('ajaxPageType') && $pageType == $this->setup->get('ajaxPageType');
+		$this->setup->set('isAjax', $isAjax);
+
+		if ($isAjax){
+			$this->setup->set('list.template', 'Ajax');
+		}
 	}
 
 	/**

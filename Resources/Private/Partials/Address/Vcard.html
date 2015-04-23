@@ -4,27 +4,36 @@
 
   <f:render partial="Vcard/Photo" arguments="{address: address}" />
 
-  <f:render partial="Vcard/Fnn" arguments="{address: address}" />
-
-
-
-
-
-
-
-  <f:if condition="{address.www}">
-    <f:link.external class="url" uri="{address.www}" target="_blank"></f:link.external>
+  <f:if condition="{setup.list.detailPid}">
+    <f:then>
+      <mgn:link.address class="url" address="{address}">
+        <f:render partial="Vcard/Fnn" arguments="{address: address}" />
+      </mgn:link.address>
+    </f:then>
+    <f:else>
+      <f:if condition="{address.www}">
+        <f:then>
+          <f:link.external class="url" uri="{address.www}" target="_blank">
+            <f:render partial="Vcard/Fnn" arguments="{address: address}" />
+          </f:link.external>
+        </f:then>
+        <f:else>
+          <f:render partial="Vcard/Fnn" arguments="{address: address}" />
+        </f:else>
+      </f:if>
+    </f:else>
   </f:if>
 
-
+  <f:if condition="{setup.list.detailPid}">
+    <f:else>
+      <f:render partial="Vcard/Url" arguments="{address: address}" />
+    </f:else>
+  </f:if>
 
   <f:render partial="Vcard/Adr" arguments="{address: address}" />
 
   <f:render partial="Vcard/Tel" arguments="{address: address}" />
 
   <f:render partial="Vcard/Category" arguments="{address: address}" />
-
-
-
 
 </div>
