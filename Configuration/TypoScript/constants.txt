@@ -19,5 +19,17 @@ plugin.tx_addresscollection {
 plugin.tx_addresscollection {
 	settings {
 		ajaxPageType = 1414358203
+
+		# cat=plugin.tx_addresscollection//enable; type=boolean; label=Visual search: Include styles and scripts for visual search.
+		includeVisualSearch = 0
+
+		# cat=plugin.tx_addresscollection//enable; type=boolean; label=Bootstrap: Include bootstrap stylesheet.
+		includeBootstrap = 0
+
+		# cat=plugin.tx_addresscollection//enable; type=boolean; label=jQuery: Include jQuery.
+		includeJquery = 0
+
+		# cat=plugin.tx_addresscollection//enable; type=boolean; label=Basics: Include basic stylesheet and javascript for ajax pagination and ajax search.
+		includeBasic = 0
 	}
 }

@@ -85,6 +85,11 @@ plugin.tx_addresscollection {
 	settings {
 		setup {
 			ajaxPageType = {$plugin.tx_addresscollection.settings.ajaxPageType}
+			includeVisualSearch = {$plugin.tx_addresscollection.settings.includeVisualSearch}
+			includeBootstrap = {$plugin.tx_addresscollection.settings.includeBootstrap}
+			includeJquery = {$plugin.tx_addresscollection.settings.includeJquery}
+			includeBasic = {$plugin.tx_addresscollection.settings.includeBasic}
+
 			list {
 				wizard {
 					paginate {
