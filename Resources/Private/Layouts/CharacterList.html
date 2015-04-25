@@ -2,7 +2,7 @@
 
 <div class="tx-address-collection">
 
-  <mgn:widget.characterMenu demand="{setupDemand}" />
+  <f:render partial="Demand/CharacterMenu" arguments="{demand: setupDemand}" />
 
   <div class="addresses">
     <f:render section="main" />

@@ -70,30 +70,37 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findDemanded(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
 		$query = $this->createQuery();
 		$constraints = array();
+
 		$names = ArrayUtility::trimExplode(',', $demand->getName(), TRUE);
 		if (!empty($names)) {
 			$constraints[] = $this->buildLikeConstraint('name', $names, $query);
 		}
+
 		$emails = ArrayUtility::trimExplode(',', $demand->getEmail(), TRUE);
 		if (!empty($emails)) {
 			$constraints[] = $this->buildLikeConstraint('email', $emails, $query);
 		}
+
 		$character = $demand->getCharacter();
 		if ($character) {
 			$constraints[] = $query->like('lastName', $character . '%');
 		}
+
 		$addressGroups = $demand->getAddressGroups();
 		if (!empty($addressGroups)) {
 			$constraints[] = $this->buildContainsConstraint('addressGroups', $addressGroups, $query);
 		}
+
 		$recordTypes = $demand->getRecordTypes();
 		if (!empty($recordTypes)) {
 			$constraints[] = $this->buildInContraint('recordType', $recordTypes, $query);
 		}
+
 		$includeAddresses = $demand->getIncludeAddresses();
 		if (!empty($includeAddresses)) {
 			$constraints[] = $this->buildInContraint('uid', $includeAddresses, $query);
 		}
+
 		array_filter($constraints);
 		if (!empty($constraints)) {
 			$query->matching($query->logicalAnd($constraints));

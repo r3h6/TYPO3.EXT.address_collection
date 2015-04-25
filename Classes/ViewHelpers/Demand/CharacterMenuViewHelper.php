@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\ViewHelpers\Widget\Controller;
+namespace MONOGON\AddressCollection\ViewHelpers\Demand;
 
 /***************************************************************
  *
@@ -29,22 +29,9 @@ namespace MONOGON\AddressCollection\ViewHelpers\Widget\Controller;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * CharacterMenuController
+ * CharacterMenuViewHelper
  */
-class CharacterMenuController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController {
-
-
-	/**
-	 * [$characters description]
-	 * @var string
-	 */
-	protected $characters;
-
-	/**
-	 * [$demand description]
-	 * @var \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand
-	 */
-	protected $demand;
+class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * addressRepository
@@ -55,17 +42,19 @@ class CharacterMenuController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidge
 	protected $addressRepository = NULL;
 
 
-	public function initializeAction (){
-		$this->demand = $this->widgetConfiguration['demand'];
-		$this->characters = $this->widgetConfiguration['characters'];
-	}
+	/**
+	 * [render description]
+	 * @param  \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand     [description]
+	 * @param  string                                                    $characters [description]
+	 * @param string $as
+	 * @return string                                                                [description]
+	 */
+	public function render (\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand, $characters = 'abcdefghijklmnopqrstuvwxyz', $as = 'menu'){
 
-	public function indexAction (){
-
-		$characterList = $this->addressRepository->getCharacterList($this->demand);
+		$characterList = $this->addressRepository->getCharacterList($demand);
 		$completeList = $characterList;
 
-		foreach (str_split($this->characters, 1) as $character){
+		foreach (str_split($characters, 1) as $character){
 			if (!in_array($character, $characterList)){
 				$completeList[] = $character;
 			}
@@ -73,7 +62,7 @@ class CharacterMenuController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidge
 
 		sort($completeList, SORT_LOCALE_STRING);
 
-		// $uriBuilder = $this->controllerContext->getUriBuilder();
+		$uriBuilder = $this->controllerContext->getUriBuilder();
 
 		// Build menu
 		$menu = array();
@@ -84,17 +73,24 @@ class CharacterMenuController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidge
 				'link' => '',
 			);
 
-			// if (in_array($character, $characterList)){
-			// 	$menuItem['link'] = $uriBuilder->reset()->uriFor(NULL, array(
-			// 		'demand' => array(
-			// 			'character' => $character,
-			// 		),
-			// 	));
-			// }
+			if (in_array($character, $characterList)){
+				$menuItem['link'] = $uriBuilder->reset()->uriFor(NULL, array(
+					'demand' => array(
+						'character' => $character,
+					),
+				));
+			}
 
 			$menu[] = $menuItem;
 		}
 
-		$this->view->assign('menu', $menu);
+		$templateVariableContainer = $this->renderingContext->getTemplateVariableContainer();
+		// $this->view->assign('menu', $menu);
+		$templateVariableContainer->add($as, $menu);
+		$output = $this->renderChildren();
+		$templateVariableContainer->remove($as);
+
+		return $output;
+
 	}
 }
