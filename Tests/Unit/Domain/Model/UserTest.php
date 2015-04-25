@@ -5,7 +5,7 @@ namespace MONOGON\AddressCollection\Tests\Unit\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2015 Remo Häusler <r3h6@outlook.com>
+ *  (c) 2015 R3 H6 <r3h6@outlook.com>
  *
  *  All rights reserved
  *
@@ -32,7 +32,7 @@ namespace MONOGON\AddressCollection\Tests\Unit\Domain\Model;
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
- * @author Remo Häusler <r3h6@outlook.com>
+ * @author R3 H6 <r3h6@outlook.com>
  */
 class UserTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**

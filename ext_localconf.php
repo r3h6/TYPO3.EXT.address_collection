@@ -12,7 +12,7 @@ if (!defined('TYPO3_MODE')) {
 	),
 	// non-cacheable actions
 	array(
-		'Address' => '',
+		'Address' => 'list',
 
 	)
 );
@@ -39,4 +39,8 @@ function user_pageHadAddressPlugin (){
 	} else {
 
 	}
+}
+
+if (\MONOGON\AddressCollection\Configuration\ExtConf::get('includeRealUrlConfig')){
+	require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY). 'Configuration/RealUrl/Default.php';
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-07T23:40:14Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-25T21:27:23Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="tx_addresscollection_domain_model_address">

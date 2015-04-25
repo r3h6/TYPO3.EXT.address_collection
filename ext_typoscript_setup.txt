@@ -6,7 +6,7 @@ config.tx_extbase{
             TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
                 subclasses {
                     Tx_AddressCollection_User = MONOGON\AddressCollection\Domain\Model\User
-
+					
           		}
             }
             MONOGON\AddressCollection\Domain\Model\Address {
@@ -16,7 +16,7 @@ config.tx_extbase{
 					Tx_AddressCollection_PersonalAddress = MONOGON\AddressCollection\Domain\Model\PersonalAddress
 					Tx_AddressCollection_BusinessAddress = MONOGON\AddressCollection\Domain\Model\BusinessAddress
 					Tx_AddressCollection_CompanyAddress = MONOGON\AddressCollection\Domain\Model\CompanyAddress
-
+					
           		}
             }
             MONOGON\AddressCollection\Domain\Model\Address {
@@ -25,56 +25,56 @@ config.tx_extbase{
                     recordType = Tx_AddressCollection_Address
                 }
             }
-
+            
             MONOGON\AddressCollection\Domain\Model\AddressGroup {
                 mapping {
                     tableName = tt_address_group
                     recordType = Tx_AddressCollection_AddressGroup
                 }
             }
-
+            
             MONOGON\AddressCollection\Domain\Model\User {
                 mapping {
                     tableName = fe_users
                     recordType = Tx_AddressCollection_User
                 }
             }
-
+            
             MONOGON\AddressCollection\Domain\Model\DeliveryAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_DeliveryAddress
                 }
             }
-
+            
             MONOGON\AddressCollection\Domain\Model\BillingAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_BillingAddress
                 }
             }
-
+            
             MONOGON\AddressCollection\Domain\Model\PersonalAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_PersonalAddress
                 }
             }
-
+            
             MONOGON\AddressCollection\Domain\Model\BusinessAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_BusinessAddress
                 }
             }
-
+            
             MONOGON\AddressCollection\Domain\Model\CompanyAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_CompanyAddress
                 }
             }
-
+            
     	}
     }
 }

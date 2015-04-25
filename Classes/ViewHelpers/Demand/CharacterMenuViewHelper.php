@@ -41,6 +41,11 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 	 */
 	protected $addressRepository = NULL;
 
+	/**
+	 * @var \TYPO3\CMS\Extbase\Service\ExtensionService
+	 * @inject
+	 */
+	protected $extensionService;
 
 	/**
 	 * [render description]
@@ -64,6 +69,12 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 
 		$uriBuilder = $this->controllerContext->getUriBuilder();
 
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this);
+
+		$extensionName = $this->controllerContext->getRequest()->getControllerExtensionName();
+		$pluginName = $this->controllerContext->getRequest()->getPluginName();
+		$pluginNamespace = $this->extensionService->getPluginNamespace($extensionName, $pluginName);
+
 		// Build menu
 		$menu = array();
 		foreach ($completeList as $character){
@@ -74,11 +85,20 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 			);
 
 			if (in_array($character, $characterList)){
-				$menuItem['link'] = $uriBuilder->reset()->uriFor(NULL, array(
-					'demand' => array(
-						'character' => $character,
-					),
-				));
+				// $menuItem['link'] = $uriBuilder->reset()->uriFor(NULL, array(
+				// 	'demand' => array(
+				// 		'character' => $character,
+				// 	),
+				// ));
+				$menuItem['link'] = $uriBuilder->reset()
+					->setArguments(array(
+						$pluginNamespace => array(
+							'action' => 'list',
+							'demand' => array(
+								'character' => $character,
+							),
+						),
+					))->build();
 			}
 
 			$menu[] = $menuItem;

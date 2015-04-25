@@ -43,34 +43,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $recordType = '';
 
 	/**
-	 * Skype
-	 *
-	 * @var string
-	 */
-	protected $skype = '';
-
-	/**
-	 * Twitter
-	 *
-	 * @var string
-	 */
-	protected $twitter = '';
-
-	/**
-	 * Facebook
-	 *
-	 * @var string
-	 */
-	protected $facebook = '';
-
-	/**
-	 * LinkedIn
-	 *
-	 * @var string
-	 */
-	protected $linkedIn = '';
-
-	/**
 	 * Name
 	 *
 	 * @var string
@@ -280,6 +252,34 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var string
 	 */
 	protected $latitude = '';
+
+	/**
+	 * Skype
+	 *
+	 * @var string
+	 */
+	protected $skype = '';
+
+	/**
+	 * Twitter
+	 *
+	 * @var string
+	 */
+	protected $twitter = '';
+
+	/**
+	 * Facebook
+	 *
+	 * @var string
+	 */
+	protected $facebook = '';
+
+	/**
+	 * LinkedIn
+	 *
+	 * @var string
+	 */
+	protected $linkedIn = '';
 
 	/**
 	 * User

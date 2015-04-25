@@ -3,7 +3,7 @@ namespace MONOGON\AddressCollection\Tests\Unit\Controller;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2015 Remo Häusler <r3h6@outlook.com>
+ *  (c) 2015 R3 H6 <r3h6@outlook.com>
  *  			
  *  All rights reserved
  *
@@ -27,7 +27,7 @@ namespace MONOGON\AddressCollection\Tests\Unit\Controller;
 /**
  * Test case for class MONOGON\AddressCollection\Controller\AddressController.
  *
- * @author Remo Häusler <r3h6@outlook.com>
+ * @author R3 H6 <r3h6@outlook.com>
  */
 class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 

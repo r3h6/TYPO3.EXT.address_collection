@@ -770,15 +770,15 @@
             {
                 "company": "",
                 "email": "r3h6@outlook.com",
-                "name": "Remo H\u00e4usler",
+                "name": "R3 H6",
                 "role": "Developer"
             }
         ],
         "plugins": [
             {
                 "actions": {
-                    "controllerActionCombinations": "",
-                    "noncacheableActions": "",
+                    "controllerActionCombinations": "Address=>list,show",
+                    "noncacheableActions": "Address=>list",
                     "switchableActions": "Auto\nAddress->list;Address->show"
                 },
                 "key": "pi1",
@@ -826,7 +826,7 @@
         }
     ],
     "log": {
-        "last_modified": "2015-04-07 11:40",
+        "last_modified": "2015-04-25 09:27",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

@@ -74,11 +74,9 @@ class AddressController extends ActionController {
 	public function initializeAction() {
 		$this->setup->mergeSettings($this->settings);
 		$pageType = GeneralUtility::_GP('type');
-
 		$isAjax = $this->setup->get('ajaxPageType') && $pageType == $this->setup->get('ajaxPageType');
 		$this->setup->set('isAjax', $isAjax);
-
-		if ($isAjax){
+		if ($isAjax) {
 			$this->setup->set('list.template', 'Ajax');
 		}
 	}
@@ -119,10 +117,6 @@ class AddressController extends ActionController {
 		$this->view->assign('addresses', $addresses);
 		// Template layout
 		$this->view->assign('templateLayout', $this->setup->get('list.template'));
-		// ThemeUtility::setTheme($this->view, $this->setup->get('list.theme'));
-
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->view);
 	}
 
 	/**
@@ -144,7 +138,6 @@ class AddressController extends ActionController {
 	 */
 	public function showAction(\MONOGON\AddressCollection\Domain\Model\Address $address) {
 		$this->view->assign('address', $address);
-		// ThemeUtility::setTheme($this->view, $this->setup->get('show.theme'));
 	}
 
 }

@@ -6,13 +6,5 @@ disableCombinedNameField = 0
 backwardsCompatFormat = %1$s %3$s
 
 
-# cat=basic/enable; type=boolean; label=LLL:EXT:address_collection/Resources/Private/Language/locallang_be.xlf:configuration.useTtAddressRecords
-useTtAddressRecords = 0
-
-
-
-# cat=backend modules/enable/20; type=boolean; label=LLL:EXT:address_collection/Resources/Private/Language/locallang_be.xlf:configuration.showImporter
-showImporter = 0
-
-# cat=backend modules/enable/30; type=boolean; label=LLL:EXT:address_collection/Resources/Private/Language/locallang_be.xlf:configuration.useVidi
-useVidi = 0
+# cat=basic/enable; type=boolean; label=LLL:EXT:address_collection/Resources/Private/Language/locallang_be.xlf:configuration.includeRealUrlConfig
+includeRealUrlConfig = 0
