@@ -50,6 +50,10 @@ class MergeName {
 	 * @return	void
 	 */
 	function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, $pObj) {
+
+		$logger = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')->getLogger(__CLASS__);
+		$logger->info($status);
+
 		if($table == self::TABLE && ($status == self::STATUS_NEW || $status == self::STATUS_UPDATE)) {
 			if($status == self::STATUS_UPDATE) {
 				$address = $this->getFullRecord($id);

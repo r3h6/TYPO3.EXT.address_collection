@@ -1,0 +1,16 @@
+<ul class="inline-list">
+  <f:for each="{menu}" as="menuItem">
+    <li>
+      <f:if condition="{menuItem.link}">
+          <f:then>
+            <a href="{menuItem.link}">{menuItem.character}</a>
+          </f:then>
+          <f:else>
+            <f:widget.link arguments="{demand: 12}">wid</f:widget.link>
+            <f:link.action arguments="{demand: 12}">wid</f:link.action>
+            {menuItem.character}
+          </f:else>
+      </f:if>
+    </li>
+  </f:for>
+</ul>

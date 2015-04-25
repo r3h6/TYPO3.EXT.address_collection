@@ -8,12 +8,12 @@ if (!defined('TYPO3_MODE')) {
 	'Pi1',
 	array(
 		'Address' => 'list, show',
-		
+
 	),
 	// non-cacheable actions
 	array(
 		'Address' => '',
-		
+
 	)
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
@@ -30,3 +30,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['extbase']['typeConverters'][] = 'MONOGON
  * which glue string (comma, space, whatever)
  */
 $TYPO3_CONF_VARS['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'MONOGON\\AddressCollection\\Hooks\\MergeName';
+
+
+function user_pageHadAddressPlugin (){
+	$cacheFile = PATH_site . 'typo3temp/tx_addresscollection.cache';
+	if (file_exists($cacheFile)){
+
+	} else {
+
+	}
+}
