@@ -23,7 +23,7 @@ namespace MONOGON\AddressCollection\Utility;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use \TYPO3\CMS\Core\Utility\ArrayUtility;
 use MONOGON\AddressCollection\Configuration\ExtConf;
 
 /**
@@ -42,15 +42,15 @@ class TemplateLayoutUtility {
 		$templateLayouts = array();
 
 		// Check if the layouts are extended by ext_tables
-		if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'])
-			&& is_array($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'])) {
-			$templateLayouts = $GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'];
-		}
-
-		// Add TsConfig values
-		foreach(self::getTemplateLayoutsFromTsConfig($pageUid, $key) as $templateKey => $title) {
-			$templateLayouts[] = array($title, $templateKey);
-		}
+		// if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'])
+		// 	&& is_array($GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'])) {
+		// 	$templateLayouts = $GLOBALS['TYPO3_CONF_VARS']['EXT'][ExtConf::EXT_KEY]['templateLayouts'];
+		// }
+self::getTemplateLayoutsFromTsConfig($pageUid, $key);
+		// // Add TsConfig values
+		// foreach(self::getTemplateLayoutsFromTsConfig($pageUid, $key) as $templateKey => $title) {
+		// 	$templateLayouts[] = array($title, $templateKey);
+		// }
 
 		return $templateLayouts;
 	}
@@ -63,10 +63,20 @@ class TemplateLayoutUtility {
 	 */
 	private static function getTemplateLayoutsFromTsConfig($pageUid, $key) {
 		$templateLayouts = array();
-		$pagesTsConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig($pageUid);
-		$setup = new \MONOGON\PathArrayAccess($pagesTsConfig, '/');
-		$templateLayouts = $setup->get("tx_addresscollection./templateLayouts./$key.", array());
+		$pagesTsConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig((int)$pageUid);
 
-		return $templateLayouts;
+// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($pageUid);
+// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($pageTsConfig);
+		//$setup = ArrayUtility::flatten($pageTsConfig);
+
+// 		$key = "tx_addresscollection.templateLayouts.$key";
+// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(
+// ArrayUtility::getValueByPath($pageTsConfig, $key, '.')
+// );
+
+// 		if (isset($setup[$key])){
+// 			return $setup[$key];
+// 		}
+		return array();
 	}
 }

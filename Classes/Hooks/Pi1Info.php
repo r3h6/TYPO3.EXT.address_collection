@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Utility;
+namespace MONOGON\AddressCollection\Hooks;
 
 /***************************************************************
  *
@@ -26,37 +26,15 @@ namespace MONOGON\AddressCollection\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /**
- * TypoScript utility class
+ *
  */
-class TypoScriptUtility {
+class Pi1Info extends PluginInfo {
 
-	private static $setup = array();
-
-	/**
-	 * http://www.sk-typo3.de/Typoscript-einer-Seite-aus-BE-Modul.212.0.html
-	 *
-	 * @param  int $pageUid [description]
-	 * @return array          [description]
-	 */
-	public static function getPageSetup ($pageUid){
-		if (!isset(static::$setup[$pageUid])){
-
-			$sysPageObj = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
-			$rootLine = $sysPageObj->getRootLine($pageUid);
-
-			$TSObj = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\ExtendedTemplateService');
-			$TSObj->tt_track = 0;
-			$TSObj->init();
-			$TSObj->runThroughTemplates($rootLine);
-			$TSObj->generateConfig();
-
-			\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($TSObj);
-
-			static::$setup[$pageUid] = $TSObj->setup;
-		}
-		return static::$setup[$pageUid];
+	protected function init (){
+		return array(
+			'flexform_pi1.switchableControllerActions' => 'switchableControllerActions',
+			'foo' => 'bar',
+		);
 	}
 }

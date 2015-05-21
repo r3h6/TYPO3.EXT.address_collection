@@ -29,23 +29,57 @@ namespace MONOGON\AddressCollection\Configuration;
 /**
  * Setup
  */
-class Setup extends \MONOGON\PathArrayAccess {
+class Setup implements \ArrayAccess {
+
+	protected $delimiter = '.';
+
+	protected $array = array();
 
 	public function __construct ($settings = array()){
-		parent::__construct();
 		$this->mergeSettings($settings);
 	}
+
 	public function mergeSettings ($settings) {
-		$mergedSettings = array();
 		if (isset($settings['setup']) && is_array($settings['setup'])){
-			$mergedSettings = $settings['setup'];
+			$this->array = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($this->array, $settings['flexform'], FALSE, FALSE);
 		}
 		if (isset($settings['flexform']) && is_array($settings['flexform'])){
-			$mergedSettings = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($mergedSettings, $settings['flexform'], FALSE, FALSE);
+			$this->array = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($this->array, $settings['flexform'], FALSE, FALSE);
 		}
-		//parent::__construct($mergedSettings);
-		$this->set('', $mergedSettings);
 	}
+
+	public function get ($path, $default = NULL){
+		try {
+			$value = \TYPO3\CMS\Core\Utility\ArrayUtility::getValueByPath($this->array, $path, $this->delimiter);
+		} catch (\RuntimeException $exception){
+			$value = $default;
+		}
+		return $value;
+	}
+
+	// {{{ ArrayAccess
+
+	final public function offsetSet($offset, $value) {
+		if (is_null($offset)) {
+			$this->array[] = $value;
+		} else {
+			$this->array[$offset] = $value;
+		}
+	}
+
+	final public function offsetExists($offset) {
+		return isset($this->array[$offset]);
+	}
+
+	final public function offsetUnset($offset) {
+		unset($this->array[$offset]);
+	}
+
+	final public function offsetGet($offset) {
+		return isset($this->array[$offset]) ? $this->array[$offset] : null;
+	}
+
+	// }}}
 
 
 }

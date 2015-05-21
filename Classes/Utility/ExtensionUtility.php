@@ -27,8 +27,8 @@ namespace MONOGON\AddressCollection\Utility;
  ***************************************************************/
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \MONOGON\AddressCollection\Configuration\ExtConf;
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use \MONOGON\AddressCollection\Configuration\ExtConf;
 
 /**
  * ExtensionUtility

@@ -25,7 +25,7 @@ namespace MONOGON\AddressCollection\Utility;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use \TYPO3\CMS\Core\Utility\ArrayUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -50,11 +50,13 @@ class ThemeUtility {
 	}
 
 	public static function getAvailableThemes ($pageUid){
-		$setup = new \MONOGON\PathArrayAccess(\MONOGON\AddressCollection\Utility\TypoScriptUtility::getPageSetup($pageUid), '/');
-		$templateRootPaths = $setup->get('plugin./tx_addresscollection./view./templateRootPaths.');
-		if (is_array($templateRootPaths)){
-			return $templateRootPaths;
-		}
+		// $pageTsConfig = \MONOGON\AddressCollection\Utility\TypoScriptUtility::getPageSetup($pageUid);
+		// $setup = ArrayUtility::flatten($pageTsConfig);
+
+		// $key = 'plugin.tx_addresscollection.view.templateRootPaths';
+		// if (is_array($templateRootPaths)){
+		// 	return $templateRootPaths;
+		// }
 		return array();
 	}
 
