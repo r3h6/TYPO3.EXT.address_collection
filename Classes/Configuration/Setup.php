@@ -31,17 +31,27 @@ namespace MONOGON\AddressCollection\Configuration;
  */
 class Setup implements \ArrayAccess {
 
+	/**
+	 * [$controllerContext description]
+	 * @var TYPO3\CMS\Extbase\Configuration\ConfigurationManager
+	 * @inject
+	 */
+	protected $configurationManager;
+
 	protected $delimiter = '.';
 
 	protected $array = array();
 
-	public function __construct ($settings = array()){
+	public function __construct (){}
+
+	public function initializeObject (){
+		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS);
 		$this->mergeSettings($settings);
 	}
 
 	public function mergeSettings ($settings) {
 		if (isset($settings['setup']) && is_array($settings['setup'])){
-			$this->array = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($this->array, $settings['flexform'], FALSE, FALSE);
+			$this->array = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($this->array, $settings['setup'], FALSE, FALSE);
 		}
 		if (isset($settings['flexform']) && is_array($settings['flexform'])){
 			$this->array = \TYPO3\CMS\Extbase\Utility\ArrayUtility::arrayMergeRecursiveOverrule($this->array, $settings['flexform'], FALSE, FALSE);
@@ -55,6 +65,14 @@ class Setup implements \ArrayAccess {
 			$value = $default;
 		}
 		return $value;
+	}
+
+	public function set ($path, $value){
+		// try {
+			$this->array = \TYPO3\CMS\Core\Utility\ArrayUtility::setValueByPath($this->array, $path, $value, $this->delimiter);
+		// } catch (\RuntimeException $exception){
+
+		// }
 	}
 
 	// {{{ ArrayAccess

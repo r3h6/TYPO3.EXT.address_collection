@@ -56,6 +56,10 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 	 */
 	public function render (\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand, $characters = 'abcdefghijklmnopqrstuvwxyz', $as = 'menu'){
 
+		if ($demand->getOriginalDemand()){
+			$demand = $demand->getOriginalDemand();
+		}
+
 		$characterList = $this->addressRepository->getCharacterList($demand);
 		$completeList = $characterList;
 

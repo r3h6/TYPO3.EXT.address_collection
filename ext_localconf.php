@@ -20,7 +20,7 @@ if (!defined('TYPO3_MODE')) {
 
 $pluginSignature = \MONOGON\AddressCollection\Utility\ExtensionUtility::pluginSignature('Pi1', $_EXTKEY);
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/TSConfig/config.ts">');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/TSConfig/page.ts">');
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['extbase']['typeConverters'][] = 'MONOGON\\AddressCollection\\TypeConverter\\ArrayConverter';
 

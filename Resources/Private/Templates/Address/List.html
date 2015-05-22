@@ -5,9 +5,9 @@
   <f:flashMessages renderMode="div" />
   <f:widget.paginate objects="{addresses}" as="paginatedAddresses" configuration="{setup.list.wizard.paginate}">
     <ul class="addresses">
-	    <f:for each="{paginatedAddresses}" as="address">
-	      <li><mgn:render.partial partial="Vcard" address="{address}" arguments="{address: address, setup: setup}" /></li>
-	    </f:for>
+      <f:for each="{paginatedAddresses}" as="address">
+        <li><mgn:render.partial partial="Vcard" address="{address}" arguments="{address: address, setup: setup}" /></li>
+      </f:for>
     </ul>
   </f:widget.paginate>
 </f:section>

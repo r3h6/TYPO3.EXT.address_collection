@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
+namespace MONOGON\AddressCollection\Domain\Validator;
 
 /***************************************************************
  *
@@ -26,18 +26,32 @@ namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \MONOGON\AddressCollection\Utility\ThemeUtility;
-
 /**
- * Theme
+ *
  */
-class Theme implements \TYPO3\CMS\Core\SingletonInterface {
+class AddressDemandValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
+	/**
+	 * [$setup description]
+	 *
+	 * @var \MONOGON\AddressCollection\Configuration\Setup
+	 * @inject
+	 */
+	protected $setup = NULL;
 
-	public function getThemes (array &$config){
-		$themes = ThemeUtility::getAvailableThemes($config['row']['pid']);
-		foreach ($themes as $key => $value) {
-			$additionalTheme = array($GLOBALS['LANG']->sL($value, TRUE), $key);
-			array_push($config['items'], $additionalTheme);
+	public function isValid ($value){
+		if (!($value instanceof \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand)){
+			return;
 		}
+
+		$originalDemand = \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::createFromArray($this->setup->get('list.demand'));
+
+		$value->setOriginalDemand($originalDemand);
+
+		// if ($originalDemand->getAddressGroups()){
+
+		// }
+
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($originalDemand);
+
 	}
 }

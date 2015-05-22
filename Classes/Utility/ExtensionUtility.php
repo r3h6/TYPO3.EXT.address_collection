@@ -47,6 +47,15 @@ class ExtensionUtility {
 	}
 
 	/**
+	 * [extensionSignature description]
+	 * @param  string $extensionNameOrKey Extension key or name
+	 * @return string                     tx_yourextensionkey
+	 */
+	public static function extensionSignature ($extensionNameOrKey = ExtConf::EXT_KEY){
+		return 'tx_' . strtolower(GeneralUtility::underscoredToUpperCamelCase($extensionNameOrKey));
+	}
+
+	/**
 	 * [addWizicon description]
 	 * @param string $pluginName [description]
 	 * @param  string $extKey     [description]

@@ -72,7 +72,7 @@ class AddressController extends ActionController {
 	 * @return void [description]
 	 */
 	public function initializeAction() {
-		$this->setup->mergeSettings($this->settings);
+		// $this->setup->mergeSettings($this->settings);
 		$pageType = GeneralUtility::_GP('type');
 		$isAjax = $this->setup->get('ajaxPageType') && $pageType == $this->setup->get('ajaxPageType');
 		$this->setup->set('isAjax', $isAjax);
@@ -104,14 +104,22 @@ class AddressController extends ActionController {
 	 * action list
 	 *
 	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand
+	 * @validate $demand \MONOGON\AddressCollection\Domain\Validator\AddressDemandValidator
 	 * @return void
 	 */
 	public function listAction(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand = NULL) {
-		$propertyMapper = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-		$setupDemand = $propertyMapper->convert(AddressDemand::accessibleProperties($this->setup->get('list.demand')), 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
-		$demand = $setupDemand->intersect($demand);
+		// $propertyMapper = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+		// $setupDemand = $propertyMapper->convert(AddressDemand::accessibleProperties($this->setup->get('list.demand')), 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
+		// $demand = $setupDemand->intersect($demand);
+
+		if ($demand === NULL){
+			$demand = \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::createFromArray($this->setup->get('list.demand'));
+		}
+
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($demand);
+
 		$this->view->assign('demand', $demand);
-		$this->view->assign('setupDemand', $setupDemand);
+		// $this->view->assign('setupDemand', $setupDemand);
 		// Find addresses
 		$addresses = $this->addressRepository->findDemanded($demand);
 		$this->view->assign('addresses', $addresses);

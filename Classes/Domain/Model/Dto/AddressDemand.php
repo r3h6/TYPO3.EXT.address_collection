@@ -25,7 +25,7 @@ namespace MONOGON\AddressCollection\Domain\Model\Dto;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Address
  */
@@ -98,43 +98,68 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $character = '';
 
 	/**
-	 * [accessibleProperties description]
-	 * @param  array $properties [description]
-	 * @return array             [description]
+	 * [$originalDemand description]
+	 *
+	 * @var \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand
 	 */
-	public static function accessibleProperties ($properties){
-		$allowedProperties = get_class_vars(__CLASS__);
-		foreach ((array) $properties as $key => $value){
-			if (!isset($allowedProperties[$key]) || $key{1} === '_' || $key === 'uid'){
-				unset($properties[$key]);
-			}
-		}
-		return $properties;
+	protected $originalDemand = NULL;
+
+	/**
+	 * addressGroupRepository
+	 *
+	 * @var \MONOGON\AddressCollection\Domain\Repository\AddressGroupRepository
+	 * @inject
+	 */
+	protected $addressGroupRepository = NULL;
+
+	/**
+	 * [createFromArray description]
+	 * @param  array $array [description]
+	 * @return [type]        [description]
+	 */
+	public static function createFromArray ($array){
+		$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+		return $propertyMapper->convert($array, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
 	}
 
-	public function intersect (AddressDemand $source = NULL){
-		$target = clone $this;
-		if ($source !== NULL){
-			if (empty($target->addressGroups)){
-				$target->setAddressGroups($source->addressGroups);
-			} else if (!empty($source->addressGroups)){
-				$addressGroups = array_intersect($target->addressGroups, $source->addressGroups);
-				if (!empty($addressGroups)){
-					$target->setAddressGroups($addressGroups);
-				}
-			}
-			if (!empty($source->character)){
-				$target->setCharacter($source->character);
-			}
-			if (!empty($source->name)){
-				$target->setName($source->name);
-			}
-			if (!empty($source->email)){
-				$target->setEmail($source->email);
-			}
-		}
-		return $target;
-	}
+	// /**
+	//  * [accessibleProperties description]
+	//  * @param  array $properties [description]
+	//  * @return array             [description]
+	//  */
+	// public static function accessibleProperties ($properties){
+	// 	$allowedProperties = get_class_vars(__CLASS__);
+	// 	foreach ((array) $properties as $key => $value){
+	// 		if (!isset($allowedProperties[$key]) || $key{1} === '_' || $key === 'uid'){
+	// 			unset($properties[$key]);
+	// 		}
+	// 	}
+	// 	return $properties;
+	// }
+
+	// public function intersect (AddressDemand $source = NULL){
+	// 	$target = clone $this;
+	// 	if ($source !== NULL){
+	// 		if (empty($target->addressGroups)){
+	// 			$target->setAddressGroups($source->addressGroups);
+	// 		} else if (!empty($source->addressGroups)){
+	// 			$addressGroups = array_intersect($target->addressGroups, $source->addressGroups);
+	// 			if (!empty($addressGroups)){
+	// 				$target->setAddressGroups($addressGroups);
+	// 			}
+	// 		}
+	// 		if (!empty($source->character)){
+	// 			$target->setCharacter($source->character);
+	// 		}
+	// 		if (!empty($source->name)){
+	// 			$target->setName($source->name);
+	// 		}
+	// 		if (!empty($source->email)){
+	// 			$target->setEmail($source->email);
+	// 		}
+	// 	}
+	// 	return $target;
+	// }
 
 	/**
 	 * Returns the  addressGroups
@@ -334,5 +359,37 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	public function setCharacter($character){
 		$this->character = $character;
 		return $this;
+	}
+
+	/**
+	 * Returns the originalDemand
+	 *
+	 * @return \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $originalDemand
+	 */
+	public function getOriginalDemand(){
+		return $this->originalDemand;
+	}
+
+	/**
+	 * Sets the originalDemand
+	 *
+	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $originalDemand
+	 * @return object $this
+	 */
+	public function setOriginalDemand($originalDemand){
+		$this->originalDemand = $originalDemand;
+		return $this;
+	}
+
+	public function getAddressGroupsOption (){
+		if ($this->originalDemand){
+			$uids = $this->originalDemand->getAddressGroups();
+		} else {
+			$uids = $this->getAddressGroups();
+		}
+		if (empty($uids)){
+			return $this->addressGroupRepository->findAll();
+		}
+		return $this->addressGroupRepository->findByUids($uids);
 	}
 }
