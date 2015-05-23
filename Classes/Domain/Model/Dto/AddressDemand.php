@@ -65,6 +65,7 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Name
 	 *
 	 * @var string
+	 * @validate NotEmpty
 	 */
 	protected $name = '';
 
@@ -117,9 +118,36 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param  array $array [description]
 	 * @return [type]        [description]
 	 */
-	public static function createFromArray ($array){
-		$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-		return $propertyMapper->convert($array, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
+	// public static function createFromArray ($array){
+	// 	$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+	// 	return $propertyMapper->convert($array, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
+	// }
+
+	public static function factory (array $properties, $overrideProperties){
+		// $propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+		// $demand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
+		$argument = $properties;
+		if (is_array($overrideProperties)){
+			foreach ($overrideProperties as $propertyName => $propertyValue){
+				switch ($propertyName){
+					case 'addressGroups':
+					case 'recordTypes':
+					case 'includeAddresses':
+						$propertyValue = join(',', array_intersect(
+							GeneralUtility::trimExplode(',', $properties[$propertyName], TRUE),
+							GeneralUtility::trimExplode(',', $propertyValue, TRUE)
+						));
+						break;
+
+				}
+				$argument[$propertyName] = $propertyValue;
+			}
+			// $overrideDemand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
+			$argument['originalDemand'] = $properties;
+			return $overrideDemand;
+		}
+		// $propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+		return $argument;
 	}
 
 	// /**
