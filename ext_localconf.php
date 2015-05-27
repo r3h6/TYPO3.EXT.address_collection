@@ -22,7 +22,7 @@ $pluginSignature = \MONOGON\AddressCollection\Utility\ExtensionUtility::pluginSi
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/TSConfig/page.ts">');
 
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['extbase']['typeConverters'][] = 'MONOGON\\AddressCollection\\TypeConverter\\ArrayConverter';
+// $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['extbase']['typeConverters'][] = 'MONOGON\\AddressCollection\\TypeConverter\\ArrayConverter';
 
 /**
  * backwardscompatibility function which hooks into TCEmain and watches for
@@ -38,14 +38,14 @@ $TYPO3_CONF_VARS['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapC
  */
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info'][$pluginSignature][$_EXTKEY] = 'MONOGON\\AddressCollection\\Hooks\\Pi1Info->render';
 
-function user_pageHadAddressPlugin (){
-	$cacheFile = PATH_site . 'typo3temp/tx_addresscollection.cache';
-	if (file_exists($cacheFile)){
+// function user_pageHadAddressPlugin (){
+// 	$cacheFile = PATH_site . 'typo3temp/tx_addresscollection.cache';
+// 	if (file_exists($cacheFile)){
 
-	} else {
+// 	} else {
 
-	}
-}
+// 	}
+// }
 
 if (\MONOGON\AddressCollection\Configuration\ExtConf::get('includeRealUrlConfig')){
 	require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY). 'Configuration/RealUrl/Default.php';

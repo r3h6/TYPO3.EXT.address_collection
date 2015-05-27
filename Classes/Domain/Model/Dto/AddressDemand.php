@@ -65,7 +65,6 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Name
 	 *
 	 * @var string
-	 * @validate NotEmpty
 	 */
 	protected $name = '';
 
@@ -114,19 +113,28 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $addressGroupRepository = NULL;
 
 	/**
-	 * [createFromArray description]
-	 * @param  array $array [description]
-	 * @return [type]        [description]
+	 * Create a demand object from two array.
+	 * @param  array $properties         Usually from settings
+	 * @param  array $overrideProperties Usually from request
+	 * @return MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand
 	 */
-	// public static function createFromArray ($array){
-	// 	$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-	// 	return $propertyMapper->convert($array, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
-	// }
+	public static function factory (array $properties, $overrideProperties = NULL){
 
-	public static function factory (array $properties, $overrideProperties){
-		// $propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-		// $demand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
-		$argument = $properties;
+		$arrayConverter =  GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('MONOGON\\AddressCollection\\TypeConverter\\ArrayConverter');
+
+		$propertyMappingConfiguration = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMappingConfigurationBuilder')->build();
+
+		$propertyMappingConfiguration->forProperty('addressGroups')->setTypeConverter($arrayConverter);
+		$propertyMappingConfiguration->forProperty('recordTypes')->setTypeConverter($arrayConverter);
+		$propertyMappingConfiguration->forProperty('includeAddresses')->setTypeConverter($arrayConverter);
+
+
+
+		$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
+		$demand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
+
+
+		// $argument = $properties;
 		if (is_array($overrideProperties)){
 			foreach ($overrideProperties as $propertyName => $propertyValue){
 				switch ($propertyName){
@@ -140,54 +148,24 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 						break;
 
 				}
-				$argument[$propertyName] = $propertyValue;
+				$properties[$propertyName] = $propertyValue;
 			}
-			// $overrideDemand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
-			$argument['originalDemand'] = $properties;
+			$overrideDemand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
+			$overrideDemand->setOriginalDemand($demand);
+
+			// Validate
+			$validator = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Validation\\ValidatorResolver')->getBaseValidatorConjunction(get_class($overrideDemand));
+			$result = $validator->validate($overrideDemand);
+			if ($result->hasErrors()){
+				return NULL;
+			}
+
+
 			return $overrideDemand;
 		}
-		// $propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-		return $argument;
+
+		return $demand;
 	}
-
-	// /**
-	//  * [accessibleProperties description]
-	//  * @param  array $properties [description]
-	//  * @return array             [description]
-	//  */
-	// public static function accessibleProperties ($properties){
-	// 	$allowedProperties = get_class_vars(__CLASS__);
-	// 	foreach ((array) $properties as $key => $value){
-	// 		if (!isset($allowedProperties[$key]) || $key{1} === '_' || $key === 'uid'){
-	// 			unset($properties[$key]);
-	// 		}
-	// 	}
-	// 	return $properties;
-	// }
-
-	// public function intersect (AddressDemand $source = NULL){
-	// 	$target = clone $this;
-	// 	if ($source !== NULL){
-	// 		if (empty($target->addressGroups)){
-	// 			$target->setAddressGroups($source->addressGroups);
-	// 		} else if (!empty($source->addressGroups)){
-	// 			$addressGroups = array_intersect($target->addressGroups, $source->addressGroups);
-	// 			if (!empty($addressGroups)){
-	// 				$target->setAddressGroups($addressGroups);
-	// 			}
-	// 		}
-	// 		if (!empty($source->character)){
-	// 			$target->setCharacter($source->character);
-	// 		}
-	// 		if (!empty($source->name)){
-	// 			$target->setName($source->name);
-	// 		}
-	// 		if (!empty($source->email)){
-	// 			$target->setEmail($source->email);
-	// 		}
-	// 	}
-	// 	return $target;
-	// }
 
 	/**
 	 * Returns the  addressGroups

@@ -14,76 +14,41 @@ plugin.tx_addresscollection {
 	}
 }
 
-plugin.tx_addresscollection._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-address-collection table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-address-collection table th {
-		font-weight:bold;
-	}
-
-	.tx-address-collection table td {
-		vertical-align:top;
-	}
-
-	.typo3-messages .message-error {
-		color:red;
-	}
-
-	.typo3-messages .message-ok {
-		color:green;
-	}
-
-)
-
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 
-[userFunc = user_pageHadAddressPlugin()]
+# [userFunc = user_pageHadAddressPlugin()]
 
-page.includeCSSLibs {
-	bootstrap = EXT:address_collection/Resources/Public/StyleSheet/Vendors/bootstrap.min.css
+# page.includeCSSLibs {
+# 	bootstrap = EXT:address_collection/Resources/Public/StyleSheet/Vendors/bootstrap.min.css
 
-	visualsearch = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch.css
+# 	visualsearch = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch.css
 
-	visualsearchDatauri = EXT:address_collection/Resources/Public/StyleSheet/
-	Vendors/visualsearch-datauri.css
-}
+# 	visualsearchDatauri = EXT:address_collection/Resources/Public/StyleSheet/
+# 	Vendors/visualsearch-datauri.css
+# }
 
-page.includeCSS {
-	tx_addresscollection = EXT:address_collection/Resources/Public/StyleSheet/ext.css
-}
+# page.includeCSS {
+# 	tx_addresscollection = EXT:address_collection/Resources/Public/StyleSheet/ext.css
+# }
 
-page.includeJSFooterlibs {
-	tx_addresscollection_jquery = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery-1.11.0.js
+# page.includeJSFooterlibs {
+# 	tx_addresscollection_jquery = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery-1.11.0.js
 
-	tx_addresscollection_dependencies = EXT:address_collection/Resources/Public/JavaScript/Vendors/dependencies.js
+# 	tx_addresscollection_dependencies = EXT:address_collection/Resources/Public/JavaScript/Vendors/dependencies.js
 
-	visualsearch = EXT:address_collection/Resources/Public/JavaScript/Vendors/visualsearch.js
+# 	visualsearch = EXT:address_collection/Resources/Public/JavaScript/Vendors/visualsearch.js
 
-	jqueryHistory = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery.history.js
+# 	jqueryHistory = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery.history.js
 
-	ajaxForm = EXT:address_collection/Resources/Public/JavaScript/jquery.ajaxForm.js
-}
-page.includeJSFooter {
-	tx_addresscollection_ext = EXT:address_collection/Resources/Public/JavaScript/ext.js
-}
+# 	ajaxForm = EXT:address_collection/Resources/Public/JavaScript/jquery.ajaxForm.js
+# }
+# page.includeJSFooter {
+# 	tx_addresscollection_ext = EXT:address_collection/Resources/Public/JavaScript/ext.js
+# }
 
-[global]
+# [global]
 
 plugin.tx_addresscollection {
-	_CSS_DEFAULT_STYLE >
 	view {
 		widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = {$plugin.tx_addresscollection.view.templateRootPath}
 	}

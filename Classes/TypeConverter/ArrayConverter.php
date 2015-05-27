@@ -56,7 +56,7 @@ class ArrayConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\AbstractT
 	 * @return boolean
 	 */
 	public function canConvertFrom($source, $targetType) {
-		return (is_string($source) && preg_match('/[\d,]*/', $source));
+		return is_string($source);
 	}
 
 	/**
@@ -68,9 +68,11 @@ class ArrayConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\AbstractT
 	 * @param array $convertedChildProperties
 	 * @param \TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface $configuration
 	 * @return array
-	 * @api
 	 */
 	public function convertFrom($source, $targetType, array $convertedChildProperties = array(), \TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface $configuration = NULL) {
-		return GeneralUtility::intExplode(',', $source, TRUE);
+		if (preg_match('/^[\d,]*$/', $source, $matches)){
+			return GeneralUtility::intExplode(',', $source, TRUE);
+		}
+		return GeneralUtility::trimExplode(',', $source, TRUE);
 	}
 }

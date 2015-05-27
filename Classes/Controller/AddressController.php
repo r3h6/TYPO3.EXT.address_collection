@@ -98,18 +98,20 @@ class AddressController extends ActionController {
 		// $demandPropertyMappingConfiguration = $this->arguments->getArgument('demand')->getPropertyMappingConfiguration();
 		// $demandPropertyMappingConfiguration->allowProperties('character');
 		// $demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
-		$this->request->setArgument('demand', \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::factory($this->setup->get('list.demand'), $this->request->getArgument('demand')));
+
+		$demandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand'): NULL;
+
+		$this->request->setArgument('demand', \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::factory($this->setup->get('list.demand'), $demandArray));
 	}
 
 	/**
 	 * action list
 	 *
 	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand
-	 * @validate $demand \MONOGON\AddressCollection\Domain\Validator\AddressDemandValidator
-	 * @dontverifyrequesthash
+	 * @validate $demand NotEmpty
 	 * @return void
 	 */
-	public function listAction(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand = NULL) {
+	public function listAction(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
 		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($demand);
 		// $propertyMapper = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
 		// $setupDemand = $propertyMapper->convert(AddressDemand::accessibleProperties($this->setup->get('list.demand')), 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
