@@ -43,22 +43,6 @@ class AddressController extends ActionController {
 	protected $addressRepository = NULL;
 
 	/**
-	 * addressGroupRepository
-	 *
-	 * @var \MONOGON\AddressCollection\Domain\Repository\AddressGroupRepository
-	 * @inject
-	 */
-	protected $addressGroupRepository = NULL;
-
-	/**
-	 * userRepository
-	 *
-	 * @var \MONOGON\AddressCollection\Domain\Repository\UserRepository
-	 * @inject
-	 */
-	protected $userRepository = NULL;
-
-	/**
 	 * [$setup description]
 	 *
 	 * @var \MONOGON\AddressCollection\Configuration\Setup
@@ -95,12 +79,7 @@ class AddressController extends ActionController {
 	 * @return void [description]
 	 */
 	protected function initializeListAction() {
-		// $demandPropertyMappingConfiguration = $this->arguments->getArgument('demand')->getPropertyMappingConfiguration();
-		// $demandPropertyMappingConfiguration->allowProperties('character');
-		// $demandPropertyMappingConfiguration->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\PersistentObjectConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
-
 		$demandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand'): NULL;
-
 		$this->request->setArgument('demand', \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::factory($this->setup->get('list.demand'), $demandArray));
 	}
 
@@ -112,19 +91,7 @@ class AddressController extends ActionController {
 	 * @return void
 	 */
 	public function listAction(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($demand);
-		// $propertyMapper = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-		// $setupDemand = $propertyMapper->convert(AddressDemand::accessibleProperties($this->setup->get('list.demand')), 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand');
-		// $demand = $setupDemand->intersect($demand);
-
-		// if ($demand === NULL){
-		// 	$demand = \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::createFromArray($this->setup->get('list.demand'));
-		// }
-
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($demand);
-
 		$this->view->assign('demand', $demand);
-		// $this->view->assign('setupDemand', $setupDemand);
 		// Find addresses
 		$addresses = $this->addressRepository->findDemanded($demand);
 		$this->view->assign('addresses', $addresses);

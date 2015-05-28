@@ -1,11 +1,11 @@
 <?php
-namespace MONOGON\AddressCollection\Domain\Validator;
+namespace MONOGON\AddressCollection\View\Address;
 
 /***************************************************************
  *
  *  Copyright notice
  *
- *  (c) 2014 R3 H6 <r3h6@outlook.com>
+ *  (c) 2015 R3 H6 <r3h6@outlook.com>
  *
  *  All rights reserved
  *
@@ -26,32 +26,28 @@ namespace MONOGON\AddressCollection\Domain\Validator;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use JeroenDesloovere\VCard\VCard;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
- *
+ * ShowVcard
  */
-class AddressDemandValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
-	/**
-	 * [$setup description]
-	 *
-	 * @var \MONOGON\AddressCollection\Configuration\Setup
-	 * @inject
-	 */
-	protected $setup = NULL;
+class ShowVcard extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
 
-	public function isValid ($value){
-		if (!($value instanceof \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand)){
-			return;
+	public function render (){
+		$vcard = new VCard();
+		$lastname = 'Desloovere';
+		$firstname = 'Jeroen';
+		$vcard->addName($lastname, $firstname);
+
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this);
+		$response = $this->controllerContext->getResponse();
+
+		$headers = $vcard->getHeaders(TRUE);
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($headers); exit;
+		foreach ($headers as $key => $value){
+			// $response->setHeader($key, $value);
 		}
-
-		$originalDemand = \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::createFromArray($this->setup->get('list.demand'));
-
-		$value->setOriginalDemand($originalDemand);
-
-		// if ($originalDemand->getAddressGroups()){
-
-		// }
-
-		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($originalDemand);
-
+		return $vcard->getOutput();
 	}
 }

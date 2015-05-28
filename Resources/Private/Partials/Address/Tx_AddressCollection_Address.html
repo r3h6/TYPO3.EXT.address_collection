@@ -36,4 +36,8 @@
 
   <f:render partial="Vcard/Category" arguments="{address: address}" />
 
+  <f:link.action action="show" format="vcard" arguments="{address: address}">
+    <f:translate key="button.download_vcard">Download Vcard</f:translate>
+  </f:link.action>
+
 </div>

@@ -51,6 +51,9 @@ plugin.tx_addresscollection {
 plugin.tx_addresscollection {
 	view {
 		widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = {$plugin.tx_addresscollection.view.templateRootPath}
+		formatToPageTypeMapping {
+			vcard = {$plugin.tx_addresscollection.settings.ajaxPageType}
+		}
 	}
 	settings {
 		setup {
