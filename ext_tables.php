@@ -70,7 +70,7 @@ $GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
 \MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_DeliveryAddress');
 \MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BillingAddress');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', $GLOBALS['TCA']['tt_address']['ctrl']['type'],'','before:' . $TCA['tt_address']['ctrl']['label']);
+// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', $GLOBALS['TCA']['tt_address']['ctrl']['type'],'','before:' . $TCA['tt_address']['ctrl']['label']);
 
 // \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', join(', ', array_keys($tmp_address_collection_columns)));
 
@@ -78,12 +78,12 @@ $GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
 
 
 
-\MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_Address');
-\MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BusinessAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_CompanyAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_PersonalAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_DeliveryAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BillingAddress');
+// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_Address');
+// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BusinessAddress');
+// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_CompanyAddress');
+// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_PersonalAddress');
+// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_DeliveryAddress');
+// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BillingAddress');
 
 
 // $GLOBALS['TCA']['tt_address']['types']['Tx_AddressCollection_Address']['showitem'] .= 'name, first_name, middle_name, last_name, gender, birthday, title, email, phone, mobile, fax, www, company, address, building, room, zip, city, region, country, image, images, description, position, department, qualifications, nick_name, post_office_box, longitude, latitude, user, address_groups';

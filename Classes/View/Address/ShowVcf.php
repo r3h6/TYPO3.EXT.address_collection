@@ -30,15 +30,51 @@ use JeroenDesloovere\VCard\VCard;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * ShowVcard
+ * ShowVcf
  */
-class ShowVcard extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
+class ShowVcf extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
 
 	public function render (){
+
+		/** @var \MONOGON\AddressCollection\Domain\Model\Address */
+		$address = $this->variables['address'];
+
+		switch ($address->getRecordType()) {
+			case 'Tx_AddressCollection_BusinessAddress':
+				# code...$
+				break;
+
+			default:
+				# code...
+				break;
+		}
+		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($address);
+
+		/** @var \JeroenDesloovere\VCard\VCard */
 		$vcard = new VCard();
-		$lastname = 'Desloovere';
-		$firstname = 'Jeroen';
-		$vcard->addName($lastname, $firstname);
+
+		// define variables
+		$lastname = $address->getLastName();
+		$firstname = $address->getFirstName();
+		$additional = '';
+		$prefix = '';
+		$suffix = '';
+
+		// add personal data
+		$vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
+
+		// add work data
+		$vcard->addCompany('Siesqo');
+		$vcard->addJobtitle('Web Developer');
+		$vcard->addEmail('info@jeroendesloovere.be');
+		$vcard->addPhoneNumber(1234121212, 'PREF;WORK');
+		$vcard->addPhoneNumber(123456789, 'WORK');
+		$vcard->addAddress(null, null, 'street', 'worktown', null, 'workpostcode', 'Belgium');
+		$vcard->addURL('http://www.jeroendesloovere.be');
+
+		$vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+
+// return vcard as a string
 
 		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this);
 		$response = $this->controllerContext->getResponse();

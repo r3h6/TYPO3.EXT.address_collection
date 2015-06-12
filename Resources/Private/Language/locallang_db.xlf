@@ -204,6 +204,9 @@
 			<trans-unit id="tt_address_palette.social">
 				<source>Social</source>
 			</trans-unit>
+			<trans-unit id="tt_address_palette.geo">
+				<source>Geo</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

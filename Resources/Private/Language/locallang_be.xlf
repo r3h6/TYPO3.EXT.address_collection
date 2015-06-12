@@ -12,6 +12,9 @@
 			<trans-unit id="flexform_pi1.switchableControllerActions">
 				<source>Action</source>
 			</trans-unit>
+			<trans-unit id="pages.module.address">
+				<source>Addresses</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

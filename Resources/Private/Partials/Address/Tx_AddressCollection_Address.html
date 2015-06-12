@@ -36,7 +36,7 @@
 
   <f:render partial="Vcard/Category" arguments="{address: address}" />
 
-  <f:link.action action="show" format="vcard" arguments="{address: address}">
+  <f:link.action action="show" format="vcf" pageType="{setup.ajaxPageType}" arguments="{address: address}" additionalParams="{recordUid: data.uid}">
     <f:translate key="button.download_vcard">Download Vcard</f:translate>
   </f:link.action>
 
