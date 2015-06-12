@@ -52,6 +52,7 @@ if (!isset($GLOBALS['TCA']['tt_address']['ctrl']['type'])) {
 
 
 $GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
+$GLOBALS['TCA']['tt_address']['ctrl']['requestUpdate'] = 'country';
 
 // $GLOBALS['TCA']['tt_address']['palettes']['social'] = array(
 // 			'showitem' => 'skype, --linebreak--,

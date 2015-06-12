@@ -439,7 +439,7 @@ $GLOBALS['TCA']['tt_address'] = array (
 		'1' => array('showitem' => 'tx_extbase_type,
 			--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.name;name, description,
 			--div--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_tab.contact,
-				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.address;address_usa,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.address;address,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.building;building,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.geo;geo,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.organization;organization,
@@ -455,7 +455,7 @@ $GLOBALS['TCA']['tt_address'] = array (
 		'Tx_AddressCollection_CompanyAddress' => array('showitem' => 'tx_extbase_type,
 			name, description,
 			--div--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_tab.contact,
-				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.address;address_usa,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.address;address,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.building;building,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.geo;geo,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.contact;contact,
@@ -468,9 +468,9 @@ $GLOBALS['TCA']['tt_address'] = array (
 				addressgroup, user
 		'),
 		'Tx_AddressCollection_PersonalAddress' => array('showitem' => 'tx_extbase_type,
-			--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.name;name, description,
+			--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.name;name, nick_name, description,
 			--div--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_tab.contact,
-				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.address;address_usa,
+				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.address;address,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.building;building,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.contact;contact,
 				--palette--;LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_palette.social;social,
@@ -492,21 +492,16 @@ $GLOBALS['TCA']['tt_address'] = array (
 		),
 
 		'organization' => array(
-			'showitem' => 'company, position',
+			'showitem' => 'company, department, position, --linebreak--,
+							qualifications',
 			'canNotCollapse' => 1
 		),
 
-		'address_usa' => array(
+		'address' => array(
 			'showitem' => 'address, --linebreak--,
+							post_office_box, --linebreak--,
 							city, zip, region, --linebreak--,
 							country',
-			'canNotCollapse' => 1
-		),
-
-		'address_germany' => array(
-			'showitem' => 'address, --linebreak--,
-							zip, city, --linebreak--,
-							country, region',
 			'canNotCollapse' => 1
 		),
 
@@ -550,6 +545,7 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('static_info_ta
 		'items' => array(
 			array('', 0),
 		),
+		'onChange' => 'reload',
 		'foreign_table' => 'static_countries',
 		'foreign_table_where' => 'ORDER BY static_countries.cn_short_en',
 		'itemsProcFunc' => 'SJBR\\StaticInfoTables\\Hook\\Backend\\Form\\ElementRenderingHelper->translateCountriesSelector',
@@ -564,6 +560,34 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('static_info_ta
 				)
 			)
 		)
+	);
+	$GLOBALS['TCA']['tt_address']['columns']['region']['config'] = array(
+		'type' => 'select',
+		'items' => array(
+			array('', 0),
+		),
+		// 'foreign_table' => 'static_country_zones',
+		// 'foreign_table_where' => 'ORDER BY static_country_zones.zn_name_local',
+		// 'itemsProcFunc' => 'SJBR\\StaticInfoTables\\Hook\\Backend\\Form\\ElementRenderingHelper->translateCountryZonesSelector',
+		'itemsProcFunc' => 'MONOGON\\AddressCollection\\Hooks\\ItemsProcFunc\\RegionHelper->countryZones',
+		'size' => 1,
+		'minitems' => 0,
+		'maxitems' => 1,
+		// 'wizards' => array(
+		// 	'add' => array(
+		// 		'type' => 'script',
+		// 		'title' => 'LLL:EXT:static_info_tables/Resources/Private/Language/locallang_db:static_country_zones.title',
+		// 		'icon' => 'add.gif',
+		// 		'params' => array(
+		// 			'table' => 'static_country_zones',
+		// 			'pid' => '0',
+		// 			'setValue' => 'prepend'
+		// 		),
+		// 		'module' => array(
+		// 			'name' => 'wizard_add'
+		// 		)
+		// 	)
+		// )
 	);
 }
 
