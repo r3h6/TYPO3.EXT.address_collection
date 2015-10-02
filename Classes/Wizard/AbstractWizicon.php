@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Wizard;
+namespace Monogon\AddressCollection\Wizard;
 
 /***************************************************************
  *
@@ -26,9 +26,9 @@ namespace MONOGON\AddressCollection\Wizard;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \MONOGON\AddressCollection\Utility\ExtensionUtility;
+use \Monogon\AddressCollection\Utility\ExtensionUtility;
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use \MONOGON\AddressCollection\Configuration\ExtConf;
+use \Monogon\AddressCollection\Configuration\ExtConf;
 
 /**
  * AbstractWizicon

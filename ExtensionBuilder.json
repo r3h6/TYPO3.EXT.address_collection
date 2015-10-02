@@ -559,7 +559,7 @@
                     "categorizable": false,
                     "description": "Personal address",
                     "mapToTable": "",
-                    "parentClass": "\\MONOGON\\AddressCollection\\Domain\\Model\\Address",
+                    "parentClass": "\\Monogon\\AddressCollection\\Domain\\Model\\Address",
                     "sorting": false,
                     "type": "Entity",
                     "uid": "110685983479"
@@ -604,7 +604,7 @@
                     "categorizable": false,
                     "description": "Business address",
                     "mapToTable": "",
-                    "parentClass": "\\MONOGON\\AddressCollection\\Domain\\Model\\Address",
+                    "parentClass": "\\Monogon\\AddressCollection\\Domain\\Model\\Address",
                     "sorting": false,
                     "type": "Entity",
                     "uid": "1006980934441"
@@ -649,7 +649,7 @@
                     "categorizable": false,
                     "description": "Company address",
                     "mapToTable": "",
-                    "parentClass": "\\MONOGON\\AddressCollection\\Domain\\Model\\Address",
+                    "parentClass": "\\Monogon\\AddressCollection\\Domain\\Model\\Address",
                     "sorting": false,
                     "type": "Entity",
                     "uid": "239624145344"

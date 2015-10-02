@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Hooks;
+namespace Monogon\AddressCollection\Hooks;
 
 /***************************************************************
  *

@@ -65,9 +65,9 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 
 	/**
-	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand
+	 * @param \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand
 	 */
-	public function findDemanded(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
+	public function findDemanded(\Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
 		$query = $this->createQuery();
 		$constraints = array();
 

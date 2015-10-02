@@ -2,8 +2,8 @@
 namespace Monogon\AddressCollection\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand;
-use MONOGON\AddressCollection\Utility\ThemeUtility;
+use Monogon\AddressCollection\Domain\Model\Dto\AddressDemand;
+use Monogon\AddressCollection\Utility\ThemeUtility;
 /***************************************************************
  *
  *  Copyright notice
@@ -37,7 +37,7 @@ class AddressController extends ActionController {
 	/**
 	 * addressRepository
 	 *
-	 * @var \MONOGON\AddressCollection\Domain\Repository\AddressRepository
+	 * @var \Monogon\AddressCollection\Domain\Repository\AddressRepository
 	 * @inject
 	 */
 	protected $addressRepository = NULL;
@@ -45,7 +45,7 @@ class AddressController extends ActionController {
 	/**
 	 * [$setup description]
 	 *
-	 * @var \MONOGON\AddressCollection\Configuration\Setup
+	 * @var \Monogon\AddressCollection\Configuration\Setup
 	 * @inject
 	 */
 	protected $setup = NULL;
@@ -80,17 +80,17 @@ class AddressController extends ActionController {
 	 */
 	protected function initializeListAction() {
 		$demandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand') : NULL;
-		$this->request->setArgument('demand', \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::factory($this->setup->get('list.demand'), $demandArray));
+		$this->request->setArgument('demand', \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand::factory($this->setup->get('list.demand'), $demandArray));
 	}
 
 	/**
 	 * action list
 	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand
+	 * @param \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand
 	 * @validate $demand NotEmpty
 	 * @return void
 	 */
-	public function listAction(\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
+	public function listAction(\Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
 		$this->view->assign('demand', $demand);
 		// Find addresses
 		$addresses = $this->addressRepository->findDemanded($demand);
@@ -113,10 +113,10 @@ class AddressController extends ActionController {
 	/**
 	 * action show
 	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\Address $address
+	 * @param \Monogon\AddressCollection\Domain\Model\Address $address
 	 * @return void
 	 */
-	public function showAction(\MONOGON\AddressCollection\Domain\Model\Address $address) {
+	public function showAction(\Monogon\AddressCollection\Domain\Model\Address $address) {
 		$this->view->assign('address', $address);
 	}
 

@@ -64,12 +64,12 @@ $GLOBALS['TCA']['tt_address']['ctrl']['requestUpdate'] = 'country';
 
 //$TCA['tt_address']['types']['1']['showitem'] =  'hidden;;;;1-1-1, tx_extbase_type, gender;;;;3-3-3, name, first_name, middle_name, last_name;;2;;, birthday, address;;6, zip, city;;3, email;;5, phone;;4, image;;;;4-4-4, description, addressgroup;;;;1-1-1, --div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, categories';
 
-\MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_Address');
-\MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BusinessAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_CompanyAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_PersonalAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_DeliveryAddress');
-\MONOGON\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BillingAddress');
+\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_Address');
+\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BusinessAddress');
+\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_CompanyAddress');
+\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_PersonalAddress');
+\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_DeliveryAddress');
+\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BillingAddress');
 
 // \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', $GLOBALS['TCA']['tt_address']['ctrl']['type'],'','before:' . $TCA['tt_address']['ctrl']['label']);
 
@@ -79,19 +79,19 @@ $GLOBALS['TCA']['tt_address']['ctrl']['requestUpdate'] = 'country';
 
 
 
-// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_Address');
-// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BusinessAddress');
-// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_CompanyAddress');
-// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_PersonalAddress');
-// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_DeliveryAddress');
-// \MONOGON\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BillingAddress');
+// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_Address');
+// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BusinessAddress');
+// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_CompanyAddress');
+// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_PersonalAddress');
+// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_DeliveryAddress');
+// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BillingAddress');
 
 
 // $GLOBALS['TCA']['tt_address']['types']['Tx_AddressCollection_Address']['showitem'] .= 'name, first_name, middle_name, last_name, gender, birthday, title, email, phone, mobile, fax, www, company, address, building, room, zip, city, region, country, image, images, description, position, department, qualifications, nick_name, post_office_box, longitude, latitude, user, address_groups';
 
 
 if (TYPO3_MODE == 'BE') {
-	\MONOGON\AddressCollection\Utility\ExtensionUtility::addWizicon('Pi1');
+	\Monogon\AddressCollection\Utility\ExtensionUtility::addWizicon('Pi1');
 }
 
 // Add page tree icon

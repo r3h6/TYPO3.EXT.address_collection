@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
+namespace Monogon\AddressCollection\Hooks\ItemsProcFunc;
 
 /***************************************************************
  *
@@ -27,7 +27,7 @@ namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use MONOGON\AddressCollection\Configuration\ExtConf;
+use Monogon\AddressCollection\Configuration\ExtConf;
 
 /**
  * RecordType

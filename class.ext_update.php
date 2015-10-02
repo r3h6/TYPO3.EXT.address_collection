@@ -28,7 +28,7 @@
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use MONOGON\AddressCollection\Configuration\ExtConf;
+use Monogon\AddressCollection\Configuration\ExtConf;
 
 class AlreadyMigratedFALException extends Exception {
 

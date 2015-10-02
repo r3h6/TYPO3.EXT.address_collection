@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Controller;
+namespace Monogon\AddressCollection\Controller;
 
 // http://nerdcenter.de/extbase-fehlerbehandlung/
 

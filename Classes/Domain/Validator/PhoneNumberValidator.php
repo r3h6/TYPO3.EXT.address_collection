@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Domain\Validator;
+namespace Monogon\AddressCollection\Domain\Validator;
 
 /***************************************************************
  *

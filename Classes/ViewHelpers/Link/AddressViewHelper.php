@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\ViewHelpers\Link;
+namespace Monogon\AddressCollection\ViewHelpers\Link;
 
 /***************************************************************
  *
@@ -51,7 +51,7 @@ class AddressViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBase
 	}
 
 	/**
-	 * @param \MONOGON\AddressCollection\Domain\Model\Address $address
+	 * @param \Monogon\AddressCollection\Domain\Model\Address $address
 	 * @param array $arguments Arguments
 	 * @param integer $pageUid target page. See TypoLink destination
 	 * @param integer $pageType type of the target page. See typolink.parameter
@@ -67,7 +67,7 @@ class AddressViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBase
 	 * @param string $addQueryStringMethod Set which parameters will be kept. Only active if $addQueryString = TRUE
 	 * @return string Rendered link
 	 */
-	public function render(\MONOGON\AddressCollection\Domain\Model\Address $address, array $arguments = array(), $pageUid = NULL, $pageType = 0, $noCache = FALSE, $noCacheHash = FALSE, $section = '', $format = '', $linkAccessRestrictedPages = FALSE, array $additionalParams = array(), $absolute = FALSE, $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $addQueryStringMethod = NULL) {
+	public function render(\Monogon\AddressCollection\Domain\Model\Address $address, array $arguments = array(), $pageUid = NULL, $pageType = 0, $noCache = FALSE, $noCacheHash = FALSE, $section = '', $format = '', $linkAccessRestrictedPages = FALSE, array $additionalParams = array(), $absolute = FALSE, $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $addQueryStringMethod = NULL) {
 
 		$action = 'show';
 		$controller = NULL;

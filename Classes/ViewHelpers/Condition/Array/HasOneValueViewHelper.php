@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\ViewHelpers\Array;
+namespace Monogon\AddressCollection\ViewHelpers\Array;
 
 /***************************************************************
  *

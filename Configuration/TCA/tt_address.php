@@ -569,7 +569,7 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('static_info_ta
 		// 'foreign_table' => 'static_country_zones',
 		// 'foreign_table_where' => 'ORDER BY static_country_zones.zn_name_local',
 		// 'itemsProcFunc' => 'SJBR\\StaticInfoTables\\Hook\\Backend\\Form\\ElementRenderingHelper->translateCountryZonesSelector',
-		'itemsProcFunc' => 'MONOGON\\AddressCollection\\Hooks\\ItemsProcFunc\\RegionHelper->countryZones',
+		'itemsProcFunc' => 'Monogon\\AddressCollection\\Hooks\\ItemsProcFunc\\RegionHelper->countryZones',
 		'size' => 1,
 		'minitems' => 0,
 		'maxitems' => 1,

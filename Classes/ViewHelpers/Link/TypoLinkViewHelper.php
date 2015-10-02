@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\ViewHelpers\Link;
+namespace Monogon\AddressCollection\ViewHelpers\Link;
 
 /***************************************************************
  *

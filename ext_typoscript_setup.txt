@@ -6,15 +6,15 @@ config.tx_extbase{
             TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
                 subclasses {
                     Tx_AddressCollection_User = Monogon\AddressCollection\Domain\Model\User
-					
+
           		}
             }
-            MONOGON\AddressCollection\Domain\Model\Address {
+            Monogon\AddressCollection\Domain\Model\Address {
                 subclasses {
                     Tx_AddressCollection_PersonalAddress = Monogon\AddressCollection\Domain\Model\PersonalAddress
 					Tx_AddressCollection_BusinessAddress = Monogon\AddressCollection\Domain\Model\BusinessAddress
 					Tx_AddressCollection_CompanyAddress = Monogon\AddressCollection\Domain\Model\CompanyAddress
-					
+
           		}
             }
             Monogon\AddressCollection\Domain\Model\Address {
@@ -23,42 +23,42 @@ config.tx_extbase{
                     recordType = Tx_AddressCollection_Address
                 }
             }
-            
+
             Monogon\AddressCollection\Domain\Model\AddressGroup {
                 mapping {
                     tableName = tt_address_group
                     recordType = Tx_AddressCollection_AddressGroup
                 }
             }
-            
+
             Monogon\AddressCollection\Domain\Model\User {
                 mapping {
                     tableName = fe_users
                     recordType = Tx_AddressCollection_User
                 }
             }
-            
+
             Monogon\AddressCollection\Domain\Model\PersonalAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_PersonalAddress
                 }
             }
-            
+
             Monogon\AddressCollection\Domain\Model\BusinessAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_BusinessAddress
                 }
             }
-            
+
             Monogon\AddressCollection\Domain\Model\CompanyAddress {
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_CompanyAddress
                 }
             }
-            
+
     	}
     }
 }
@@ -69,7 +69,7 @@ config.tx_extbase{
 config.tx_extbase{
     persistence{
         classes {
-            MONOGON\AddressCollection\Domain\Model\Address {
+            Monogon\AddressCollection\Domain\Model\Address {
                 mapping {
                     columns {
                         addressgroup.mapOnProperty = addressGroups
@@ -77,12 +77,12 @@ config.tx_extbase{
                     }
                 }
             }
-            MONOGON\AddressCollection\Domain\Model\AddressGroup {
+            Monogon\AddressCollection\Domain\Model\AddressGroup {
                 mapping {
                     recordType >
                 }
             }
-            MONOGON\AddressCollection\Domain\Model\User {
+            Monogon\AddressCollection\Domain\Model\User {
                 mapping {
                     recordType >
                 }

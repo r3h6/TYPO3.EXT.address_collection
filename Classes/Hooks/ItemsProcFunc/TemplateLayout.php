@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
+namespace Monogon\AddressCollection\Hooks\ItemsProcFunc;
 
 /***************************************************************
  *
@@ -26,8 +26,8 @@ namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \MONOGON\AddressCollection\Utility\TemplateLayoutUtility;
-use \MONOGON\AddressCollection\Configuration\ExtConf;
+use \Monogon\AddressCollection\Utility\TemplateLayoutUtility;
+use \Monogon\AddressCollection\Configuration\ExtConf;
 
 /**
  * TemplateLayout

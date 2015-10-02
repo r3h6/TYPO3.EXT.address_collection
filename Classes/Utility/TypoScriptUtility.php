@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Utility;
+namespace Monogon\AddressCollection\Utility;
 
 /***************************************************************
  *

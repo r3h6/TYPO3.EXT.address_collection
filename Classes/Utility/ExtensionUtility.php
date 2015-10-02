@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Utility;
+namespace Monogon\AddressCollection\Utility;
 
 /***************************************************************
  *
@@ -28,7 +28,7 @@ namespace MONOGON\AddressCollection\Utility;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use \MONOGON\AddressCollection\Configuration\ExtConf;
+use \Monogon\AddressCollection\Configuration\ExtConf;
 
 /**
  * ExtensionUtility

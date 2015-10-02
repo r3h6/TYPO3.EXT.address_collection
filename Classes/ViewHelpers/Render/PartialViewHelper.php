@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\ViewHelpers\Render;
+namespace Monogon\AddressCollection\ViewHelpers\Render;
 
 /***************************************************************
  *
@@ -35,13 +35,13 @@ class PartialViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\RenderViewHelper {
 
 	/**
 	 * [render description]
-	 * @param  \MONOGON\AddressCollection\Domain\Model\Address $address   [description]
+	 * @param  \Monogon\AddressCollection\Domain\Model\Address $address   [description]
 	 * @param  string                                          $partial   [description]
 	 * @param  array                                           $arguments [description]
 	 * @param  boolean                                         $optional  [description]
 	 * @return string
 	 */
-	public function render (\MONOGON\AddressCollection\Domain\Model\Address $address, $partial, $arguments = array(), $optional = FALSE){
+	public function render (\Monogon\AddressCollection\Domain\Model\Address $address, $partial, $arguments = array(), $optional = FALSE){
 
 		$classNameParts = GeneralUtility::trimExplode('\\', get_class($address), TRUE);
 		$partialPath = end($classNameParts) . '/' . $partial;

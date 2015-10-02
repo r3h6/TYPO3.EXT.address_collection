@@ -29,7 +29,7 @@ namespace Monogon\AddressCollection\Domain\Model;
 /**
  * CompanyAddress
  */
-class CompanyAddress extends \MONOGON\AddressCollection\Domain\Model\Address {
+class CompanyAddress extends \Monogon\AddressCollection\Domain\Model\Address {
 
-	
+
 }

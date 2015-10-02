@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Hooks;
+namespace Monogon\AddressCollection\Hooks;
 
 /***************************************************************
  *
@@ -26,7 +26,7 @@ namespace MONOGON\AddressCollection\Hooks;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use MONOGON\AddressCollection\Configuration\ExtConf;
+use Monogon\AddressCollection\Configuration\ExtConf;
 
 /**
  * MergeName

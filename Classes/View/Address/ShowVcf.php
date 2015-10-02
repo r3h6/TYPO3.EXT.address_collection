@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\View\Address;
+namespace Monogon\AddressCollection\View\Address;
 
 /***************************************************************
  *
@@ -36,7 +36,7 @@ class ShowVcf extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
 
 	public function render (){
 
-		/** @var \MONOGON\AddressCollection\Domain\Model\Address */
+		/** @var \Monogon\AddressCollection\Domain\Model\Address */
 		$address = $this->variables['address'];
 
 		switch ($address->getRecordType()) {

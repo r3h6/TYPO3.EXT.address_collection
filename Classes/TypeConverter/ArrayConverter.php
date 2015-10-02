@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\TypeConverter;
+namespace Monogon\AddressCollection\TypeConverter;
 
 /***************************************************************
  *

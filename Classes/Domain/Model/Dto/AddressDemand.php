@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Domain\Model\Dto;
+namespace Monogon\AddressCollection\Domain\Model\Dto;
 
 /***************************************************************
  *
@@ -100,14 +100,14 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * [$originalDemand description]
 	 *
-	 * @var \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand
+	 * @var \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand
 	 */
 	protected $originalDemand = NULL;
 
 	/**
 	 * addressGroupRepository
 	 *
-	 * @var \MONOGON\AddressCollection\Domain\Repository\AddressGroupRepository
+	 * @var \Monogon\AddressCollection\Domain\Repository\AddressGroupRepository
 	 * @inject
 	 */
 	protected $addressGroupRepository = NULL;
@@ -116,11 +116,11 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Create a demand object from two array.
 	 * @param  array $properties         Usually from settings
 	 * @param  array $overrideProperties Usually from request
-	 * @return MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand
+	 * @return Monogon\AddressCollection\Domain\Model\Dto\AddressDemand
 	 */
 	public static function factory (array $properties, $overrideProperties = NULL){
 
-		$arrayConverter =  GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('MONOGON\\AddressCollection\\TypeConverter\\ArrayConverter');
+		$arrayConverter =  GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('Monogon\\AddressCollection\\TypeConverter\\ArrayConverter');
 
 		$propertyMappingConfiguration = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMappingConfigurationBuilder')->build();
 
@@ -131,7 +131,7 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 
 		$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-		$demand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
+		$demand = $propertyMapper->convert($properties, 'Monogon\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
 
 
 		// $argument = $properties;
@@ -150,7 +150,7 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 				}
 				$properties[$propertyName] = $propertyValue;
 			}
-			$overrideDemand = $propertyMapper->convert($properties, 'MONOGON\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
+			$overrideDemand = $propertyMapper->convert($properties, 'Monogon\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
 			$overrideDemand->setOriginalDemand($demand);
 
 			// Validate
@@ -370,7 +370,7 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the originalDemand
 	 *
-	 * @return \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $originalDemand
+	 * @return \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $originalDemand
 	 */
 	public function getOriginalDemand(){
 		return $this->originalDemand;
@@ -379,7 +379,7 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the originalDemand
 	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $originalDemand
+	 * @param \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $originalDemand
 	 * @return object $this
 	 */
 	public function setOriginalDemand($originalDemand){

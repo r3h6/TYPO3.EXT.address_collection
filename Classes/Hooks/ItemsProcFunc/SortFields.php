@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Hooks\ItemsProcFunc;
+namespace Monogon\AddressCollection\Hooks\ItemsProcFunc;
 
 /***************************************************************
  *

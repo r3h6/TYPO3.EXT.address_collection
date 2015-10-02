@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\ViewHelpers\Demand;
+namespace Monogon\AddressCollection\ViewHelpers\Demand;
 
 /***************************************************************
  *
@@ -36,7 +36,7 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 	/**
 	 * addressRepository
 	 *
-	 * @var \MONOGON\AddressCollection\Domain\Repository\AddressRepository
+	 * @var \Monogon\AddressCollection\Domain\Repository\AddressRepository
 	 * @inject
 	 */
 	protected $addressRepository = NULL;
@@ -49,12 +49,12 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 
 	/**
 	 * [render description]
-	 * @param  \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand     [description]
+	 * @param  \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand     [description]
 	 * @param  string                                                    $characters [description]
 	 * @param string $as
 	 * @return string                                                                [description]
 	 */
-	public function render (\MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand $demand, $characters = 'abcdefghijklmnopqrstuvwxyz', $as = 'menu'){
+	public function render (\Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand, $characters = 'abcdefghijklmnopqrstuvwxyz', $as = 'menu'){
 
 		if ($demand->getOriginalDemand()){
 			$demand = $demand->getOriginalDemand();

@@ -43,7 +43,7 @@
 						<label>locallang_be.xlf:flexform_pi1.settings.flexform.list.template</label>
 							<config>
 								<type>select</type>
-								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getListActionTemplates</itemsProcFunc>
+								<itemsProcFunc>\Monogon\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getListActionTemplates</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
 										<numIndex index="0">locallang_be.xlf:flexform_pi1.settings.flexform.template.default</numIndex>
@@ -152,7 +152,7 @@
 								<size>3</size>
 								<minitems>0</minitems>
 								<maxitems>99</maxitems>
-								<itemsProcFunc>MONOGON\AddressCollection\Hooks\ItemsProcFunc\RecordType->getByTca</itemsProcFunc>
+								<itemsProcFunc>Monogon\AddressCollection\Hooks\ItemsProcFunc\RecordType->getByTca</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
 										<numIndex index="0">locallang_be.xlf:flexform_pi1.settings.flexform.list.demand.recordType.0</numIndex>
@@ -167,7 +167,7 @@
 							<label>locallang_be.xlf:flexform_pi1.settings.flexform.list.demand.orderBy</label>
 							<config>
 								<type>select</type>
-								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\SortFields->getSortFields</itemsProcFunc>
+								<itemsProcFunc>\Monogon\AddressCollection\Hooks\ItemsProcFunc\SortFields->getSortFields</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
 										<numIndex index="0"></numIndex>
@@ -214,7 +214,7 @@
 						<label>locallang_be.xlf:flexform_pi1.settings.flexform.show.template</label>
 							<config>
 								<type>select</type>
-								<itemsProcFunc>\MONOGON\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getShowActionTemplates</itemsProcFunc>
+								<itemsProcFunc>\Monogon\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getShowActionTemplates</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
 										<numIndex index="0">locallang_be.xlf:flexform_pi1.settings.flexform.template.default</numIndex>

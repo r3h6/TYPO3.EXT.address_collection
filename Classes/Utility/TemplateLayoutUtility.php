@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Utility;
+namespace Monogon\AddressCollection\Utility;
 
 /***************************************************************
  *  Copyright notice
@@ -24,8 +24,8 @@ namespace MONOGON\AddressCollection\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use \TYPO3\CMS\Core\Utility\ArrayUtility;
-use MONOGON\AddressCollection\Configuration\ExtConf;
-use MONOGON\AddressCollection\Utility\ExtensionUtility;
+use Monogon\AddressCollection\Configuration\ExtConf;
+use Monogon\AddressCollection\Utility\ExtensionUtility;
 
 /**
  * TemplateLayout utility class
