@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Tests\Unit\Controller;
+namespace Monogon\AddressCollection\Tests\Unit\Controller;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,19 +25,19 @@ namespace MONOGON\AddressCollection\Tests\Unit\Controller;
  ***************************************************************/
 
 /**
- * Test case for class MONOGON\AddressCollection\Controller\AddressController.
+ * Test case for class Monogon\AddressCollection\Controller\AddressController.
  *
  * @author R3 H6 <r3h6@outlook.com>
  */
 class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 	/**
-	 * @var \MONOGON\AddressCollection\Controller\AddressController
+	 * @var \Monogon\AddressCollection\Controller\AddressController
 	 */
 	protected $subject = NULL;
 
 	protected function setUp() {
-		$this->subject = $this->getMock('MONOGON\\AddressCollection\\Controller\\AddressController', array('redirect', 'forward', 'addFlashMessage'), array(), '', FALSE);
+		$this->subject = $this->getMock('Monogon\\AddressCollection\\Controller\\AddressController', array('redirect', 'forward', 'addFlashMessage'), array(), '', FALSE);
 	}
 
 	protected function tearDown() {
@@ -51,7 +51,7 @@ class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 		$allAddresses = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array(), array(), '', FALSE);
 
-		$addressRepository = $this->getMock('MONOGON\\AddressCollection\\Domain\\Repository\\AddressRepository', array('findAll'), array(), '', FALSE);
+		$addressRepository = $this->getMock('Monogon\\AddressCollection\\Domain\\Repository\\AddressRepository', array('findAll'), array(), '', FALSE);
 		$addressRepository->expects($this->once())->method('findAll')->will($this->returnValue($allAddresses));
 		$this->inject($this->subject, 'addressRepository', $addressRepository);
 
@@ -66,7 +66,7 @@ class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function showActionAssignsTheGivenAddressToView() {
-		$address = new \MONOGON\AddressCollection\Domain\Model\Address();
+		$address = new \Monogon\AddressCollection\Domain\Model\Address();
 
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$this->inject($this->subject, 'view', $view);

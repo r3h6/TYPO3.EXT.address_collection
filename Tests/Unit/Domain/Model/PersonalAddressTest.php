@@ -1,6 +1,6 @@
 <?php
 
-namespace MONOGON\AddressCollection\Tests\Unit\Domain\Model;
+namespace Monogon\AddressCollection\Tests\Unit\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -27,7 +27,7 @@ namespace MONOGON\AddressCollection\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class \MONOGON\AddressCollection\Domain\Model\PersonalAddress.
+ * Test case for class \Monogon\AddressCollection\Domain\Model\PersonalAddress.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -36,12 +36,12 @@ namespace MONOGON\AddressCollection\Tests\Unit\Domain\Model;
  */
 class PersonalAddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var \MONOGON\AddressCollection\Domain\Model\PersonalAddress
+	 * @var \Monogon\AddressCollection\Domain\Model\PersonalAddress
 	 */
 	protected $subject = NULL;
 
 	protected function setUp() {
-		$this->subject = new \MONOGON\AddressCollection\Domain\Model\PersonalAddress();
+		$this->subject = new \Monogon\AddressCollection\Domain\Model\PersonalAddress();
 	}
 
 	protected function tearDown() {

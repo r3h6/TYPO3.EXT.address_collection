@@ -398,6 +398,16 @@
                             "relationType": "manyToMany",
                             "relationWire": "[wired]",
                             "uid": "324102844926"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": true,
+                            "propertyIsExcludeField": false,
+                            "relationDescription": "Related addresses",
+                            "relationName": "relatedAddresses",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "18069024167"
                         }
                     ]
                 }
@@ -508,96 +518,6 @@
                     "sorting": false,
                     "type": "Entity",
                     "uid": "797214703939"
-                },
-                "propertyGroup": {
-                    "properties": [
-
-                    ]
-                },
-                "relationGroup": {
-                    "relations": [
-
-                    ]
-                }
-            }
-        },
-        {
-            "config": {
-                "position": [
-                    712,
-                    233
-                ]
-            },
-            "name": "New Model Object",
-            "value": {
-                "actionGroup": {
-                    "_default0_list": false,
-                    "_default1_show": false,
-                    "_default2_new_create": false,
-                    "_default3_edit_update": false,
-                    "_default4_delete": false,
-                    "customActions": [
-
-                    ]
-                },
-                "name": "DeliveryAddress",
-                "objectsettings": {
-                    "addDeletedField": true,
-                    "addHiddenField": true,
-                    "addStarttimeEndtimeFields": false,
-                    "aggregateRoot": false,
-                    "categorizable": false,
-                    "description": "Delivery address",
-                    "mapToTable": "",
-                    "parentClass": "\\MONOGON\\AddressCollection\\Domain\\Model\\Address",
-                    "sorting": false,
-                    "type": "Entity",
-                    "uid": "71363811595"
-                },
-                "propertyGroup": {
-                    "properties": [
-
-                    ]
-                },
-                "relationGroup": {
-                    "relations": [
-
-                    ]
-                }
-            }
-        },
-        {
-            "config": {
-                "position": [
-                    989,
-                    238
-                ]
-            },
-            "name": "New Model Object",
-            "value": {
-                "actionGroup": {
-                    "_default0_list": false,
-                    "_default1_show": false,
-                    "_default2_new_create": false,
-                    "_default3_edit_update": false,
-                    "_default4_delete": false,
-                    "customActions": [
-
-                    ]
-                },
-                "name": "BillingAddress",
-                "objectsettings": {
-                    "addDeletedField": true,
-                    "addHiddenField": true,
-                    "addStarttimeEndtimeFields": false,
-                    "aggregateRoot": false,
-                    "categorizable": false,
-                    "description": "Billing address",
-                    "mapToTable": "",
-                    "parentClass": "\\MONOGON\\AddressCollection\\Domain\\Model\\Address",
-                    "sorting": false,
-                    "type": "Entity",
-                    "uid": "833145085998"
                 },
                 "propertyGroup": {
                     "properties": [
@@ -756,7 +676,7 @@
             "category": "plugin",
             "custom_category": "",
             "dependsOn": "typo3 => 6.2\n",
-            "disableLocalization": true,
+            "disableLocalization": false,
             "disableVersioning": false,
             "sourceLanguage": "en",
             "state": "beta",
@@ -785,7 +705,7 @@
                 "name": "Address Collection "
             }
         ],
-        "vendorName": "MONOGON"
+        "vendorName": "Monogon"
     },
     "wires": [
         {
@@ -823,10 +743,22 @@
                 "terminal": "SOURCES",
                 "uid": "677362885223"
             }
+        },
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_2",
+                "uid": "18069024167"
+            },
+            "tgt": {
+                "moduleId": 0,
+                "terminal": "SOURCES",
+                "uid": "334708329386"
+            }
         }
     ],
     "log": {
-        "last_modified": "2015-04-25 09:27",
+        "last_modified": "2015-10-02 06:38",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

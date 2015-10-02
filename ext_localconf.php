@@ -4,16 +4,16 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'MONOGON.' . $_EXTKEY,
+	'Monogon.' . $_EXTKEY,
 	'Pi1',
 	array(
 		'Address' => 'list, show',
-
+		
 	),
 	// non-cacheable actions
 	array(
 		'Address' => 'list',
-
+		
 	)
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

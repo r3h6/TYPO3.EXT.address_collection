@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Controller;
+namespace Monogon\AddressCollection\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand;
@@ -79,7 +79,7 @@ class AddressController extends ActionController {
 	 * @return void [description]
 	 */
 	protected function initializeListAction() {
-		$demandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand'): NULL;
+		$demandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand') : NULL;
 		$this->request->setArgument('demand', \MONOGON\AddressCollection\Domain\Model\Dto\AddressDemand::factory($this->setup->get('list.demand'), $demandArray));
 	}
 

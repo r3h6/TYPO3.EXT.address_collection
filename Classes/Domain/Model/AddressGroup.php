@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Domain\Model;
+namespace Monogon\AddressCollection\Domain\Model;
 
 /***************************************************************
  *
@@ -48,7 +48,7 @@ class AddressGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Parent group
 	 *
-	 * @var \MONOGON\AddressCollection\Domain\Model\AddressGroup
+	 * @var \Monogon\AddressCollection\Domain\Model\AddressGroup
 	 * @lazy
 	 */
 	protected $parentGroup = NULL;
@@ -94,7 +94,7 @@ class AddressGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the parentGroup
 	 *
-	 * @return \MONOGON\AddressCollection\Domain\Model\AddressGroup $parentGroup
+	 * @return \Monogon\AddressCollection\Domain\Model\AddressGroup parentGroup
 	 */
 	public function getParentGroup() {
 		return $this->parentGroup;
@@ -103,10 +103,10 @@ class AddressGroup extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the parentGroup
 	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\AddressGroup $parentGroup
-	 * @return void
+	 * @param \Monogon\AddressCollection\Domain\Model\AddressGroup $parentGroup
+	 * @return \Monogon\AddressCollection\Domain\Model\AddressGroup parentGroup
 	 */
-	public function setParentGroup(\MONOGON\AddressCollection\Domain\Model\AddressGroup $parentGroup) {
+	public function setParentGroup(\Monogon\AddressCollection\Domain\Model\AddressGroup $parentGroup) {
 		$this->parentGroup = $parentGroup;
 	}
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-25T21:27:23Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-10-02T18:38:11Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="tx_addresscollection_domain_model_address">
@@ -114,16 +114,10 @@
 			<trans-unit id="tx_addresscollection_domain_model_address.address_groups">
 				<source>Address Groups</source>
 			</trans-unit>
+			<trans-unit id="tx_addresscollection_domain_model_address.related_addresses">
+				<source>Related Addresses</source>
+			</trans-unit>
 			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_Address">
-				<source>Address Collection (Extbase) Address</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection.tx_extbase_type">
-				<source>Record Type</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection.tx_extbase_type.0">
-				<source>Default</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.tx_extbase_type.Tx_AddressCollection_Address">
 				<source>Address Collection (Extbase) Address</source>
 			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_addressgroup">
@@ -147,18 +141,6 @@
 			<trans-unit id="fe_users.tx_extbase_type.Tx_AddressCollection_User">
 				<source>Address Collection (Extbase) User</source>
 			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_deliveryaddress">
-				<source>Delivery Address</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_DeliveryAddress">
-				<source>Address Collection (Extbase) DeliveryAddress</source>
-			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_billingaddress">
-				<source>Billing Address</source>
-			</trans-unit>
-			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_BillingAddress">
-				<source>Address Collection (Extbase) BillingAddress</source>
-			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_personaladdress">
 				<source>Personal Address</source>
 			</trans-unit>
@@ -176,6 +158,27 @@
 			</trans-unit>
 			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_CompanyAddress">
 				<source>Address Collection (Extbase) CompanyAddress</source>
+			</trans-unit>
+			<trans-unit id="tx_addresscollection.tx_extbase_type">
+				<source>Record Type</source>
+			</trans-unit>
+			<trans-unit id="tx_addresscollection.tx_extbase_type.0">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="tx_addresscollection_domain_model_address.tx_extbase_type.Tx_AddressCollection_Address">
+				<source>Address Collection (Extbase) Address</source>
+			</trans-unit>
+			<trans-unit id="tx_addresscollection_domain_model_deliveryaddress">
+				<source>Delivery Address</source>
+			</trans-unit>
+			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_DeliveryAddress">
+				<source>Address Collection (Extbase) DeliveryAddress</source>
+			</trans-unit>
+			<trans-unit id="tx_addresscollection_domain_model_billingaddress">
+				<source>Billing Address</source>
+			</trans-unit>
+			<trans-unit id="tt_address.tx_extbase_type.Tx_AddressCollection_BillingAddress">
+				<source>Address Collection (Extbase) BillingAddress</source>
 			</trans-unit>
 			<trans-unit id="template_layouts.list.search_list">
 				<source>Search list</source>

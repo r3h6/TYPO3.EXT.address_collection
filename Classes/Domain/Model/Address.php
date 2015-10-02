@@ -1,5 +1,5 @@
 <?php
-namespace MONOGON\AddressCollection\Domain\Model;
+namespace Monogon\AddressCollection\Domain\Model;
 
 /***************************************************************
  *
@@ -284,7 +284,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * User
 	 *
-	 * @var \MONOGON\AddressCollection\Domain\Model\User
+	 * @var \Monogon\AddressCollection\Domain\Model\User
 	 * @lazy
 	 */
 	protected $user = NULL;
@@ -292,10 +292,18 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Address groups
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\AddressGroup>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\AddressGroup>
 	 * @lazy
 	 */
 	protected $addressGroups = NULL;
+
+	/**
+	 * Related addresses
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\Address>
+	 * @lazy
+	 */
+	protected $relatedAddresses = NULL;
 
 	/**
 	 * Returns the  recordType
@@ -336,6 +344,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected function initStorageObjects() {
 		$this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->addressGroups = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->relatedAddresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -738,45 +747,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a AddressGroup
-	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\AddressGroup $addressGroup
-	 * @return void
-	 */
-	public function addAddressGroup(\MONOGON\AddressCollection\Domain\Model\AddressGroup $addressGroup) {
-		$this->addressGroups->attach($addressGroup);
-	}
-
-	/**
-	 * Removes a AddressGroup
-	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\AddressGroup $addressGroupToRemove The AddressGroup to be removed
-	 * @return void
-	 */
-	public function removeAddressGroup(\MONOGON\AddressCollection\Domain\Model\AddressGroup $addressGroupToRemove) {
-		$this->addressGroups->detach($addressGroupToRemove);
-	}
-
-	/**
-	 * Returns the addressGroups
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\AddressGroup> $addressGroups
-	 */
-	public function getAddressGroups() {
-		return $this->addressGroups;
-	}
-
-	/**
-	 * Sets the addressGroups
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MONOGON\AddressCollection\Domain\Model\AddressGroup> $addressGroups
-	 * @return void
-	 */
-	public function setAddressGroups(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $addressGroups) {
-		$this->addressGroups = $addressGroups;
-	}
-
-	/**
 	 * Returns the position
 	 *
 	 * @return string $position
@@ -907,25 +877,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setLatitude($latitude) {
 		$this->latitude = $latitude;
-	}
-
-	/**
-	 * Returns the user
-	 *
-	 * @return \MONOGON\AddressCollection\Domain\Model\User user
-	 */
-	public function getUser() {
-		return $this->user;
-	}
-
-	/**
-	 * Sets the user
-	 *
-	 * @param \MONOGON\AddressCollection\Domain\Model\User $user
-	 * @return \MONOGON\AddressCollection\Domain\Model\User user
-	 */
-	public function setUser(\MONOGON\AddressCollection\Domain\Model\User $user) {
-		$this->user = $user;
 	}
 
 	/**
@@ -1066,6 +1017,103 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function getLinkedIn() {
 		return $this->linkedIn;
+	}
+
+	/**
+	 * Returns the user
+	 *
+	 * @return \Monogon\AddressCollection\Domain\Model\User user
+	 */
+	public function getUser() {
+		return $this->user;
+	}
+
+	/**
+	 * Sets the user
+	 *
+	 * @param \Monogon\AddressCollection\Domain\Model\User $user
+	 * @return \Monogon\AddressCollection\Domain\Model\User user
+	 */
+	public function setUser(\Monogon\AddressCollection\Domain\Model\User $user) {
+		$this->user = $user;
+	}
+
+	/**
+	 * Adds a AddressGroup
+	 *
+	 * @param \Monogon\AddressCollection\Domain\Model\AddressGroup $addressGroup
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\AddressGroup> addressGroups
+	 */
+	public function addAddressGroup(\Monogon\AddressCollection\Domain\Model\AddressGroup $addressGroup) {
+		$this->addressGroups->attach($addressGroup);
+	}
+
+	/**
+	 * Removes a AddressGroup
+	 *
+	 * @param \Monogon\AddressCollection\Domain\Model\AddressGroup $addressGroupToRemove The AddressGroup to be removed
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\AddressGroup> addressGroups
+	 */
+	public function removeAddressGroup(\Monogon\AddressCollection\Domain\Model\AddressGroup $addressGroupToRemove) {
+		$this->addressGroups->detach($addressGroupToRemove);
+	}
+
+	/**
+	 * Returns the addressGroups
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\AddressGroup> addressGroups
+	 */
+	public function getAddressGroups() {
+		return $this->addressGroups;
+	}
+
+	/**
+	 * Sets the addressGroups
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\AddressGroup> $addressGroups
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\AddressGroup> addressGroups
+	 */
+	public function setAddressGroups(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $addressGroups) {
+		$this->addressGroups = $addressGroups;
+	}
+
+	/**
+	 * Adds a Address
+	 *
+	 * @param \Monogon\AddressCollection\Domain\Model\Address $relatedAddress
+	 * @return void
+	 */
+	public function addRelatedAddress(\Monogon\AddressCollection\Domain\Model\Address $relatedAddress) {
+		$this->relatedAddresses->attach($relatedAddress);
+	}
+
+	/**
+	 * Removes a Address
+	 *
+	 * @param \Monogon\AddressCollection\Domain\Model\Address $relatedAddressToRemove The Address to be removed
+	 * @return void
+	 */
+	public function removeRelatedAddress(\Monogon\AddressCollection\Domain\Model\Address $relatedAddressToRemove) {
+		$this->relatedAddresses->detach($relatedAddressToRemove);
+	}
+
+	/**
+	 * Returns the relatedAddresses
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\Address> $relatedAddresses
+	 */
+	public function getRelatedAddresses() {
+		return $this->relatedAddresses;
+	}
+
+	/**
+	 * Sets the relatedAddresses
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Monogon\AddressCollection\Domain\Model\Address> $relatedAddresses
+	 * @return void
+	 */
+	public function setRelatedAddresses(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedAddresses) {
+		$this->relatedAddresses = $relatedAddresses;
 	}
 
 }
