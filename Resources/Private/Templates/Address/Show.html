@@ -6,7 +6,7 @@
 <f:section name="main">
 
 <f:flashMessages renderMode="div" />
-
-<mgn:render.partial partial="Vcard" address="{address}" arguments="{address: address, setup: setup}" />
+<f:debug title="title">{address}</f:debug>
+<f:render partial="Address/{address.recordType}" arguments="{_all}" />
 
 </f:section>
