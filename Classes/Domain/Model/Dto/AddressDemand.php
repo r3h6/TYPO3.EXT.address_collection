@@ -113,61 +113,6 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $addressGroupRepository = NULL;
 
 	/**
-	 * Create a demand object from two array.
-	 * @param  array $properties         Usually from settings
-	 * @param  array $overrideProperties Usually from request
-	 * @return Monogon\AddressCollection\Domain\Model\Dto\AddressDemand
-	 */
-	public static function factory (array $properties, $overrideProperties = NULL){
-
-		$arrayConverter =  GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('Monogon\\AddressCollection\\TypeConverter\\ArrayConverter');
-
-		$propertyMappingConfiguration = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMappingConfigurationBuilder')->build();
-
-		$propertyMappingConfiguration->forProperty('addressGroups')->setTypeConverter($arrayConverter);
-		$propertyMappingConfiguration->forProperty('recordTypes')->setTypeConverter($arrayConverter);
-		$propertyMappingConfiguration->forProperty('includeAddresses')->setTypeConverter($arrayConverter);
-
-
-
-		$propertyMapper = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Property\\PropertyMapper');
-		$demand = $propertyMapper->convert($properties, 'Monogon\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
-
-
-		// $argument = $properties;
-		if (is_array($overrideProperties)){
-			foreach ($overrideProperties as $propertyName => $propertyValue){
-				switch ($propertyName){
-					case 'addressGroups':
-					case 'recordTypes':
-					case 'includeAddresses':
-						$propertyValue = join(',', array_intersect(
-							GeneralUtility::trimExplode(',', $properties[$propertyName], TRUE),
-							GeneralUtility::trimExplode(',', $propertyValue, TRUE)
-						));
-						break;
-
-				}
-				$properties[$propertyName] = $propertyValue;
-			}
-			$overrideDemand = $propertyMapper->convert($properties, 'Monogon\\AddressCollection\\Domain\\Model\\Dto\\AddressDemand', $propertyMappingConfiguration);
-			$overrideDemand->setOriginalDemand($demand);
-
-			// Validate
-			$validator = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\Validation\\ValidatorResolver')->getBaseValidatorConjunction(get_class($overrideDemand));
-			$result = $validator->validate($overrideDemand);
-			if ($result->hasErrors()){
-				return NULL;
-			}
-
-
-			return $overrideDemand;
-		}
-
-		return $demand;
-	}
-
-	/**
 	 * Returns the  addressGroups
 	 *
 	 * @return array $addressGroups
@@ -387,6 +332,11 @@ class AddressDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		return $this;
 	}
 
+	/**
+	 * Returns all address groups used by the demand.
+	 * This is usefull for a filter in a search.
+	 * @return object [description]
+	 */
 	public function getAddressGroupsOption (){
 		if ($this->originalDemand){
 			$uids = $this->originalDemand->getAddressGroups();

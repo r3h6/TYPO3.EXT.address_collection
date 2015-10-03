@@ -51,6 +51,13 @@ class AddressController extends ActionController {
 	protected $setup = NULL;
 
 	/**
+	 * [$addressDemandFactory description]
+	 * @var \Monogon\AddressCollection\Domain\AddressDemandFactory
+	 * @inject
+	 */
+	protected $addressDemandFactory = NULL;
+
+	/**
 	 * [initializeAction description]
 	 *
 	 * @return void [description]
@@ -79,8 +86,8 @@ class AddressController extends ActionController {
 	 * @return void [description]
 	 */
 	protected function initializeListAction() {
-		$demandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand') : NULL;
-		$this->request->setArgument('demand', \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand::factory($this->setup->get('list.demand'), $demandArray));
+		$overrideDemandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand') : NULL;
+		$this->request->setArgument('demand', $this->addressDemandFactory->makeInstance($this->setup->get('list.demand'), $overrideDemandArray));
 	}
 
 	/**

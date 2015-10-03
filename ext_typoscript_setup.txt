@@ -21,20 +21,22 @@ config.tx_extbase{
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_Address
+                    columns {
+                        addressgroup.mapOnProperty = addressGroups
+                        tx_extbase_type.mapOnProperty = recordType
+                    }
                 }
             }
 
             Monogon\AddressCollection\Domain\Model\AddressGroup {
                 mapping {
                     tableName = tt_address_group
-                    recordType = Tx_AddressCollection_AddressGroup
                 }
             }
 
             Monogon\AddressCollection\Domain\Model\User {
                 mapping {
                     tableName = fe_users
-                    recordType = Tx_AddressCollection_User
                 }
             }
 
@@ -42,6 +44,10 @@ config.tx_extbase{
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_PersonalAddress
+                    columns {
+                        addressgroup.mapOnProperty = addressGroups
+                        tx_extbase_type.mapOnProperty = recordType
+                    }
                 }
             }
 
@@ -49,6 +55,10 @@ config.tx_extbase{
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_BusinessAddress
+                    columns {
+                        addressgroup.mapOnProperty = addressGroups
+                        tx_extbase_type.mapOnProperty = recordType
+                    }
                 }
             }
 
@@ -56,6 +66,10 @@ config.tx_extbase{
                 mapping {
                     tableName = tt_address
                     recordType = Tx_AddressCollection_CompanyAddress
+                    columns {
+                        addressgroup.mapOnProperty = addressGroups
+                        tx_extbase_type.mapOnProperty = recordType
+                    }
                 }
             }
 
@@ -64,29 +78,3 @@ config.tx_extbase{
 }
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
-
-
-config.tx_extbase{
-    persistence{
-        classes {
-            Monogon\AddressCollection\Domain\Model\Address {
-                mapping {
-                    columns {
-                        addressgroup.mapOnProperty = addressGroups
-                        tx_extbase_type.mapOnProperty = recordType
-                    }
-                }
-            }
-            Monogon\AddressCollection\Domain\Model\AddressGroup {
-                mapping {
-                    recordType >
-                }
-            }
-            Monogon\AddressCollection\Domain\Model\User {
-                mapping {
-                    recordType >
-                }
-            }
-        }
-    }
-}

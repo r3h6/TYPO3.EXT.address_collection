@@ -3,28 +3,74 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
-## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Pi1',
-	'Address Collection '
+	'Address collection'
 );
 
 $pluginSignature = str_replace('_','',$_EXTKEY) . '_pi1';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_pi1.xml');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Address Collection (Extbase)');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Address collection');
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tt_address', 'EXT:address_collection/Resources/Private/Language/locallang_csh_tt_address.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tt_address');
+$GLOBALS['TCA']['tt_address'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address',
+		'label' => 'name',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'default_sortby' => 'ORDER BY name ASC',
 
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
 
-//if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('tt_address')){
-	if (!defined('TT_ADDRESS_MAX_IMAGES')){
-		define('TT_ADDRESS_MAX_IMAGES', 6);
-	}
-	require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Includes/tx_ttaddress_tables.php';
-//}
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+
+		),
+		'searchFields' => 'name,first_name,middle_name,last_name,gender,birthday,title,email,phone,phone_direct,mobile,fax,www,address,building,room,zip,city,region,country,post_office_box,image,images,description,company,position,department,qualifications,nick_name,longitude,latitude,skype,twitter,facebook,linked_in,address_groups,related_addresses,related_addresses_from,user,',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Address.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tt_address.gif'
+	),
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tt_address_group', 'EXT:address_collection/Resources/Private/Language/locallang_csh_tt_address_group.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tt_address_group');
+$GLOBALS['TCA']['tt_address_group'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:address_collection/Resources/Private/Language/locallang_db.xlf:tt_address_group',
+		'label' => 'title',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'sorting',
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
+
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+
+		),
+		'searchFields' => 'title,description,',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/AddressGroup.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tt_address_group.gif'
+	),
+);
 
 if (!isset($GLOBALS['TCA']['tt_address']['ctrl']['type'])) {
 	if (file_exists($GLOBALS['TCA']['tt_address']['ctrl']['dynamicConfigFile'])) {
@@ -46,56 +92,28 @@ if (!isset($GLOBALS['TCA']['tt_address']['ctrl']['type'])) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_address', $tempColumns, 1);
 }
 
-// $tmp_address_collection_columns = require \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Includes/tt_address.php';
-
-// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_address',$tmp_address_collection_columns);
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 
 
-$GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
+
+
+
+
+//$GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
 $GLOBALS['TCA']['tt_address']['ctrl']['requestUpdate'] = 'country';
 
-// $GLOBALS['TCA']['tt_address']['palettes']['social'] = array(
-// 			'showitem' => 'skype, --linebreak--,
-// 							twitter, --linebreak--,
-// 							facebook, --linebreak--,
-// 							linkedin',
-// 			'canNotCollapse' => 1
-// 		);
 
-//$TCA['tt_address']['types']['1']['showitem'] =  'hidden;;;;1-1-1, tx_extbase_type, gender;;;;3-3-3, name, first_name, middle_name, last_name;;2;;, birthday, address;;6, zip, city;;3, email;;5, phone;;4, image;;;;4-4-4, description, addressgroup;;;;1-1-1, --div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, categories';
 
 \Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_Address');
 \Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BusinessAddress');
 \Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_CompanyAddress');
 \Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_PersonalAddress');
-\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_DeliveryAddress');
-\Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BillingAddress');
-
-// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', $GLOBALS['TCA']['tt_address']['ctrl']['type'],'','before:' . $TCA['tt_address']['ctrl']['label']);
-
-// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_address', join(', ', array_keys($tmp_address_collection_columns)));
-
-
-
-
-
-// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_Address');
-// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BusinessAddress');
-// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_CompanyAddress');
-// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_PersonalAddress');
-// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_DeliveryAddress');
-// \Monogon\AddressCollection\Utility\TcaUtility::showItem('Tx_AddressCollection_BillingAddress');
-
-
-// $GLOBALS['TCA']['tt_address']['types']['Tx_AddressCollection_Address']['showitem'] .= 'name, first_name, middle_name, last_name, gender, birthday, title, email, phone, mobile, fax, www, company, address, building, room, zip, city, region, country, image, images, description, position, department, qualifications, nick_name, post_office_box, longitude, latitude, user, address_groups';
 
 
 if (TYPO3_MODE == 'BE') {
+	// Add wizard icon
 	\Monogon\AddressCollection\Utility\ExtensionUtility::addWizicon('Pi1');
-}
-
-// Add page tree icon
-if (TYPO3_MODE == 'BE') {
+	// Add page tree icon
 	\TYPO3\CMS\Backend\Sprite\SpriteManager::addTcaTypeIcon('pages', 'contains-address', '../typo3conf/ext/' . $_EXTKEY . '/Resources/Public/Icons/folder.gif');
 	$TCA['pages']['columns']['module']['config']['items'][] = array(
 	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_be.xlf:pages.module.address',

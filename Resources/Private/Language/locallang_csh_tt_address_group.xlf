@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-10-03T12:30:01Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-10-03T14:21:10Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="title.description">
@@ -8,9 +8,6 @@
 			</trans-unit>
 			<trans-unit id="description.description">
 				<source>Description</source>
-			</trans-unit>
-			<trans-unit id="parent_group.description">
-				<source>Parent group</source>
 			</trans-unit>
 		</body>
 	</file>

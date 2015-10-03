@@ -89,11 +89,6 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 			);
 
 			if (in_array($character, $characterList)){
-				// $menuItem['link'] = $uriBuilder->reset()->uriFor(NULL, array(
-				// 	'demand' => array(
-				// 		'character' => $character,
-				// 	),
-				// ));
 				$menuItem['link'] = $uriBuilder->reset()
 					->setArguments(array(
 						$pluginNamespace => array(
@@ -109,7 +104,6 @@ class CharacterMenuViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 		}
 
 		$templateVariableContainer = $this->renderingContext->getTemplateVariableContainer();
-		// $this->view->assign('menu', $menu);
 		$templateVariableContainer->add($as, $menu);
 		$output = $this->renderChildren();
 		$templateVariableContainer->remove($as);

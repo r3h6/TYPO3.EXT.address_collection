@@ -26,9 +26,12 @@ namespace Monogon\AddressCollection\Hooks\ItemsProcFunc;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Monogon\AddressCollection\Configuration\ExtConf;
-//use SJBR\StaticInfoTables\Hook\Backend\Form\ElementRenderingHelper;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use SJBR\StaticInfoTables\Domain\Repository\CountryRepository;
+use SJBR\StaticInfoTables\Domain\Repository\CountryZoneRepository;
 
 /**
  * RegionHelper
@@ -48,13 +51,13 @@ class RegionHelper implements \TYPO3\CMS\Core\SingletonInterface {
 	protected $countryZoneRepository;
 
 	public function __construct (){
-		$this->countryRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('SJBR\\StaticInfoTables\\Domain\\Repository\\CountryRepository');
-		$this->countryZoneRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('SJBR\\StaticInfoTables\\Domain\\Repository\\CountryZoneRepository');
+		$this->countryRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(CountryRepository::class);
+		$this->countryZoneRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(CountryZoneRepository::class);
 	}
 
 	public function countryZones (&$PA, $fObj){
 		$rowCountry = $PA['row']['country'];
-		if (is_numeric($rowCountry)){
+		if (!empty($rowCountry) && is_numeric($rowCountry)){
 			$country = $this->countryRepository->findByUid($rowCountry);
 			$countryZones = $this->countryZoneRepository->findByCountryOrderedByLocalizedName($country);
 			foreach ($countryZones as $countryZone){

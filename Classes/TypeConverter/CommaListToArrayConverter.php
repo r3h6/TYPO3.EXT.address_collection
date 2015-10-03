@@ -29,9 +29,9 @@ namespace Monogon\AddressCollection\TypeConverter;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * ArrayConverter
+ * CommaListToArrayConverter
  */
-class ArrayConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\AbstractTypeConverter {
+class CommaListToArrayConverter extends \TYPO3\CMS\Extbase\Property\TypeConverter\AbstractTypeConverter {
 
 	/**
 	 * @var array<string>

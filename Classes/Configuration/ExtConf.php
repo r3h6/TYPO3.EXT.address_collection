@@ -31,14 +31,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * ExtConf
  */
-class ExtConf {
+class ExtConf implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
 	 * @var string
 	 */
 	const EXT_KEY = 'address_collection';
-
-	private static $instance;
 
 	/**
 	 * @var array
@@ -46,31 +44,19 @@ class ExtConf {
 	protected $configuration = array();
 
 	public static function get ($key){
-		$extConf = self::makeInstance();
-		return $extConf->_get($key);
+		return GeneralUtility::makeInstance(self::class)->_get($key);
 	}
 
 	public static function set ($key, $value){
-		self::makeInstance()->_set($key, $value);
+		GeneralUtility::makeInstance(self::class)->_set($key, $value);
 	}
 
-	private static function makeInstance (){
-		if (!self::$instance){
-			self::$instance = new ExtConf();
-		}
-		return self::$instance;
-	}
-
-	private function __construct() {
+	public function __construct() {
 		if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::EXT_KEY])) {
 			$this->configuration = (array) unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::EXT_KEY]);
 		}
 	}
 
-	/**
-	 * @param string $key
-	 * @return mixed
-	 */
 	private function _get ($key) {
 		if (is_array($this->configuration) && array_key_exists($key, $this->configuration)) {
 			return $this->configuration[$key];

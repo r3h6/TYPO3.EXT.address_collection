@@ -3,8 +3,8 @@
         {
             "config": {
                 "position": [
-                    351,
-                    183
+                    358,
+                    184
                 ]
             },
             "name": "New Model Object",
@@ -27,11 +27,11 @@
                     "aggregateRoot": true,
                     "categorizable": false,
                     "description": "Address",
-                    "mapToTable": "tt_address",
+                    "mapToTable": "",
                     "parentClass": "",
                     "sorting": false,
                     "type": "Entity",
-                    "uid": "334708329386"
+                    "uid": "1011422016279"
                 },
                 "propertyGroup": {
                     "properties": [
@@ -128,6 +128,16 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
+                            "propertyDescription": "Phone direct",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "phoneDirect",
+                            "propertyType": "String",
+                            "uid": "726241215295"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
                             "propertyDescription": "Mobile",
                             "propertyIsExcludeField": false,
                             "propertyIsRequired": false,
@@ -154,16 +164,6 @@
                             "propertyName": "www",
                             "propertyType": "String",
                             "uid": "1046244576320"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Company",
-                            "propertyIsExcludeField": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "company",
-                            "propertyType": "String",
-                            "uid": "789022916451"
                         },
                         {
                             "allowedFileTypes": "",
@@ -238,6 +238,16 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
+                            "propertyDescription": "Post-office box",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "postOfficeBox",
+                            "propertyType": "String",
+                            "uid": "315838613146"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
                             "propertyDescription": "Image",
                             "propertyIsExcludeField": false,
                             "propertyIsRequired": false,
@@ -264,6 +274,16 @@
                             "propertyName": "description",
                             "propertyType": "Text",
                             "uid": "377864644444"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Company",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "company",
+                            "propertyType": "String",
+                            "uid": "789022916451"
                         },
                         {
                             "allowedFileTypes": "",
@@ -304,16 +324,6 @@
                             "propertyName": "nickName",
                             "propertyType": "String",
                             "uid": "808501157271"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "Post-office box",
-                            "propertyIsExcludeField": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "postOfficeBox",
-                            "propertyType": "String",
-                            "uid": "315838613146"
                         },
                         {
                             "allowedFileTypes": "",
@@ -381,23 +391,13 @@
                     "relations": [
                         {
                             "foreignRelationClass": "",
-                            "lazyLoading": true,
-                            "propertyIsExcludeField": false,
-                            "relationDescription": "User",
-                            "relationName": "user",
-                            "relationType": "manyToOne",
-                            "relationWire": "[wired]",
-                            "uid": "1140147674197"
-                        },
-                        {
-                            "foreignRelationClass": "",
-                            "lazyLoading": true,
+                            "lazyLoading": false,
                             "propertyIsExcludeField": false,
                             "relationDescription": "Address groups",
                             "relationName": "addressGroups",
                             "relationType": "manyToMany",
                             "relationWire": "[wired]",
-                            "uid": "324102844926"
+                            "uid": "903780612722"
                         },
                         {
                             "foreignRelationClass": "",
@@ -407,7 +407,27 @@
                             "relationName": "relatedAddresses",
                             "relationType": "manyToMany",
                             "relationWire": "[wired]",
-                            "uid": "18069024167"
+                            "uid": "921944362273"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": true,
+                            "propertyIsExcludeField": false,
+                            "relationDescription": "Related addresses from",
+                            "relationName": "relatedAddressesFrom",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "548999667807"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "User",
+                            "relationName": "user",
+                            "relationType": "manyToOne",
+                            "relationWire": "[wired]",
+                            "uid": "758547611429"
                         }
                     ]
                 }
@@ -416,8 +436,8 @@
         {
             "config": {
                 "position": [
-                    584,
-                    25
+                    651,
+                    185
                 ]
             },
             "name": "New Model Object",
@@ -437,14 +457,14 @@
                     "addDeletedField": true,
                     "addHiddenField": true,
                     "addStarttimeEndtimeFields": false,
-                    "aggregateRoot": true,
+                    "aggregateRoot": false,
                     "categorizable": false,
                     "description": "Address group",
-                    "mapToTable": "tt_address_group",
+                    "mapToTable": "",
                     "parentClass": "",
-                    "sorting": false,
+                    "sorting": true,
                     "type": "Entity",
-                    "uid": "677362885223"
+                    "uid": "1175911836942"
                 },
                 "propertyGroup": {
                     "properties": [
@@ -474,13 +494,13 @@
                     "relations": [
                         {
                             "foreignRelationClass": "",
-                            "lazyLoading": true,
-                            "propertyIsExcludeField": false,
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
                             "relationDescription": "Parent group",
                             "relationName": "parentGroup",
                             "relationType": "manyToOne",
                             "relationWire": "[wired]",
-                            "uid": "70661075005"
+                            "uid": "512321056208"
                         }
                     ]
                 }
@@ -489,8 +509,8 @@
         {
             "config": {
                 "position": [
-                    65,
-                    192
+                    46,
+                    190
                 ]
             },
             "name": "New Model Object",
@@ -510,14 +530,14 @@
                     "addDeletedField": true,
                     "addHiddenField": true,
                     "addStarttimeEndtimeFields": true,
-                    "aggregateRoot": true,
+                    "aggregateRoot": false,
                     "categorizable": false,
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "\\TYPO3\\CMS\\Extbase\\Domain\\Model\\FrontendUser",
                     "sorting": false,
                     "type": "Entity",
-                    "uid": "797214703939"
+                    "uid": "1234642544420"
                 },
                 "propertyGroup": {
                     "properties": [
@@ -534,8 +554,8 @@
         {
             "config": {
                 "position": [
-                    720,
-                    393
+                    921,
+                    188
                 ]
             },
             "name": "New Model Object",
@@ -552,8 +572,8 @@
                 },
                 "name": "PersonalAddress",
                 "objectsettings": {
-                    "addDeletedField": true,
-                    "addHiddenField": true,
+                    "addDeletedField": false,
+                    "addHiddenField": false,
                     "addStarttimeEndtimeFields": false,
                     "aggregateRoot": false,
                     "categorizable": false,
@@ -562,7 +582,7 @@
                     "parentClass": "\\Monogon\\AddressCollection\\Domain\\Model\\Address",
                     "sorting": false,
                     "type": "Entity",
-                    "uid": "110685983479"
+                    "uid": "476416412730"
                 },
                 "propertyGroup": {
                     "properties": [
@@ -579,8 +599,8 @@
         {
             "config": {
                 "position": [
-                    991,
-                    392
+                    922,
+                    333
                 ]
             },
             "name": "New Model Object",
@@ -597,8 +617,8 @@
                 },
                 "name": "BusinessAddress",
                 "objectsettings": {
-                    "addDeletedField": true,
-                    "addHiddenField": true,
+                    "addDeletedField": false,
+                    "addHiddenField": false,
                     "addStarttimeEndtimeFields": false,
                     "aggregateRoot": false,
                     "categorizable": false,
@@ -607,7 +627,7 @@
                     "parentClass": "\\Monogon\\AddressCollection\\Domain\\Model\\Address",
                     "sorting": false,
                     "type": "Entity",
-                    "uid": "1006980934441"
+                    "uid": "159746535241"
                 },
                 "propertyGroup": {
                     "properties": [
@@ -624,8 +644,8 @@
         {
             "config": {
                 "position": [
-                    725,
-                    545
+                    920,
+                    487
                 ]
             },
             "name": "New Model Object",
@@ -642,8 +662,8 @@
                 },
                 "name": "CompanyAddress",
                 "objectsettings": {
-                    "addDeletedField": true,
-                    "addHiddenField": true,
+                    "addDeletedField": false,
+                    "addHiddenField": false,
                     "addStarttimeEndtimeFields": false,
                     "aggregateRoot": false,
                     "categorizable": false,
@@ -652,7 +672,7 @@
                     "parentClass": "\\Monogon\\AddressCollection\\Domain\\Model\\Address",
                     "sorting": false,
                     "type": "Entity",
-                    "uid": "239624145344"
+                    "uid": "984047622574"
                 },
                 "propertyGroup": {
                     "properties": [
@@ -671,7 +691,7 @@
         "backendModules": [
 
         ],
-        "description": "Displays tt_address records.",
+        "description": "Displays \"tt_address\" records.",
         "emConf": {
             "category": "plugin",
             "custom_category": "",
@@ -679,12 +699,12 @@
             "disableLocalization": false,
             "disableVersioning": false,
             "sourceLanguage": "en",
-            "state": "beta",
+            "state": "stable",
             "targetVersion": "6.2",
             "version": "1.0.0"
         },
         "extensionKey": "address_collection",
-        "name": "Address Collection (Extbase)",
+        "name": "Address collection",
         "originalExtensionKey": "address_collection",
         "persons": [
             {
@@ -699,10 +719,10 @@
                 "actions": {
                     "controllerActionCombinations": "Address=>list,show",
                     "noncacheableActions": "Address=>list",
-                    "switchableActions": "Auto\nAddress->list;Address->show"
+                    "switchableActions": "Auto\nAddress->list;Address->show;"
                 },
                 "key": "pi1",
-                "name": "Address Collection "
+                "name": "Address collection"
             }
         ],
         "vendorName": "Monogon"
@@ -712,53 +732,65 @@
             "src": {
                 "moduleId": 0,
                 "terminal": "relationWire_0",
-                "uid": "1140147674197"
+                "uid": "903780612722"
             },
             "tgt": {
-                "moduleId": 2,
+                "moduleId": 1,
                 "terminal": "SOURCES",
-                "uid": "797214703939"
+                "uid": "1175911836942"
             }
         },
         {
             "src": {
                 "moduleId": 0,
                 "terminal": "relationWire_1",
-                "uid": "324102844926"
+                "uid": "921944362273"
             },
             "tgt": {
-                "moduleId": 1,
+                "moduleId": 0,
                 "terminal": "SOURCES",
-                "uid": "677362885223"
-            }
-        },
-        {
-            "src": {
-                "moduleId": 1,
-                "terminal": "relationWire_0",
-                "uid": "70661075005"
-            },
-            "tgt": {
-                "moduleId": 1,
-                "terminal": "SOURCES",
-                "uid": "677362885223"
+                "uid": "1011422016279"
             }
         },
         {
             "src": {
                 "moduleId": 0,
                 "terminal": "relationWire_2",
-                "uid": "18069024167"
+                "uid": "548999667807"
             },
             "tgt": {
                 "moduleId": 0,
                 "terminal": "SOURCES",
-                "uid": "334708329386"
+                "uid": "1011422016279"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_3",
+                "uid": "758547611429"
+            },
+            "tgt": {
+                "moduleId": 2,
+                "terminal": "SOURCES",
+                "uid": "1234642544420"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 1,
+                "terminal": "relationWire_0",
+                "uid": "512321056208"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "1175911836942"
             }
         }
     ],
     "log": {
-        "last_modified": "2015-10-02 06:38",
+        "last_modified": "2015-10-03 03:30",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }
