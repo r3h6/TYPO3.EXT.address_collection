@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-10-02T18:38:11Z" product-name="address_collection">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-10-03T12:30:01Z" product-name="address_collection">
 		<header/>
 		<body>
 			<trans-unit id="tx_addresscollection_domain_model_address">
@@ -114,9 +114,6 @@
 			<trans-unit id="tx_addresscollection_domain_model_address.address_groups">
 				<source>Address Groups</source>
 			</trans-unit>
-			<trans-unit id="tx_addresscollection_domain_model_address.related_addresses">
-				<source>Related Addresses</source>
-			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_addressgroup">
 				<source>Address Group</source>
 			</trans-unit>
@@ -131,6 +128,9 @@
 			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_user">
 				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_addresscollection_domain_model_address.related_addresses">
+				<source>Related Addresses</source>
 			</trans-unit>
 			<trans-unit id="tx_addresscollection_domain_model_personaladdress">
 				<source>Personal Address</source>

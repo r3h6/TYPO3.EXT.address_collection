@@ -8,12 +8,12 @@ if (!defined('TYPO3_MODE')) {
 	'Pi1',
 	array(
 		'Address' => 'list, show',
-
+		
 	),
 	// non-cacheable actions
 	array(
 		'Address' => 'list',
-
+		
 	)
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

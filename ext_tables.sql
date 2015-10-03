@@ -39,53 +39,46 @@ CREATE TABLE tt_address (
 	linked_in varchar(255) DEFAULT '' NOT NULL,
 	user int(11) unsigned DEFAULT '0',
 	address_groups int(11) unsigned DEFAULT '0' NOT NULL,
-	related_addresses int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
 );
 
 #
-# Table structure for table 'tx_addressgroups_group'
+# Table structure for table 'tt_address_group'
 #
 CREATE TABLE tt_address_group (
-	uid int(11) NOT NULL auto_increment,
-	pid int(11) DEFAULT '0' NOT NULL,
-	tstamp int(11) DEFAULT '0' NOT NULL,
-	crdate int(11) DEFAULT '0' NOT NULL,
-	cruser_id int(11) DEFAULT '0' NOT NULL,
-	sorting int(10) DEFAULT '0' NOT NULL,
-	deleted tinyint(4) DEFAULT '0' NOT NULL,
-	hidden tinyint(4) DEFAULT '0' NOT NULL,
-	fe_group tinytext,
-	title tinytext NOT NULL,
-	parent_group int(11) DEFAULT '0' NOT NULL,
+
+	title varchar(255) DEFAULT '' NOT NULL,
 	description text NOT NULL,
-	sys_language_uid int(11) DEFAULT '0' NOT NULL,
-	l18n_parent int(11) DEFAULT '0' NOT NULL,
-	l18n_diffsource mediumblob NOT NULL,
+	parent_group int(11) unsigned DEFAULT '0',
 
-	PRIMARY KEY (uid),
-	KEY parent (pid)
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
+
 );
 
 #
-# Table structure for table 'tt_address_tx_addressgroups_group_mm'
+# Table structure for table 'fe_users'
 #
-CREATE TABLE tt_address_group_mm (
-	uid_local int(11) DEFAULT '0' NOT NULL,
-	uid_foreign int(11) DEFAULT '0' NOT NULL,
-	tablenames varchar(30) DEFAULT '' NOT NULL,
-	sorting int(11) DEFAULT '0' NOT NULL,
+CREATE TABLE fe_users (
 
-	KEY uid_local (uid_local),
-	KEY uid_foreign (uid_foreign)
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
+
 );
 
 #
-# Table structure for table 'tx_addresscollection_address_address_mm'
+# Table structure for table 'sys_file_reference'
 #
-CREATE TABLE tx_addresscollection_address_address_mm (
+CREATE TABLE sys_file_reference (
+
+	address  int(11) unsigned DEFAULT '0' NOT NULL,
+
+);
+
+#
+# Table structure for table 'tx_addresscollection_address_addressgroup_mm'
+#
+CREATE TABLE tx_addresscollection_address_addressgroup_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,
@@ -94,3 +87,5 @@ CREATE TABLE tx_addresscollection_address_address_mm (
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
