@@ -15,6 +15,15 @@
 			<trans-unit id="pages.module.address">
 				<source>Addresses</source>
 			</trans-unit>
+			<trans-unit id="template_layouts.list.default">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="template_layouts.list.search_list">
+				<source>List with search</source>
+			</trans-unit>
+			<trans-unit id="template_layouts.list.character_list">
+				<source>List with character menu</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

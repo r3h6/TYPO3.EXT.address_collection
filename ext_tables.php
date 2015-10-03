@@ -94,16 +94,12 @@ if (!isset($GLOBALS['TCA']['tt_address']['ctrl']['type'])) {
 
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 
-
-
-
-
-
 //$GLOBALS['TCA']['tt_address']['ctrl']['dividers2tabs'] = 1;
 $GLOBALS['TCA']['tt_address']['ctrl']['requestUpdate'] = 'country';
 
-
-
+/**
+ * Add address types
+ */
 \Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_Address');
 \Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_BusinessAddress');
 \Monogon\AddressCollection\Utility\TcaUtility::addType('Tx_AddressCollection_CompanyAddress');

@@ -58,6 +58,12 @@ class AddressController extends ActionController {
 	protected $addressDemandFactory = NULL;
 
 	/**
+	 * [$overrideDemandArray description]
+	 * @var [type]
+	 */
+	protected $overrideDemandArray;
+
+	/**
 	 * [initializeAction description]
 	 *
 	 * @return void [description]
@@ -86,24 +92,25 @@ class AddressController extends ActionController {
 	 * @return void [description]
 	 */
 	protected function initializeListAction() {
-		$overrideDemandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand') : NULL;
-		$this->request->setArgument('demand', $this->addressDemandFactory->makeInstance($this->setup->get('list.demand'), $overrideDemandArray));
+		$this->overrideDemandArray = $this->request->hasArgument('demand') ? $this->request->getArgument('demand') : NULL;
+		$this->request->setArgument('demand', $this->addressDemandFactory->makeInstance($this->setup->get('list.demand'), $this->overrideDemandArray));
 	}
 
 	/**
 	 * action list
 	 *
 	 * @param \Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand
-	 * @validate $demand NotEmpty
 	 * @return void
 	 */
 	public function listAction(\Monogon\AddressCollection\Domain\Model\Dto\AddressDemand $demand) {
+		// Reset request argument to original one.
+		// An object as argument is to large for passing as a reefer argument for the search form.
+		$this->request->setArgument('demand', $this->overrideDemandArray);
+
 		$this->view->assign('demand', $demand);
 		// Find addresses
 		$addresses = $this->addressRepository->findDemanded($demand);
 		$this->view->assign('addresses', $addresses);
-		// Template layout
-		$this->view->assign('templateLayout', $this->setup->get('list.template'));
 	}
 
 	/**

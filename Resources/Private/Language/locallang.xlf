@@ -144,6 +144,9 @@
 			<trans-unit id="tx_addresscollection_domain_model_companyaddress">
 				<source>Company Address</source>
 			</trans-unit>
+			<trans-unit id="button.search">
+				<source>Search</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

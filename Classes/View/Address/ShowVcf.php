@@ -34,9 +34,15 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ShowVcf extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
 
+	/**
+	 * @var \TYPO3\CMS\Extbase\Service\ImageService
+	 * @inject
+	 */
+	protected $imageService;
+
 	public function render (){
 
-		/** @var \Monogon\AddressCollection\Domain\Model\Address */
+		/** @var \Monogon\AddressCollection\Domain\Model\Address $address */
 		$address = $this->variables['address'];
 
 		switch ($address->getRecordType()) {
@@ -48,7 +54,7 @@ class ShowVcf extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
 				# code...
 				break;
 		}
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($address);
+		// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($address);
 
 		/** @var \JeroenDesloovere\VCard\VCard */
 		$vcard = new VCard();
@@ -57,22 +63,32 @@ class ShowVcf extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
 		$lastname = $address->getLastName();
 		$firstname = $address->getFirstName();
 		$additional = '';
-		$prefix = '';
-		$suffix = '';
+		$prefix = $address->getGender();
+		$suffix = $address->getTitle();
 
 		// add personal data
 		$vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
 
 		// add work data
-		$vcard->addCompany('Siesqo');
-		$vcard->addJobtitle('Web Developer');
-		$vcard->addEmail('info@jeroendesloovere.be');
-		$vcard->addPhoneNumber(1234121212, 'PREF;WORK');
-		$vcard->addPhoneNumber(123456789, 'WORK');
-		$vcard->addAddress(null, null, 'street', 'worktown', null, 'workpostcode', 'Belgium');
-		$vcard->addURL('http://www.jeroendesloovere.be');
+		$vcard->addCompany($address->getCompany());
+		$vcard->addJobtitle($address->getPosition());
+		$vcard->addEmail($address->getEmail());
+		$vcard->addPhoneNumber($address->getPhone(), 'PREF;WORK');
+		$vcard->addPhoneNumber($address->getMobile(), 'WORK');
+		$vcard->addAddress(null, null, $address->getAddress(), $address->getCity(), null, $address->getZip(), $address->getCountry());
+		$vcard->addURL($address->getWww());
 
-		$vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+		$images = $address->getImages();
+		if (count($images)){
+			foreach ($images as $image){
+				// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($image);
+				//$imagePath = GeneralUtility::getFileAbsFileName($image->getOriginalResource()->getPublicUrl());
+				$imageUrl = $this->resizeImage($image->getOriginalResource());
+				$vcard->addPhoto($imageUrl);
+				break;
+			}
+		}
+		//$vcard->addPhoto();
 
 // return vcard as a string
 
@@ -85,5 +101,18 @@ class ShowVcf extends \TYPO3\CMS\Extbase\Mvc\View\AbstractView {
 			// $response->setHeader($key, $value);
 		}
 		return $vcard->getOutput();
+	}
+
+	protected function resizeImage ($image){
+		$processingInstructions = array(
+			'width' => NULL,
+			'height' => NULL,
+			'minWidth' => 0,
+			'minHeight' => 0,
+			'maxWidth' => 100,
+			'maxHeight' => 100,
+		);
+		$processedImage = $this->imageService->applyProcessingInstructions($image, $processingInstructions);
+		return $this->imageService->getImageUri($processedImage);
 	}
 }

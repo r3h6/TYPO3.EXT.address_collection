@@ -46,7 +46,7 @@
 								<itemsProcFunc>\Monogon\AddressCollection\Hooks\ItemsProcFunc\TemplateLayout->getListActionTemplates</itemsProcFunc>
 								<items>
 									<numIndex index="0" type="array">
-										<numIndex index="0">locallang_be.xlf:flexform_pi1.settings.flexform.template.default</numIndex>
+										<numIndex index="0">locallang_be.xlf:template_layouts.list.default</numIndex>
 										<numIndex index="1">Default</numIndex>
 									</numIndex>
 								</items>

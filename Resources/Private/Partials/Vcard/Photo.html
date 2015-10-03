@@ -1,3 +1,7 @@
-<f:if condition="{address.image}">
-  <f:image class="photo" src="uploads/pics/{address.image}" maxWidth="100" maxHeight="100" />
+<f:if condition="{address.images}">
+  <f:for each="{address.images}" as="image">
+    <f:if condition="{image.originalResource.properties.showinpreview}">
+      <f:image class="photo" src="{image.originalResource.publicUrl}" maxWidth="{maxW}" maxHeight="{maxH}" />
+    </f:if>
+  </f:for>
 </f:if>

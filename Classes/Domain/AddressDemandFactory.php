@@ -25,7 +25,7 @@ namespace Monogon\AddressCollection\Domain;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * AddressDemandFactory
  */
@@ -65,7 +65,7 @@ class AddressDemandFactory implements \TYPO3\CMS\Core\SingletonInterface {
 					case 'includeAddresses':
 						$propertyValue = join(',', array_intersect(
 							GeneralUtility::trimExplode(',', $properties[$propertyName], TRUE),
-							GeneralUtility::trimExplode(',', $propertyValue, TRUE)
+							$propertyValue
 						));
 						break;
 

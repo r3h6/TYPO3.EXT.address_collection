@@ -2,23 +2,23 @@
 
 <div class="vcard">
 
-  <f:render partial="Vcard/Photo" arguments="{address: address}" />
+  <f:render partial="Vcard/Photo" arguments="{address: address, maxW: setup.list.imageWidth, maxH: setup.list.imageHeight}" />
 
   <f:if condition="{setup.list.detailPid}">
     <f:then>
       <mgn:link.address class="url" address="{address}">
-        <f:render partial="Vcard/Fnn" arguments="{address: address}" />
+        <f:render partial="Vcard/Fnn" arguments="{address: address, setup: setup}" />
       </mgn:link.address>
     </f:then>
     <f:else>
       <f:if condition="{address.www}">
         <f:then>
           <f:link.external class="url" uri="{address.www}" target="_blank">
-            <f:render partial="Vcard/Fnn" arguments="{address: address}" />
+            <f:render partial="Vcard/Fnn" arguments="{address: address, setup: setup}" />
           </f:link.external>
         </f:then>
         <f:else>
-          <f:render partial="Vcard/Fnn" arguments="{address: address}" />
+          <f:render partial="Vcard/Fnn" arguments="{address: address, setup: setup}" />
         </f:else>
       </f:if>
     </f:else>
@@ -26,15 +26,15 @@
 
   <f:if condition="{setup.list.detailPid}">
     <f:else>
-      <f:render partial="Vcard/Url" arguments="{address: address}" />
+      <f:render partial="Vcard/Url" arguments="{address: address, setup: setup}" />
     </f:else>
   </f:if>
 
-  <f:render partial="Vcard/Adr" arguments="{address: address}" />
+  <f:render partial="Vcard/Adr" arguments="{address: address, setup: setup}" />
 
-  <f:render partial="Vcard/Tel" arguments="{address: address}" />
+  <f:render partial="Vcard/Tel" arguments="{address: address, setup: setup}" />
 
-  <f:render partial="Vcard/Category" arguments="{address: address}" />
+  <f:render partial="Vcard/Category" arguments="{address: address, setup: setup}" />
 
   <f:link.action action="show" format="vcf" pageType="{setup.ajaxPageType}" arguments="{address: address}" additionalParams="{recordUid: data.uid}">
     <f:translate key="button.download_vcard">Download Vcard</f:translate>

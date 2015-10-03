@@ -18,38 +18,38 @@ plugin.tx_addresscollection {
 
 # [userFunc = user_pageHadAddressPlugin()]
 
-page.includeCSSLibs {
-	bootstrap = EXT:address_collection/Resources/Public/StyleSheet/Vendors/bootstrap.min.css
-	bootstrap.if.isTrue = {$plugin.tx_addresscollection.settings.includeBootstrap}
+# page.includeCSSLibs {
+# 	bootstrap = EXT:address_collection/Resources/Public/StyleSheet/Vendors/bootstrap.min.css
+# 	bootstrap.if.isTrue = {$plugin.tx_addresscollection.settings.includeBootstrap}
 
-	visualsearch = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch.css
-	visualsearch.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
+# 	visualsearch = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch.css
+# 	visualsearch.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
 
-	visualsearchDatauri = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch-datauri.css
-	visualsearchDatauri.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
-}
+# 	visualsearchDatauri = EXT:address_collection/Resources/Public/StyleSheet/Vendors/visualsearch-datauri.css
+# 	visualsearchDatauri.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
+# }
 
-page.includeCSS {
-	tx_addresscollection = EXT:address_collection/Resources/Public/StyleSheet/ext.css
-}
+# page.includeCSS {
+# 	tx_addresscollection = EXT:address_collection/Resources/Public/StyleSheet/ext.css
+# }
 
-page.includeJSFooterlibs {
-	tx_addresscollection_jquery = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery-1.11.0.js
-	tx_addresscollection_jquery.if.isTrue = {$plugin.tx_addresscollection.settings.includeJquery}
+# page.includeJSFooterlibs {
+# 	tx_addresscollection_jquery = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery-1.11.0.js
+# 	tx_addresscollection_jquery.if.isTrue = {$plugin.tx_addresscollection.settings.includeJquery}
 
-	tx_addresscollection_dependencies = EXT:address_collection/Resources/Public/JavaScript/Vendors/dependencies.js
-	tx_addresscollection_dependencies.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
+# 	tx_addresscollection_dependencies = EXT:address_collection/Resources/Public/JavaScript/Vendors/dependencies.js
+# 	tx_addresscollection_dependencies.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
 
-	visualsearch = EXT:address_collection/Resources/Public/JavaScript/Vendors/visualsearch.js
-	visualsearch.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
+# 	visualsearch = EXT:address_collection/Resources/Public/JavaScript/Vendors/visualsearch.js
+# 	visualsearch.if.isTrue = {$plugin.tx_addresscollection.settings.includeVisualSearch}
 
-	jqueryHistory = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery.history.js
+# 	jqueryHistory = EXT:address_collection/Resources/Public/JavaScript/Vendors/jquery.history.js
 
-	ajaxForm = EXT:address_collection/Resources/Public/JavaScript/jquery.ajaxForm.js
-}
-page.includeJSFooter {
-	tx_addresscollection_pi1 = EXT:address_collection/Resources/Public/JavaScript/Pi1.js
-}
+# 	ajaxForm = EXT:address_collection/Resources/Public/JavaScript/jquery.ajaxForm.js
+# }
+# page.includeJSFooter {
+# 	tx_addresscollection_pi1 = EXT:address_collection/Resources/Public/JavaScript/Pi1.js
+# }
 
 # [global]
 
@@ -69,6 +69,8 @@ plugin.tx_addresscollection {
 			# includeBasic = {$plugin.tx_addresscollection.settings.includeBasic}
 
 			list {
+				imageWidth = 100
+				imageHeight = 100
 				wizard {
 					paginate {
 						itemsPerPage = 10
